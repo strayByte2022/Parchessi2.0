@@ -14,7 +14,7 @@ public class HostDisconnectUI : MonoBehaviour {
 
     private void Awake() {
         _playAgainButton.onClick.AddListener(() => {
-            AssetNetworkSceneManager.LoadNetworkScene(AssetSceneManager.AssetScene.MainMenuScene.ToString());
+            AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.MainMenuScene.ToString());
         });
     }
 

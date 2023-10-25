@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: 5fa98838f13eff84c9d124b5e4dc01e8
   - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 296ca7791a83c384ab4e0652c9fd2d9b
+  - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: 91b036b03e58d664c8d80af527254707
-  - enabled: 1
-    path: 
-    guid: 8d578bb192d783d4e84ae1f3c7b596c7
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: c06018cb4d7ca3247b54cf4b89141aa1
@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelectScene.unity
     guid: 73673f2f815aeee44afd2788579d843b
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: c3659f8e501f5784c921bd20f1ff4f81
-  - enabled: 1
     path: Assets/Scenes/Testing Scenes/Thuan-development.unity
     guid: 628cdb5fa8f24e5459e04f99e1fb80cd
+  - enabled: 1
+    path: Assets/Scenes/LobbyScene 1.unity
+    guid: 2db6d82244b549b43a11236a066ead09
   m_configObjects: {}

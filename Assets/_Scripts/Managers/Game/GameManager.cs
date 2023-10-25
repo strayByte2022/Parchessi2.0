@@ -51,7 +51,8 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
     public void Start()
     {
-        CreatePlayerControllerServerRPC();
+        //NetworkManager.Singleton.OnClientConnectedCallback += CreatePlayerControllerServerRPC;
+        CreatePlayerControllerServerRPC(NetworkManager.LocalClientId);
 
         if (IsServer)
         {
@@ -66,10 +67,20 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void CreatePlayerControllerServerRPC()
+    private void CreatePlayerControllerServerRPC(ulong clientId)
     {
         var playerController = Instantiate(GameResourceManager.Instance.PlayerControllerPrefab);
-        playerController.GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
+        playerController.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        CreatePlayerControllerClientRPC(clientId);
+    }
+
+    [ClientRpc]
+    private void CreatePlayerControllerClientRPC(ulong clientId)
+    {
+        var networkObject = NetworkManager.SpawnManager.GetPlayerNetworkObject(clientId);
+        var playerController = networkObject.GetComponent<PlayerController>();
+        playerController.Initialize();
+        StartPlayerController(playerController);
     }
 
     public PlayerController GetPlayerController(ulong clientId)

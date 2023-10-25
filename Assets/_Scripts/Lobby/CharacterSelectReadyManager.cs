@@ -6,7 +6,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityUtilities;
 
-public class CharacterSelectReadyManager : SingletonMonoBehaviour<CharacterSelectReadyManager> 
+public class CharacterSelectReadyManager : SingletonNetworkBehavior<CharacterSelectReadyManager> 
 {
     public event EventHandler OnReadyChanged;
     private Dictionary<ulong, bool> _playerReadyDictionary;
@@ -19,15 +19,17 @@ public class CharacterSelectReadyManager : SingletonMonoBehaviour<CharacterSelec
 
 
     public void SetPlayerReady() {
-        SetPlayerReadyServerRpc();
+        SetPlayerReadyServerRpc(NetworkManager.Singleton.LocalClientId);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default) {
-        SetPlayerReadyClientRpc(serverRpcParams.Receive.SenderClientId);
-
-        _playerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
-
+    private void SetPlayerReadyServerRpc(ulong senderClientId, ServerRpcParams serverRpcParams = default) {
+        //SetPlayerReadyClientRpc(serverRpcParams.Receive.SenderClientId);
+        SetPlayerReadyClientRpc(senderClientId);
+        
+        //_playerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
+        _playerReadyDictionary[senderClientId] = true;
+        
         bool allClientsReady = true;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds) {
             if (!_playerReadyDictionary.ContainsKey(clientId) || !_playerReadyDictionary[clientId]) {
