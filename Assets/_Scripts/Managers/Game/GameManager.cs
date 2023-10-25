@@ -70,7 +70,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     private void CreatePlayerControllerServerRPC(ulong clientId)
     {
         var playerController = Instantiate(GameResourceManager.Instance.PlayerControllerPrefab);
-        playerController.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
+        playerController.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
         CreatePlayerControllerClientRPC(clientId);
     }
 

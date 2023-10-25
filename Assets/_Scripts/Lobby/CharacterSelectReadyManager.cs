@@ -6,7 +6,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityUtilities;
 
-public class CharacterSelectReadyManager : SingletonMonoBehaviour<CharacterSelectReadyManager> 
+public class CharacterSelectReadyManager : SingletonNetworkBehavior<CharacterSelectReadyManager> 
 {
     public event EventHandler OnReadyChanged;
     private Dictionary<ulong, bool> _playerReadyDictionary;
