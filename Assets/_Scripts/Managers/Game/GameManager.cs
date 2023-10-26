@@ -68,6 +68,12 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         }
     }
 
+    [Command]
+    private void CreatePlayerController()
+    {
+        CreatePlayerControllerServerRPC(NetworkManager.LocalClientId);
+    }
+    
 
     private void SceneManager_OnLoadEventCompleted(string sceneName,
         UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted,
@@ -99,7 +105,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         playerController.Initialize();
         StartPlayerController(playerController);
 
-        if (PlayerControllers.Count == GameMultiplayerManager.Instance.GetAllPlayerContainer().Length)
+        if (GameMultiplayerManager.Instance != null && PlayerControllers.Count == GameMultiplayerManager.Instance.GetAllPlayerContainer().Length)
         {
             SetReadyPlayerControllerServerRPC(NetworkManager.LocalClientId);
         }
