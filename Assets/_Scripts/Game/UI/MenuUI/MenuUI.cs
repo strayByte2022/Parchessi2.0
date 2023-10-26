@@ -25,6 +25,11 @@ public class MenuUI : MonoBehaviour
         MainMenu.LeanScale(Vector2.one, 0.5f);
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void OptionEnable()
     {
         OptionMenu.SetActive(true);
