@@ -19,11 +19,11 @@ namespace _Scripts.Player
 
         private HandDiceRegion _handDiceRegion;
 
-        private void Awake()
+        public override void Initialize(PlayerController playerController)
         {
-            _handDiceRegion = gameObject.GetComponent<HandDiceRegion>();
+            base.Initialize(playerController);
+            _handDiceRegion = GetComponent<HandDiceRegion>();
         }
-
         public HandDice GetHandDice(int diceContainerIndex)
         {
             _containerIndexToHandDiceDictionary.TryGetValue(diceContainerIndex, out var handDice);

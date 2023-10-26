@@ -13,6 +13,11 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
     private readonly Dictionary<int, HandCard> _containerIndexToHandCardDictionary = new Dictionary<int, HandCard>();
     private HandCardRegion _handCardRegion;
 
+    public override void Initialize(PlayerController playerController)
+    {
+        base.Initialize(playerController);
+        _handCardRegion = GetComponent<HandCardRegion>();
+    }
     
     public HandCard GetHandCard(int cardContainerIndex)
     {

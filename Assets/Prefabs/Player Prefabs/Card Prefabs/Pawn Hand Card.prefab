@@ -1446,7 +1446,7 @@ Transform:
   m_GameObject: {fileID: 4225879008436624270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.39999998}
+  m_LocalScale: {x: -1, y: -1, z: -0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8162687711398459627}
@@ -1516,7 +1516,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -234422237
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!1 &8043885080065933175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,7 +2587,7 @@ MonoBehaviour:
   _frontSortingGroup: {fileID: 8701164748035316439}
   _backSortingGroup: {fileID: 1398686545668551304}
   _currentCardFaceType: 0
-  _spinDuration: 0.5
+  _spinDuration: 1
   _spinEase: 9
 --- !u!1 &8842430945408696543
 GameObject:

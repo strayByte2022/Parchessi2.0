@@ -45,7 +45,7 @@ namespace _Scripts.CardScript.AquaticCardScript
                 return package; 
             }
 
-            package.AddToPackage(HandCardFace.GetSpinTween(HandCardFace.CardFaceType.Front));
+            package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
             package.AddToPackage(MoveToMiddleScreen());
 
             var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllPawnNotFullHealth);

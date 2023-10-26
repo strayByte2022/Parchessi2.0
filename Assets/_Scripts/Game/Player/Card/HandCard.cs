@@ -47,10 +47,10 @@ public class HandCard : PlayerEntity, ITargeter
     protected virtual void InitializeCardFace()
     {
         HandCardFace = GetComponent<HandCardFace>();
-        SetFace(HandCardFace.CardFaceType.Back, true);
+        HandCardFace.SetCardFace(HandCardFace.CardFaceType.Back, true);
         if (IsOwner)
         {
-            SetFace(HandCardFace.CardFaceType.Front, false);   
+            HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front, false);   
         }
     }
     
@@ -67,21 +67,14 @@ public class HandCard : PlayerEntity, ITargeter
         else return false;
     }
     
-    public virtual void SetFace(HandCardFace.CardFaceType face, bool isImmediate = false)
-    {
-        HandCardFace.SetCardFace(face);
-        if (isImmediate)
-        {
-            HandCardFace.CompleteSpinTween();
-        }
-    }
+    
     
     public virtual SimulationPackage ExecuteTargeter<TTargetee>(TTargetee targetee) where TTargetee : ITargetee
     {
         
         var package = new SimulationPackage();
 
-        package.AddToPackage(HandCardFace.GetSpinTween(HandCardFace.CardFaceType.Front));
+        package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
             
         
         if (targetee is MapPawn playerPawn)
