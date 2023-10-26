@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.Player.Card;
 using _Scripts.Player.Dice;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
@@ -40,7 +41,8 @@ public class PawnHandCard : HandCard
     public override SimulationPackage ExecuteTargeter<TTargetee>(TTargetee targetee)
     {
         var package = new SimulationPackage();
-
+        
+        package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
         package.AddToPackage(() =>
         {
             if (targetee is PlayerEmptyTarget playerEmptyTarget)

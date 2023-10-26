@@ -156,6 +156,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -313294548724005488, guid: 8acfe556bbf875c4d9f115e9ad9599a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8acfe556bbf875c4d9f115e9ad9599a7, type: 3}
+--- !u!114 &276839860750398095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6598392258815200603, guid: 8acfe556bbf875c4d9f115e9ad9599a7, type: 3}
+  m_PrefabInstance: {fileID: 6360695306374102996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685335643580770747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c4565980924d99af08e761dea60b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &685335643580770744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5892810086109648492, guid: 8acfe556bbf875c4d9f115e9ad9599a7, type: 3}
@@ -179,10 +190,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targeteeType: 5
+  HandCardFace: {fileID: 276839860750398095}
   MoveToMiddleDuration: 0.5
   MoveToMiddleEase: 9
   _destroyParticleSystem: {fileID: 5033361822874254757}
   _fadeObject: {fileID: 3224651932014240499}
+  _destroyDelay: 2
   DealDamage:
     _value: 0
 --- !u!114 &3224651932014240499 stripped

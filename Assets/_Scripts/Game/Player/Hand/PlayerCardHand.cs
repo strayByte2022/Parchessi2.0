@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Managers.Game;
 using _Scripts.NetworkContainter;
 using _Scripts.Player.Card;
 using _Scripts.Simulation;
@@ -12,11 +13,12 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
     private readonly Dictionary<int, HandCard> _containerIndexToHandCardDictionary = new Dictionary<int, HandCard>();
     private HandCardRegion _handCardRegion;
 
-    private void Awake()
+    public override void Initialize(PlayerController playerController)
     {
-        _handCardRegion = gameObject.GetComponent<HandCardRegion>();
+        base.Initialize(playerController);
+        _handCardRegion = GetComponent<HandCardRegion>();
     }
-
+    
     public HandCard GetHandCard(int cardContainerIndex)
     {
         _containerIndexToHandCardDictionary.TryGetValue(cardContainerIndex, out var handCard);
@@ -47,14 +49,14 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
         {
             case CardType.Action:
                 var cardDescription = GameResourceManager.Instance.GetCardDescription(cardContainer.CardID);
-                var handCard = Instantiate(cardDescription.GetHandCardPrefab());
-                handCard.Initialize(this, cardDescription, cardContainerIndex, PlayerController.OwnerClientId);
+                var handCard = Instantiate(cardDescription.GetHandCardPrefab(), MapManager.Instance.GetDeck().transform.position, Quaternion.identity);
+                handCard.Initialize(this, cardDescription, cardContainerIndex, PlayerController.OwnerClientId, IsOwner);
                 return handCard;
             
             case CardType.Pawn:
                 var pawnCardDescription = GameResourceManager.Instance.GetPawnCardDescription(cardContainer.CardID);
-                var pawnHandCard = Instantiate(pawnCardDescription.GetPawnHandCardPrefab());
-                pawnHandCard.Initialize(this, pawnCardDescription, cardContainerIndex, PlayerController.OwnerClientId);
+                var pawnHandCard = Instantiate(pawnCardDescription.GetPawnHandCardPrefab(), MapManager.Instance.GetDeck().transform.position, Quaternion.identity);
+                pawnHandCard.Initialize(this, pawnCardDescription, cardContainerIndex, PlayerController.OwnerClientId, IsOwner);
                 return pawnHandCard;
             
             default:

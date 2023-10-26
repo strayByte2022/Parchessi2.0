@@ -2,6 +2,7 @@
 using _Scripts.Scriptable_Objects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(HandCard))]
@@ -21,6 +22,8 @@ public class HandCardVisual : MonoBehaviour
     [SerializeField] private SpriteRenderer _cardEffectBoxSprite;
     [SerializeField] private SpriteRenderer _cardBannerBoxSprite;
     [SerializeField] private SpriteRenderer _cardImageBoxSprite;
+    
+    [SerializeField] private SortingGroup _frontSortingGroup, _backSortingGroup;
 
     protected virtual void Awake()
     {
@@ -64,4 +67,5 @@ public class HandCardVisual : MonoBehaviour
         _cardImageBoxSprite.color = cardPaletteDescription.CardImageBoxColor;
         
     }
+    
 }

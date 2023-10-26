@@ -58,6 +58,7 @@ namespace _Scripts.Managers.Game
             _isHandInteractable = playerController == GameManager.Instance.ClientOwnerPlayerController;
         }
         
+        
         public PlayerDiceHand GetPlayerDiceHand(ulong clientOwnerID)
         {
             return _playerDiceHands[clientOwnerID];
@@ -73,8 +74,8 @@ namespace _Scripts.Managers.Game
             foreach (var playerController in GameManager.Instance.PlayerControllers)
             {
                 if (_playerCardHands.ContainsKey(playerController.OwnerClientId) || _playerDiceHands.ContainsKey(playerController.OwnerClientId)) continue;
-                var playerCardHand = Instantiate(GameResourceManager.Instance.PlayerCardHandPrefab, _playerCardHandParent);
-                var playerDiceHand = Instantiate(GameResourceManager.Instance.PlayerDiceHandPrefab, _playerDiceHandParent);
+                var playerCardHand = Instantiate(GameResourceManager.Instance.PlayerCardHandPrefab, _offScreenCardHandParent);
+                var playerDiceHand = Instantiate(GameResourceManager.Instance.PlayerDiceHandPrefab, _offScreenDiceHandParent);
                 
                 playerDiceHand.Initialize(playerController);
                 playerCardHand.Initialize(playerController);

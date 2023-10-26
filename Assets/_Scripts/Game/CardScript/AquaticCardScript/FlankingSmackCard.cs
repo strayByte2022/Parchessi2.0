@@ -1,5 +1,6 @@
 ﻿using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.Player.Card;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
 using _Scripts.Simulation;
@@ -44,6 +45,7 @@ namespace _Scripts.CardScript.AquaticCardScript
                 return package; 
             }
 
+            package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
             package.AddToPackage(MoveToMiddleScreen());
 
             var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllPawnNotFullHealth);
