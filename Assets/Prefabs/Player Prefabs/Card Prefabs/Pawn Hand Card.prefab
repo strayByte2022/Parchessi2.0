@@ -1984,6 +1984,7 @@ GameObject:
   - component: {fileID: 600866889934413978}
   - component: {fileID: 3130520252921474953}
   - component: {fileID: 6144479861326050585}
+  - component: {fileID: 6279997058696016454}
   m_Layer: 0
   m_Name: Pawn Hand Card
   m_TagString: Untagged
@@ -2105,6 +2106,20 @@ MonoBehaviour:
   _speedText: {fileID: 3130520251176995569}
   _buffColor: {r: 0, g: 1, b: 0, a: 1}
   _debuffColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &6279997058696016454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842430945399567936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fcd0d7394c43119738075020b56fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  FadeDuration: 1
 --- !u!1 &8842430945408696543
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ namespace _Scripts.CardScript
             Destroy(gameObject);
         }
 
+
         private void ShowDestroyStyleEffect()
         {
             _fadeObject.StartFade();
