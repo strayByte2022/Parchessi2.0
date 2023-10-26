@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -20,7 +21,13 @@ namespace _Scripts.Player.Card
         [SerializeField] private float _spinDuration = 0.5f;
         [SerializeField] private Ease _spinEase = Ease.OutCubic;
         private Tween _spinTween;
-        
+
+        private void Awake()
+        {
+            SetCardFace(CardFaceType.Back);
+            CompleteSpinTween();
+        }
+
         public void SetCardFace(CardFaceType cardFaceType)
         {
             if (cardFaceType == _currentCardFaceType) return;
@@ -57,5 +64,15 @@ namespace _Scripts.Player.Card
             _spinTween = sequence;
         }
         
+        public Tween GetSpinTween(CardFaceType cardFaceType)
+        {
+            SetCardFace(cardFaceType);
+            return _spinTween;
+        }
+        
+        public void CompleteSpinTween()
+        {
+            _spinTween?.Complete();
+        }
     }
 }

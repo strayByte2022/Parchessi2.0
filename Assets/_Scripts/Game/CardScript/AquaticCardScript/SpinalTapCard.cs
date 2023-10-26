@@ -1,6 +1,7 @@
 ﻿
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.Player.Card;
 using _Scripts.Player.Dice;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
@@ -36,6 +37,7 @@ public class SpinalTapCard : StylizedHandCard
             return package; 
         }
 
+        package.AddToPackage(HandCardFace.GetSpinTween(HandCardFace.CardFaceType.Front));
         package.AddToPackage(MoveToMiddleScreen());
 
         package.AddToPackage(() =>

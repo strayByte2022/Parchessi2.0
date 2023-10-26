@@ -1483,6 +1483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targeteeType: 5
+  HandCardFace: {fileID: 6598392258815200603}
   MoveToMiddleDuration: 0.5
   MoveToMiddleEase: 9
 --- !u!114 &971385533165736036

@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targeteeType: 5
+  HandCardFace: {fileID: 6995856026128382089}
   MoveToMiddleDuration: 0.5
   MoveToMiddleEase: 9
   Attack:
@@ -181,3 +182,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8842430945399567939, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   m_PrefabInstance: {fileID: 9127845724813372764}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6995856026128382089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2286380202528986581, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
+  m_PrefabInstance: {fileID: 9127845724813372764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295618317763730204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c4565980924d99af08e761dea60b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

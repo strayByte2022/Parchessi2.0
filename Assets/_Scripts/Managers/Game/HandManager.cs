@@ -58,6 +58,7 @@ namespace _Scripts.Managers.Game
             _isHandInteractable = playerController == GameManager.Instance.ClientOwnerPlayerController;
         }
         
+        
         public PlayerDiceHand GetPlayerDiceHand(ulong clientOwnerID)
         {
             return _playerDiceHands[clientOwnerID];
