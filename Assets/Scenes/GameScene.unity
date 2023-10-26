@@ -2748,41 +2748,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2126617318}
     m_Modifications:
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.9940731
-      objectReference: {fileID: 0}
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.4198113
-      objectReference: {fileID: 0}
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 0.84839016
-      objectReference: {fileID: 0}
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.504717
-      objectReference: {fileID: 0}
-    - target: {fileID: 4548142289014029052, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4548142289014029053, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4548142289014029053, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4548142289014029053, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4548142289014029053, guid: 15cec50ac4ef9a74eb89c22e2649f9e4, type: 3}
       propertyPath: m_LocalPosition.z
