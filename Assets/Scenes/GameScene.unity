@@ -2752,6 +2752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2538744362699107272, guid: 878b9365ace3e7e498d26676b8b90590, type: 3}
+      propertyPath: NetworkConfig.ConnectionApproval
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2538744362699107275, guid: 878b9365ace3e7e498d26676b8b90590, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2814,7 +2818,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 511124456}
     m_Modifications:
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _deckCardDescriptions.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _deckCardDescriptions.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _deckCardDescriptions.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: d77656e8632cd1a4d845c5a152b3dec6, type: 2}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}

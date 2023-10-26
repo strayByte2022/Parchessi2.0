@@ -49,13 +49,11 @@ namespace _Scripts.Player
             return handDice;
         }
 
-        public void PlayDiceToPawn(HandDice handDice, MapPawn mapPawn)
+        public void PlayDice(HandDice handDice)
         {
             if (IsOwner)
             {
                 PlayerController.PlayerResourceController.RemoveDiceServerRPC(handDice.ContainerIndex);
-                MapManager.Instance.StartMovePawnServerRPC(mapPawn.ContainerIndex, handDice.DiceValue.Value);
-
             }
             else
             {

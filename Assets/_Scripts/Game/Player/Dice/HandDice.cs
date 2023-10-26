@@ -63,12 +63,13 @@ public class HandDice : PlayerEntity, ITargeter
         var package = new SimulationPackage();
         package.AddToPackage(() =>
         {
-            if (targetee is MapPawn playerPawn)
+            if (targetee is MapPawn mapPawn)
             {
-                _playerDiceHand.PlayDiceToPawn(this, playerPawn);
+                _playerDiceHand.PlayDice(this);
                 
+                MapManager.Instance.StartMovePawnServerRPC(mapPawn.ContainerIndex, DiceValue.Value);
                 // Inherit this class and write Dice effect
-                Debug.Log(name + " Dice drag to Pawn " + playerPawn.name);
+                Debug.Log(name + " Dice drag to Pawn " + mapPawn.name);
 
             }
             else if (targetee is PlayerDeck)

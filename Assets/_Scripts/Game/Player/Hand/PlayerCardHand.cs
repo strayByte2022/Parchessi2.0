@@ -69,15 +69,13 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
         if (IsOwner)
         {
             PlayerController.PlayerResourceController.RemoveCardFromHandServerRPC(handCard.ContainerIndex);
-            _containerIndexToHandCardDictionary.Remove(handCard.ContainerIndex);
-
         }
         else
         {
             _handCardRegion.RemoveCard(handCard.GetComponent<HandCardDragAndTargeter>());
-            _containerIndexToHandCardDictionary.Remove(handCard.ContainerIndex);
-
         }
+        
+        _containerIndexToHandCardDictionary.Remove(handCard.ContainerIndex);
     }
     
 }

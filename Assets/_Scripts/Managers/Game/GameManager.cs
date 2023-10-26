@@ -69,7 +69,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     }
 
     [Command]
-    private void CreatePlayerController()
+    public void CreatePlayerController()
     {
         CreatePlayerControllerServerRPC(NetworkManager.LocalClientId);
     }
