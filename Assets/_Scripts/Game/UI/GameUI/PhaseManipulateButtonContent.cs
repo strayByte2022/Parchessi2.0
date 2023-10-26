@@ -17,7 +17,7 @@ public class PhaseManipulateButtonContent : MonoBehaviour
     private void Awake()
     {
         
-        GameManager.Instance.OnClientPlayerJoinGameSetUp += GameSetUp;
+        GameManager.Instance.OnClientPlayerControllerSetUp += GameSetUp;
         DisableAllExceptWait();
     }
 

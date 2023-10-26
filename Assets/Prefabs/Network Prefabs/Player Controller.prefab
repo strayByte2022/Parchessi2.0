@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6012954016721665117}
   - component: {fileID: 5917750071920771271}
   - component: {fileID: -7850709218436277523}
-  - component: {fileID: 6905961411984022542}
+  - component: {fileID: 8289088073185843292}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e3ba117fe443f78e8f5c01efc41762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6905961411984022542
+--- !u!114 &8289088073185843292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Scripts.Player;
 using _Scripts.Player.Dice;
 using DG.Tweening;
+using Mono.CSharp;
 using Shun_Unity_Editor;
 using UnityEngine;
 using UnityUtilities;
@@ -71,6 +72,7 @@ namespace _Scripts.Managers.Game
         {
             foreach (var playerController in GameManager.Instance.PlayerControllers)
             {
+                if (_playerCardHands.ContainsKey(playerController.OwnerClientId) || _playerDiceHands.ContainsKey(playerController.OwnerClientId)) continue;
                 var playerCardHand = Instantiate(GameResourceManager.Instance.PlayerCardHandPrefab, _playerCardHandParent);
                 var playerDiceHand = Instantiate(GameResourceManager.Instance.PlayerDiceHandPrefab, _playerDiceHandParent);
                 

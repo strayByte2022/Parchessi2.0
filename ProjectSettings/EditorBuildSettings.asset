@@ -23,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing Scenes/Thuan-development.unity
     guid: 628cdb5fa8f24e5459e04f99e1fb80cd
-  - enabled: 1
-    path: Assets/Scenes/LobbyScene 1.unity
-    guid: 2db6d82244b549b43a11236a066ead09
   m_configObjects: {}
