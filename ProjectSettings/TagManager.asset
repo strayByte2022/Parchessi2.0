@@ -59,3 +59,6 @@ TagManager:
   - name: Dice
     uniqueID: 1964281609
     locked: 0
+  - name: Effect
+    uniqueID: 2499023405
+    locked: 0
