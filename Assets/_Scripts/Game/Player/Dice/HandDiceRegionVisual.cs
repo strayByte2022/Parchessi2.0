@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HandDiceRegionVisual : MonoBehaviour
 {
-    [SerializeField] PlayerPaletteDescription _playerPaletteDescription;
+    [SerializeField] ChampionPaletteDescription _championPaletteDescription;
     
     [SerializeField] ShapeRenderer _outline;
     [SerializeField] ShapeRenderer _background;
@@ -19,13 +19,13 @@ public class HandDiceRegionVisual : MonoBehaviour
 
     public void LoadVisual()
     {
-        if (_playerPaletteDescription == null)
+        if (_championPaletteDescription == null)
         {
             return;
         }
         
-        _outline.Color = _playerPaletteDescription.PrimaryOutlineColor;
-        _background.Color = _playerPaletteDescription.PrimaryColor;
+        _outline.Color = _championPaletteDescription.PrimaryOutlineColor;
+        _background.Color = _championPaletteDescription.PrimaryColor;
         
     }
     

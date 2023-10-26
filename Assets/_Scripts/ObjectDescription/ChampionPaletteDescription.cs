@@ -2,8 +2,8 @@
 
 namespace _Scripts.Scriptable_Objects
 {
-    [CreateAssetMenu(fileName = "PlayerPaletteDescription", menuName = "ScriptableObjects/PlayerPaletteDescription", order = 1)]
-    public class PlayerPaletteDescription : ScriptableObject
+    [CreateAssetMenu(fileName = "ChampionPaletteDescription", menuName = "ScriptableObjects/ChampionPaletteDescription", order = 1)]
+    public class ChampionPaletteDescription : ScriptableObject
     {
         public Color PrimaryColor = Color.white;
         public Color OnPrimaryColor = Color.black;
