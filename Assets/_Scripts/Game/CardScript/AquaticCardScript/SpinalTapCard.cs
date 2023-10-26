@@ -44,7 +44,6 @@ public class SpinalTapCard : StylizedHandCard
             Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
 
             MapManager.Instance.TakeDamagePawnServerRPC(DealDamage.Value, playerPawn.ContainerIndex);
-            playerPawn.TakeDamage(DealDamage.Value);
                 
             PlayerCardHand.PlayCard(this);
 

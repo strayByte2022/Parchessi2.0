@@ -45,7 +45,6 @@ public class AquaponicsCard : StylizedHandCard
                 Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
 
                 MapManager.Instance.HealPawnServerRPC(HealValue.Value, playerPawn.ContainerIndex);
-                playerPawn.TakeDamage(HealValue.Value);
                 
                 PlayerCardHand.PlayCard(this);
 

@@ -215,6 +215,21 @@ public class ActionManager : SingletonMonoBehaviour<ActionManager>
     {
         return MapManager.Instance.GetPlayerPawn(pawnContainerIndex);
     }
+
+    public List<ITargetee> GetMapPawns(Func<ITargetee, bool> selectCondition = null)
+    {
+        List<ITargetee> mapPawns = new List<ITargetee>();
+        foreach (var mapTarget in _mapTargets)
+        {
+            if (selectCondition == null || selectCondition.Invoke(mapTarget))
+            {
+                mapPawns.Add(mapTarget);
+            }
+        }
+
+        return mapPawns;
+    }
+    
     
     public PlayerDeck GetDeck()
     {
