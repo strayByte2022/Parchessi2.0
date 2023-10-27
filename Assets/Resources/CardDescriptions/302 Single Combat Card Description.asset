@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
-  m_Name: 106 Water Sphere Card Description
+  m_Name: 302 Single Combat Card Description
   m_EditorClassIdentifier: 
-  CardID: 106
-  CardSprite: {fileID: 21300000, guid: 067beb42a9df741b2bde814584f5154f, type: 3}
-  CardName: Water Sphere
-  CardEffectDescription: A axie move backward for {0} turns
+  CardID: 301
+  CardSprite: {fileID: 21300000, guid: 70c7bcafd77fd44e0a1a1a7018420767, type: 3}
+  CardName: Single Combat
+  CardEffectDescription: An ally and the furthest enemy attack each other
   CardCost: 1
   CardEffectIntVariables: 02000000
   CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}

@@ -384,6 +384,7 @@ namespace _Scripts.Managers.Game
                     break;
                 case PawnStatEffectType.Health:
                     pawnContainer.PawnStatContainer.MaxHealth += effectContainer.EffectValue;
+                    pawnContainer.PawnStatContainer.CurrentHealth += effectContainer.EffectValue;
                     break;
                 case PawnStatEffectType.Speed:
                     pawnContainer.PawnStatContainer.MovementSpeed += effectContainer.EffectValue;
@@ -405,6 +406,7 @@ namespace _Scripts.Managers.Game
                     break;
                 case PawnStatEffectType.Health:
                     pawnContainer.PawnStatContainer.MaxHealth -= effectContainer.EffectValue;
+                    pawnContainer.PawnStatContainer.CurrentHealth = Mathf.Min(pawnContainer.PawnStatContainer.CurrentHealth, pawnContainer.PawnStatContainer.MaxHealth);
                     break;
                 case PawnStatEffectType.Speed:
                     pawnContainer.PawnStatContainer.MovementSpeed -= effectContainer.EffectValue;

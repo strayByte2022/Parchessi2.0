@@ -383,7 +383,7 @@ namespace _Scripts.Player.Pawn
                     removeStatEffect += () =>
                     {
                         MaxHealth.Value -= pawnStatEffectContainer.EffectValue;
-                        CurrentHealth.Value -= pawnStatEffectContainer.EffectValue;
+                        CurrentHealth.Value = Mathf.Min(MaxHealth.Value, CurrentHealth.Value);
                     };
                     break;
                 case PawnStatEffectType.Speed:
