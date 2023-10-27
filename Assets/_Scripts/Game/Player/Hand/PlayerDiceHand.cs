@@ -37,7 +37,7 @@ namespace _Scripts.Player
             var handDice = CreateDiceHand(diceContainer, diceContainerIndex);
             _containerIndexToHandDiceDictionary.Add(diceContainerIndex, handDice);
 
-            _handDiceRegion.TryAddCard(handDice.GetComponent<HandDiceDragAndTargeter>());
+            AddDiceToRegion(handDice);
         }
 
 
@@ -57,7 +57,7 @@ namespace _Scripts.Player
             }
             else
             {
-                _handDiceRegion.RemoveCard(handDice.GetComponent<HandDiceDragAndTargeter>());
+                RemoveDiceFromRegion(handDice);
             }
 
             _containerIndexToHandDiceDictionary.Remove(handDice.ContainerIndex);
@@ -74,7 +74,7 @@ namespace _Scripts.Player
             }
             else
             {
-                RemoveHandDiceRegionBind(handDice);
+                RemoveDiceFromRegion(handDice);
             }
 
             _containerIndexToHandDiceDictionary.Remove(handDice.ContainerIndex);
@@ -88,7 +88,7 @@ namespace _Scripts.Player
             }
         }
 
-        public void RemoveHandDiceRegionBind(HandDice handDice)
+        public void RemoveDiceFromRegion(HandDice handDice)
         {
             var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
             _handDiceRegion.RemoveCard(handDiceDragAndTargeter);
@@ -97,7 +97,7 @@ namespace _Scripts.Player
             
         }
         
-        public void AddHandDiceRegionBind(HandDice handDice)
+        public void AddDiceToRegion(HandDice handDice)
         {
             var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
             _handDiceRegion.TryAddCard(handDiceDragAndTargeter);

@@ -58,10 +58,10 @@ public class HandDice : PlayerEntity, ITargeter
     protected IEnumerator WaitForRollDice(int endValue)
     {
         bool isRolling = true;
-        _playerDiceHand.RemoveHandDiceRegionBind(this);
+        _playerDiceHand.RemoveDiceFromRegion(this);
         _handDiceRoll.RollDice(endValue, (int endValue) =>
         {
-            _playerDiceHand.AddHandDiceRegionBind(this);
+            _playerDiceHand.AddDiceToRegion(this);
             DiceValue.Value = endValue;
             isRolling = false;
         });

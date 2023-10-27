@@ -56,7 +56,8 @@ public class HandDiceRoll : MonoBehaviour
             return;
 
         _handDiceDragAndTargeter.DisableDrag();
-
+        _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        
         var randomX = UnityEngine.Random.Range(-1f, 1f);
         var randomY = UnityEngine.Random.Range(-1f, 1f);
         var randomVector = new Vector2(randomX, randomY);
@@ -91,6 +92,7 @@ public class HandDiceRoll : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.angularVelocity = 0;
         
+        _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         _handDiceDragAndTargeter.EnableDrag();
         _isRolling = false;
 
