@@ -10,7 +10,7 @@ public class MenuUI : MonoBehaviour
 
     public void LoadLobby()
     {
-        AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
+        MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(Play);
     }
     
     public void OnOptionOpen()
@@ -52,5 +52,10 @@ public class MenuUI : MonoBehaviour
     {
         OptionMenu.SetActive(true);
         MainMenu.SetActive(false);
+    }
+
+    public void Play()
+    {
+        AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
     }
 }
