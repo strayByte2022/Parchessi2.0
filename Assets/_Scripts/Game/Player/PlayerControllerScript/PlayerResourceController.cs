@@ -58,7 +58,7 @@ public class PlayerResourceController : NetworkBehaviour
         DeckCards.Add(cardContainer);
     }
     
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void GainIncomeServerRPC()
     {
         DiceContainer[] addDiceContainers = new DiceContainer[IncomeDices.Count]; // RPC came before NetworkList
@@ -75,7 +75,7 @@ public class PlayerResourceController : NetworkBehaviour
         GainPlayingTurnDiceClientRPC(addDiceContainers);
     }
     
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void GainBonusDiceServerRPC()
     {
         DiceContainer[] addDiceContainers = new DiceContainer[BonusDices.Count]; // RPC came before NetworkList 

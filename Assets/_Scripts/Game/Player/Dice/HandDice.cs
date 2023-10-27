@@ -43,7 +43,7 @@ public class HandDice : PlayerEntity, ITargeter
         if (targetee is PlayerDeck) return true;
         if (targetee is MapPawn mapPawn)
         {
-            return mapPawn.TryMove(DiceValue.Value);
+            return mapPawn.OwnerClientID == OwnerClientID && mapPawn.TryMove(DiceValue.Value);
         }
         else return false;
     }
