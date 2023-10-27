@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: 102 Flanking Smack Card Description
   m_EditorClassIdentifier: 
   CardID: 102
-  CardSprite: {fileID: 21300000, guid: c211932e13cf4458e9f943c77c20ab5d, type: 3}
+  CardSprite: {fileID: 21300000, guid: e17bf1176af734cb7bf9a9c40c505366, type: 3}
   CardName: Flanking Smack
   CardEffectDescription: Do {0} damage to ALL axies that are not full health
   CardCost: 1
   CardEffectIntVariables: 01000000
-  CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
+  CardPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
   HandCardPrefab: {fileID: 5203186711508841738, guid: c86ee36060c4d2347b82940e0b8480a6, type: 3}

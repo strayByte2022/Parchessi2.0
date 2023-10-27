@@ -18,5 +18,5 @@ MonoBehaviour:
   CardEffectDescription: Heal an ally by {0}
   CardCost: 1
   CardEffectIntVariables: 03000000
-  CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
+  CardPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
   HandCardPrefab: {fileID: 406102951322897787, guid: fcee7f5b4818c3842bc0723c15e8c037, type: 3}
