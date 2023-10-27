@@ -37,7 +37,7 @@ public class SpinalTapCard : StylizedHandCard
             return package; 
         }
 
-        package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
+        package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
         package.AddToPackage(MoveToMiddleScreen());
 
         package.AddToPackage(() =>

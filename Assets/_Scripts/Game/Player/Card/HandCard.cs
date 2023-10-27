@@ -25,9 +25,7 @@ public class HandCard : PlayerEntity, ITargeter
     public Action OnInitialize { get; set;}
     
     [Header("Animations ")]
-    [SerializeField] protected float MoveToMiddleDuration = 0.5f;
-    [SerializeField] protected Ease MoveToMiddleEase = Ease.OutCubic;
-
+    [SerializeField] protected float CardMoveSpeed = 1f;
     
     public void Initialize(PlayerCardHand playerCardHand, CardDescription cardDescription, int containerIndex, ulong ownerClientID, bool isOwner)
     {
@@ -47,10 +45,10 @@ public class HandCard : PlayerEntity, ITargeter
     protected virtual void InitializeCardFace()
     {
         HandCardFace = GetComponent<HandCardFace>();
-        HandCardFace.SetCardFace(HandCardFace.CardFaceType.Back, true);
+        HandCardFace.SetCardFace(CardFaceType.Back, true);
         if (IsOwner)
         {
-            HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front, false);   
+            HandCardFace.SetCardFace(CardFaceType.Front, false);   
         }
     }
     
@@ -74,7 +72,7 @@ public class HandCard : PlayerEntity, ITargeter
         
         var package = new SimulationPackage();
 
-        package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
+        package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
             
         
         if (targetee is MapPawn playerPawn)
@@ -127,11 +125,24 @@ public class HandCard : PlayerEntity, ITargeter
         Destroy(gameObject);
     }
 
+    /*
     protected virtual Tween MoveToMiddleScreen()
     {
         return transform
             .DOMove(MapManager.Instance.GetEmptyTarget().GetMonoBehavior().transform.position, MoveToMiddleDuration)
             .SetEase(MoveToMiddleEase);
     }
+    */
+    
+    protected virtual Tween MoveToMiddleScreen()
+    {
+        Vector3 targetPosition = MapManager.Instance.GetEmptyTarget().GetMonoBehavior().transform.position;
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        float duration = distance / CardMoveSpeed; // Calculate the duration based on speed
+
+        return DOTween.To(() => transform.position, x => transform.position = x, targetPosition, duration);
+    }
+
     
 }

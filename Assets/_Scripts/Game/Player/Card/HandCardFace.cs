@@ -10,12 +10,6 @@ namespace _Scripts.Player.Card
         [SerializeField] private Transform _cardVisual;
         [SerializeField] private SortingGroup _frontSortingGroup;
         [SerializeField] private SortingGroup _backSortingGroup;
-
-        public enum CardFaceType
-        {
-            Front,
-            Back
-        }
         
         [SerializeField] private CardFaceType _currentCardFaceType = CardFaceType.Front; 
         [SerializeField] private float _spinDuration = 0.5f;

@@ -42,7 +42,7 @@ public class PawnHandCard : HandCard
     {
         var package = new SimulationPackage();
         
-        package.AddToPackage(HandCardFace.SetCardFace(HandCardFace.CardFaceType.Front));
+        package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
         package.AddToPackage(() =>
         {
             if (targetee is PlayerEmptyTarget playerEmptyTarget)
