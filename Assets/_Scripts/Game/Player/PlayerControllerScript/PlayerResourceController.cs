@@ -22,7 +22,8 @@ public class PlayerResourceController : NetworkBehaviour
     public NetworkList<CardContainer> DiscardCards; 
     
     public NetworkList<DiceContainer> IncomeDices;
-    public NetworkList<DiceContainer> CurrentTurnDices; // This Must work as array
+    public NetworkList<DiceContainer> BonusDices; // This Must work as array
+    public NetworkList<DiceContainer> PlayingDices; // This Must work as array
 
     private PlayerDiceHand _playerDiceHand;
     private PlayerCardHand _playerCardHand;
@@ -34,8 +35,8 @@ public class PlayerResourceController : NetworkBehaviour
         DiscardCards = new();     
         
         IncomeDices = new();      
-        CurrentTurnDices = new(Enumerable.Repeat(EmptyDiceContainer, DICE_HAND_SIZE).ToArray());
-
+        PlayingDices = new(Enumerable.Repeat(EmptyDiceContainer, DICE_HAND_SIZE).ToArray());
+        BonusDices = new();
     }
 
 
@@ -57,29 +58,50 @@ public class PlayerResourceController : NetworkBehaviour
         DeckCards.Add(cardContainer);
     }
     
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     public void GainIncomeServerRPC()
     {
-        DiceContainer[] addDiceContainers = new DiceContainer[IncomeDices.Count]; // RPC came before NetworkList 
-        CurrentTurnDices.Clear();
+        DiceContainer[] addDiceContainers = new DiceContainer[IncomeDices.Count]; // RPC came before NetworkList
+        
+        PlayingDices.Clear(); // The first turn will not have any dice in the playing turn dice list
+        
         for (var index = 0; index < IncomeDices.Count; index++)
         {
             var diceContainer = IncomeDices[index];
             addDiceContainers[index] = diceContainer;
-            CurrentTurnDices.Add(diceContainer);
+            PlayingDices.Add(diceContainer);
         }
 
-        GainIncomeClientRPC(addDiceContainers);
+        GainPlayingTurnDiceClientRPC(addDiceContainers);
+    }
+    
+    [ServerRpc]
+    public void GainBonusDiceServerRPC()
+    {
+        DiceContainer[] addDiceContainers = new DiceContainer[BonusDices.Count]; // RPC came before NetworkList 
+        
+        for (var index = 0; index < BonusDices.Count; index++)
+        {
+            var diceContainer = BonusDices[index];
+            addDiceContainers[index] = diceContainer;
+            PlayingDices.Add(diceContainer);
+        }
+
+        GainPlayingTurnDiceClientRPC(addDiceContainers);
     }
 
     [ClientRpc]
-    private void GainIncomeClientRPC(DiceContainer[] addDiceContainers = default)
+    private void GainPlayingTurnDiceClientRPC(DiceContainer[] addDiceContainers = default)
     {
         for (int i = 0; i < addDiceContainers.Length; i++)
         {
             _playerDiceHand.AddDiceToHand(addDiceContainers[i], i);
         }
     }
+    
+    
+    
+   
 
     [ServerRpc]
     public void AddCardToHandServerRPC()
@@ -159,7 +181,7 @@ public class PlayerResourceController : NetworkBehaviour
     [ServerRpc]
     public void RemoveDiceServerRPC(int index)
     {
-        CurrentTurnDices[index] = EmptyDiceContainer;
+        PlayingDices[index] = EmptyDiceContainer;
     }
     
     [ServerRpc]
@@ -171,9 +193,9 @@ public class PlayerResourceController : NetworkBehaviour
         HandCards[handCardContainerIndex] = EmptyCardContainer;
     }
     
-    public bool CheckEndRollPhaseTurn()
+    public bool CheckEmptyPlayingDices()
     {
-        foreach (var currentDiceContainer in CurrentTurnDices)
+        foreach (var currentDiceContainer in PlayingDices)
         {
             if (!currentDiceContainer.Equals(EmptyDiceContainer))
             {
@@ -184,6 +206,19 @@ public class PlayerResourceController : NetworkBehaviour
         return true;
     }
     
+    
+    public bool CheckEmptyBonusDices()
+    {
+        foreach (var currentDiceContainer in BonusDices)
+        {
+            if (!currentDiceContainer.Equals(EmptyDiceContainer))
+            {
+                return false;
+            }    
+        }
+
+        return true;
+    }
     
     
 }

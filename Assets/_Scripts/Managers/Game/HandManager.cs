@@ -94,8 +94,8 @@ namespace _Scripts.Managers.Game
         
         private void ChangePhaseHand(PlayerTurnController.PlayerPhase oldValue, PlayerTurnController.PlayerPhase newValue, PlayerController playerController)
         {
-            _isCardHandInteractable = newValue == PlayerTurnController.PlayerPhase.Roll && playerController.IsOwner;
-            _isDiceHandInteractable = newValue is PlayerTurnController.PlayerPhase.Preparation or PlayerTurnController.PlayerPhase.Subsequence
+            _isCardHandInteractable = newValue == PlayerTurnController.PlayerPhase.RollPhase && playerController.IsOwner;
+            _isDiceHandInteractable = newValue is PlayerTurnController.PlayerPhase.PreparationPhase or PlayerTurnController.PlayerPhase.SubsequencePhase
                                       && playerController.IsOwner;
             
             
@@ -104,18 +104,18 @@ namespace _Scripts.Managers.Game
             
             switch (newValue)
             {
-                case PlayerTurnController.PlayerPhase.Wait:
+                case PlayerTurnController.PlayerPhase.WaitPhase:
                     HidePlayerHand(playerController);
                     break;
-                case PlayerTurnController.PlayerPhase.Preparation:
+                case PlayerTurnController.PlayerPhase.PreparationPhase:
                     ShowCardHand(playerCardHand);
                     HideDiceHand(playerDiceHand);
                     break;
-                case PlayerTurnController.PlayerPhase.Roll:
+                case PlayerTurnController.PlayerPhase.RollPhase:
                     PeakCardHand(playerCardHand);
                     ShowDiceHand(playerDiceHand);
                     break;
-                case PlayerTurnController.PlayerPhase.Subsequence:
+                case PlayerTurnController.PlayerPhase.SubsequencePhase:
                     ShowCardHand(playerCardHand);
                     HideDiceHand(playerDiceHand);
                     break;

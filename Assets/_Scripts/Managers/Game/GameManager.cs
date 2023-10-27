@@ -153,7 +153,8 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
         LoadPlayerSetup();
         StartPlayerTurnClientRPC(PlayerControllers[_playerIdTurn.Value].OwnerClientId);
-        StartPlayerTurn(PlayerControllers[_playerIdTurn.Value]);
+        
+        PlayerControllers[_playerIdTurn.Value].PlayerTurnController.StartTurnServerRPC();
     }
 
     [ClientRpc]
@@ -194,7 +195,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
             _playerIdTurn.Value = 0;
         }
 
-        StartPlayerTurn(PlayerControllers[_playerIdTurn.Value]);
+        PlayerControllers[_playerIdTurn.Value].PlayerTurnController.StartTurnServerRPC();
 
         StartPlayerTurnClientRPC(PlayerControllers[_playerIdTurn.Value].OwnerClientId);
     }
@@ -211,12 +212,6 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     {
         OnPlayerTurnStart?.Invoke(GetPlayerController(clientId));
         Debug.Log($"Player {PlayerControllers[_playerIdTurn.Value].OwnerClientId} start turn");
-    }
-
-    private void StartPlayerTurn(PlayerController playerController)
-    {
-        playerController.PlayerTurnController.StartPreparationPhaseServerRPC();
-        playerController.PlayerResourceController.GainIncomeServerRPC();
     }
 
     public void CheckWin(ulong ownerClientId, int victoryPoint)
@@ -239,6 +234,6 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     {
         OnGameEnd?.Invoke();
 
-        Debug.Log("Game End!");
+        Debug.Log($"Game End {ownerClientId} Win!");
     }
 }

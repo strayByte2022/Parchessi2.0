@@ -81,7 +81,7 @@ namespace _Scripts.Simulation
                 runningCoroutines.Add(newCoroutine);
             }
 
-            // Wait for all running coroutines to complete
+            // WaitPhase for all running coroutines to complete
             yield return WaitAllCoroutines(runningCoroutines);
         }
 

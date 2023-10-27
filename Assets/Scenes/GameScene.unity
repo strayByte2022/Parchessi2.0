@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitButton: {fileID: 1154224988}
-  _endTurnButtonController: {fileID: 396258492}
+  _endSubsequenceButtonController: {fileID: 396258492}
   _endRollButtonController: {fileID: 649241030}
   _startRollButtonController: {fileID: 794312171}
 --- !u!1 &989269469
