@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
 using _Scripts.Map;
+using _Scripts.NetworkContainter;
 using _Scripts.Simulation;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using Action = System.Action;
 
 namespace _Scripts.Player.Pawn
 {
@@ -170,31 +172,14 @@ namespace _Scripts.Player.Pawn
             
             simulationPacket.AddToPackage(() =>
             {
-                // Buff from attacker and debuff from defender
+                // AddBuff from attacker and debuff from defender
                 
                 SimulationManager.Instance.AddSimulationPackage(defenderMapPawn.TakeDamage(AttackDamage.Value));
             });
             
-            
-            
             return null;
         }
-
-        public virtual SimulationPackage TakeDamage(MapPawn attackerMapPawn)
-        {
-            var simulationPacket = new SimulationPackage();
-            
-            simulationPacket.AddToPackage(() =>
-            {
-                // Buff from attacker and debuff from defender
-                
-                SimulationManager.Instance.AddSimulationPackage(TakeDamage(attackerMapPawn.AttackDamage.Value));
-            });
-            
-            
-            
-            return null;
-        }
+        
         
         public virtual SimulationPackage TakeDamage(int damage)
         {
@@ -259,5 +244,160 @@ namespace _Scripts.Player.Pawn
             
             return simulationPacket;
         }
+
+        public virtual SimulationPackage AddStatEffect(PawnStatEffectContainer pawnStatEffectContainer)
+        {
+            if (pawnStatEffectContainer.EffectedPawnContainerIndex != ContainerIndex) return null;
+
+            Action addStatEffect = GetAddStatEffectAction(pawnStatEffectContainer);
+            
+            if (pawnStatEffectContainer.EffectValue > 0)
+            {
+                return AddBuff(addStatEffect);
+            }
+            else
+            {
+                return AddDebuff(addStatEffect);
+            }
+        }
+
+        protected virtual SimulationPackage AddBuff(Action buffAction)
+        {
+            var simulationPacket = new SimulationPackage();
+            
+            simulationPacket.AddToPackage(() =>
+            {
+                // Fun Animation
+                Debug.Log("AddBuff!");
+                buffAction.Invoke();
+            });
+            
+            return simulationPacket;
+        }
+
+        protected virtual SimulationPackage AddDebuff(Action debuffAction)
+        {
+            var simulationPacket = new SimulationPackage();
+            
+            simulationPacket.AddToPackage(() =>
+            {
+                // Fun Animation
+                Debug.Log("AddDebuff!");
+                debuffAction.Invoke();
+                
+            });
+            
+            return simulationPacket;
+        }
+        
+        public virtual SimulationPackage TimeOutStatEffect(PawnStatEffectContainer pawnStatEffectContainer)
+        {
+            if (pawnStatEffectContainer.EffectedPawnContainerIndex != ContainerIndex) return null;
+
+            Action removeStatEffect = GetRemoveStatEffectAction(pawnStatEffectContainer);
+            
+            if (pawnStatEffectContainer.EffectValue > 0)
+            {
+                return RemoveBuff(removeStatEffect);
+            }
+            else
+            {
+                return RemoveDebuff(removeStatEffect);
+            }
+        }
+        
+        protected virtual SimulationPackage RemoveBuff(Action buffAction)
+        {
+            var simulationPacket = new SimulationPackage();
+            
+            simulationPacket.AddToPackage(() =>
+            {
+                // Fun Animation
+                Debug.Log("RemoveBuff!");
+                buffAction.Invoke();
+            });
+            
+            return simulationPacket;
+        }
+        
+        protected virtual SimulationPackage RemoveDebuff(Action debuffAction)
+        {
+            var simulationPacket = new SimulationPackage();
+            
+            simulationPacket.AddToPackage(() =>
+            {
+                // Fun Animation
+                Debug.Log("RemoveDebuff!");
+                debuffAction.Invoke();
+                
+            });
+            
+            return simulationPacket;
+        }
+
+
+
+        protected virtual Action GetAddStatEffectAction(PawnStatEffectContainer pawnStatEffectContainer)
+        {
+            Action addStatEffect = null;
+            switch (pawnStatEffectContainer.EffectType)
+            {
+                case PawnStatEffectType.Attack:
+                    addStatEffect += () =>
+                    {
+                        AttackDamage.Value += pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                case PawnStatEffectType.Health:
+                    addStatEffect += () =>
+                    {
+                        MaxHealth.Value += pawnStatEffectContainer.EffectValue;
+                        CurrentHealth.Value += pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                case PawnStatEffectType.Speed:
+                    addStatEffect += () =>
+                    {
+                        MovementSpeed.Value += pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return addStatEffect;
+        }
+        
+        protected virtual Action GetRemoveStatEffectAction(PawnStatEffectContainer pawnStatEffectContainer)
+        {
+            Action removeStatEffect = null;
+            switch (pawnStatEffectContainer.EffectType)
+            {
+                case PawnStatEffectType.Attack:
+                    removeStatEffect += () =>
+                    {
+                        AttackDamage.Value -= pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                case PawnStatEffectType.Health:
+                    removeStatEffect += () =>
+                    {
+                        MaxHealth.Value -= pawnStatEffectContainer.EffectValue;
+                        CurrentHealth.Value -= pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                case PawnStatEffectType.Speed:
+                    removeStatEffect += () =>
+                    {
+                        MovementSpeed.Value -= pawnStatEffectContainer.EffectValue;
+                    };
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return removeStatEffect;
+        }
+        
     }
 }

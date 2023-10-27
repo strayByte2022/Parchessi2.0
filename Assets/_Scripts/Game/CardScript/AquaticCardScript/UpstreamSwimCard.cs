@@ -1,5 +1,6 @@
 ﻿using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.NetworkContainter;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
 using _Scripts.Simulation;
@@ -59,7 +60,17 @@ namespace _Scripts.CardScript.AquaticCardScript
                 {
                     // Inherit this class and write Card effect
                     
+                    var pawnStatEffectContainer = new PawnStatEffectContainer()
+                    {
+                        EffectDuration = BuffTurnCount.Value,
+                        EffectType = PawnStatEffectType.Speed,
+                        EffectValue = SpeedBonusValue.Value,
+                        EffectedOwnerClientID = pawn.OwnerClientID,
+                        EffectedPawnContainerIndex = pawn.ContainerIndex,
+                        TriggerOwnerClientID = OwnerClientID
+                    };
                     
+                    MapManager.Instance.AddStatEffectServerRPC(pawnStatEffectContainer);
                 });
             }
             

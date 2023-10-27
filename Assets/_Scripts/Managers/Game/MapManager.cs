@@ -24,21 +24,88 @@ namespace _Scripts.Managers.Game
         [SerializeField] private PlayerEmptyTarget _playerEmptyTarget;
         
         private NetworkList<PawnContainer> _mapPawnContainers;
+        private NetworkList<PawnStatEffectContainer> _pawnStatEffectContainers;
         
         private readonly Dictionary<int, MapPawn> _containerIndexToMapPawnDictionary = new();
-
+        
         
         private void Awake()
         {
             _mapPawnContainers = new NetworkList<PawnContainer>(Enumerable.Repeat(EmptyPawnContainer, MAP_PAWN_COUNT).ToArray());
+            _pawnStatEffectContainers = new NetworkList<PawnStatEffectContainer>();
+            
+            GameManager.Instance.OnPlayerTurnStart += UpdateStatEffect;
+        }
+
+        private void UpdateStatEffect(PlayerController obj)
+        {
+            if (obj == GameManager.Instance.ClientOwnerPlayerController)
+            {
+                UpdateStatEffectServerRPC(NetworkManager.LocalClientId);
+            }
         }
         
+        [ServerRpc(RequireOwnership = false)]
+        private void UpdateStatEffectServerRPC(ulong ownerClientId, ServerRpcParams serverRpcParams = default)
+        {
+            var clientId = serverRpcParams.Receive.SenderClientId;
+            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
+            
+            if (ownerClientId != clientId) return;
+            
+            for (var index = 0; index < _pawnStatEffectContainers.Count; index++)
+            {
+                var pawnStatEffectContainer = _pawnStatEffectContainers[index];
+                if (pawnStatEffectContainer.EffectedOwnerClientID != ownerClientId) continue;
+
+                if (pawnStatEffectContainer.EffectDuration > 0)
+                {
+                    pawnStatEffectContainer.EffectDuration--;
+                    _pawnStatEffectContainers[index] = pawnStatEffectContainer;
+                }
+                else
+                {
+                    _pawnStatEffectContainers.RemoveAt(index);
+                    
+                    TimeOutStatEffectClientRPC(pawnStatEffectContainer);
+                }
+            }
+        }
+        
+        [ClientRpc]
+        private void TimeOutStatEffectClientRPC(PawnStatEffectContainer effectContainer)
+        {
+            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.TimeOutStatEffect(effectContainer));
+        }
+        
+
+        [ServerRpc(RequireOwnership = false)]
+        public void AddStatEffectServerRPC(PawnStatEffectContainer effectContainer , ServerRpcParams serverRpcParams = default)
+        {
+            var clientId = serverRpcParams.Receive.SenderClientId;
+            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
+            
+            if (effectContainer.EffectedOwnerClientID != clientId) return;
+            
+            _pawnStatEffectContainers.Add(effectContainer);
+            
+            AddStatEffectClientRPC(effectContainer);
+        }
+        
+        [ClientRpc]
+        private void AddStatEffectClientRPC(PawnStatEffectContainer effectContainer)
+        {
+            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
+            SimulationManager.Instance.AddSimulationPackage( mapPawn.AddStatEffect(effectContainer));
+        }
+        
+
         [Command()]
         public void PlayerSpawnPawnToMapServer( )
         {
             SpawnPawnToMapServerRPC(new PawnContainer{PawnID = 0, ClientOwnerID = NetworkManager.LocalClientId, StandingMapCell = 0, StandingMapSpot = 0}, NetworkManager.LocalClientId);
         }
-        
 
         public MapPawn GetPlayerPawn(int pawnContainerIndex)
         {
@@ -84,8 +151,8 @@ namespace _Scripts.Managers.Game
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
 
-            if (NetworkManager.ServerClientId != clientId) return;
-            //if (ownerClientId != NetworkManager.LocalClientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
+            if (ownerClientId != NetworkManager.LocalClientId) return;
             
             foreach (var mapPawnContainer in _mapPawnContainers)
             {
@@ -209,6 +276,7 @@ namespace _Scripts.Managers.Game
             var defenderPawnContainer = _mapPawnContainers[defenderPawnContainerIndex];
             
             defenderPawnContainer.PawnStatContainer.CurrentHealth -= Mathf.Max(attackerPawnContainer.PawnStatContainer.AttackDamage,0);
+            _mapPawnContainers[defenderPawnContainerIndex] = defenderPawnContainer;
             
             MakeCombatClientRPC(attackerPawnContainerIndex, defenderPawnContainerIndex);
         }
@@ -235,6 +303,7 @@ namespace _Scripts.Managers.Game
             var defenderPawnContainer = _mapPawnContainers[defenderPawnContainerIndex];
             
             defenderPawnContainer.PawnStatContainer.CurrentHealth -= Mathf.Max(damage, 0);
+            _mapPawnContainers[defenderPawnContainerIndex] = defenderPawnContainer;
             
             TakeDamagePawnClientRPC(damage, defenderPawnContainerIndex);
         }
@@ -262,6 +331,8 @@ namespace _Scripts.Managers.Game
                                     defenderPawnContainer.PawnStatContainer.CurrentHealth;
             var actualHealValue = Mathf.Min(Mathf.Max(healValue, 0) , (maxHealableAmount));
             defenderPawnContainer.PawnStatContainer.CurrentHealth += actualHealValue;
+            _mapPawnContainers[healedPawnContainerIndex] = defenderPawnContainer;
+            
             HealPawnClientRPC(healValue, healedPawnContainerIndex);
         }
         

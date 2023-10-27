@@ -1,6 +1,7 @@
 ﻿
 using System;
 using _Scripts.NetworkContainter;
+using Unity.Collections;
 using Unity.Netcode;
 
 public struct PawnContainer: INetworkSerializable, IEquatable<PawnContainer>
