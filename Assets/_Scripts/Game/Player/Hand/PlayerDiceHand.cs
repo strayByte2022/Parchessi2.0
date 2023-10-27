@@ -74,7 +74,7 @@ namespace _Scripts.Player
             }
             else
             {
-                _handDiceRegion.RemoveCard(handDice.GetComponent<HandDiceDragAndTargeter>());
+                RemoveHandDiceRegionBind(handDice);
             }
 
             _containerIndexToHandDiceDictionary.Remove(handDice.ContainerIndex);
@@ -88,7 +88,23 @@ namespace _Scripts.Player
             }
         }
 
+        public void RemoveHandDiceRegionBind(HandDice handDice)
+        {
+            var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
+            _handDiceRegion.RemoveCard(handDiceDragAndTargeter);
+            handDiceDragAndTargeter.DisableDrag();
+            handDice.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            
+        }
         
+        public void AddHandDiceRegionBind(HandDice handDice)
+        {
+            var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
+            _handDiceRegion.TryAddCard(handDiceDragAndTargeter);
+            handDiceDragAndTargeter.EnableDrag();
+            
+            handDice.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        }
     }
 
 

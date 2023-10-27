@@ -27,6 +27,12 @@ namespace _Scripts.Simulation
         {
             ExecuteEvents.Add(coroutine);
         }
+        
+        public void AddToPackage(IEnumerator coroutine)
+        {
+            IEnumerator CoroutineWrapper() => coroutine;
+            ExecuteEvents.Add(CoroutineWrapper);
+        }
 
         public void AddToPackage(Tween tween)
         {

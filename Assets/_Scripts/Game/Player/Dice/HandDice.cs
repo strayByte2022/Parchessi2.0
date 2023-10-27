@@ -19,12 +19,14 @@ public class HandDice : PlayerEntity, ITargeter
     public ObservableData<int> DiceValue;
 
     private PlayerDiceHand _playerDiceHand;
+    private HandDiceRoll _handDiceRoll;
     [SerializeField, ShowImmutable] DiceDescription _diceDescription;
     private ITargeter _targeterImplementation;
 
     public void Initialize(PlayerDiceHand playerDiceHand, DiceDescription diceDescription, int containerIndex, ulong ownerClientID )
     {
         _playerDiceHand = playerDiceHand;
+        _handDiceRoll = GetComponent<HandDiceRoll>();
         _diceDescription = diceDescription;
         base.Initialize(containerIndex, ownerClientID);
         
@@ -44,6 +46,27 @@ public class HandDice : PlayerEntity, ITargeter
             return mapPawn.TryMove(DiceValue.Value);
         }
         else return false;
+    }
+    
+    public virtual SimulationPackage RollDice(int endValue)
+    {
+        var simulationPackage = new SimulationPackage();
+        simulationPackage.AddToPackage(WaitForRollDice(endValue));
+        return simulationPackage;
+    }
+
+    protected IEnumerator WaitForRollDice(int endValue)
+    {
+        bool isRolling = true;
+        _playerDiceHand.RemoveHandDiceRegionBind(this);
+        _handDiceRoll.RollDice(endValue, (int endValue) =>
+        {
+            _playerDiceHand.AddHandDiceRegionBind(this);
+            DiceValue.Value = endValue;
+            isRolling = false;
+        });
+        
+        yield return new WaitUntil(() => isRolling == false);
     }
     
     public virtual SimulationPackage SetDiceValue(int value)

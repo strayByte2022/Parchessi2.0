@@ -28,7 +28,7 @@ public class PlayerActionController : PlayerControllerRequireDependency
     private void RollDiceClientRPC(int containerIndex, int value)
     {
         HandDice handDice = ActionManager.Instance.GetHandDice(containerIndex, OwnerClientId);
-        SimulationManager.Instance.AddCoroutineSimulationObject( handDice.SetDiceValue(value));
+        SimulationManager.Instance.AddCoroutineSimulationObject( handDice.RollDice(value));
     }
 
     
