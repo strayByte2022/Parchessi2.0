@@ -5,7 +5,7 @@ using QFSW.QC;
 using Shun_Unity_Editor;
 using UnityEngine;
 
-public class MapCell : PlayerEntity
+public class MapCell : MonoBehaviour
 {
     private readonly List<MapPawn> _stayingPlayerPawns = new(); 
     

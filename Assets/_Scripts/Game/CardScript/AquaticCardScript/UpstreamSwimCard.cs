@@ -34,7 +34,7 @@ namespace _Scripts.CardScript.AquaticCardScript
         { 
             if (targetee is MapPawn mapPawn)
             {
-                return mapPawn.CurrentHealth.Value < mapPawn.MaxHealth.Value && mapPawn.OwnerClientID == this.OwnerClientID;
+                return mapPawn.CurrentHealth.Value == mapPawn.MaxHealth.Value && mapPawn.OwnerClientID == this.OwnerClientID;
             }
             
             return false;

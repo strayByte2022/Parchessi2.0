@@ -63,7 +63,7 @@ namespace _Scripts.Simulation
 
         private Func<IEnumerator> ConvertToIEnumerator(Tween tween)
         {
-            if (tween == null || tween.IsActive()) return null;
+            if (tween == null || !tween.IsActive()) return null;
             
             tween.Pause();
             return new Func<IEnumerator>(() =>
@@ -82,5 +82,7 @@ namespace _Scripts.Simulation
                 return CoroutineWrapper();
             });
         }
+        
+        
     }
 }

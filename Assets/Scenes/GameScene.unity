@@ -2966,15 +2966,15 @@ PrefabInstance:
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
+      objectReference: {fileID: 11400000, guid: 143deef68dc5ee143a61a619e93bca3c, type: 2}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
+      objectReference: {fileID: 11400000, guid: 143deef68dc5ee143a61a619e93bca3c, type: 2}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: d77656e8632cd1a4d845c5a152b3dec6, type: 2}
+      objectReference: {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[4]
       value: 
