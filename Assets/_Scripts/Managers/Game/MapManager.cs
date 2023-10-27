@@ -99,7 +99,7 @@ namespace _Scripts.Managers.Game
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
 
             //if (NetworkManager.ServerClientId != clientId) return;
-            if (ownerClientId != NetworkManager.LocalClientId) return;
+            if (ownerClientId != clientId) return;
             
             foreach (var mapPawnContainer in _mapPawnContainers)
             {

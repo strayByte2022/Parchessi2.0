@@ -50,17 +50,15 @@ public class HandDice : PlayerEntity, ITargeter
 
     public void RollDiceAction()
     {
-        
+        _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange);
     }
-
+    
     protected virtual SimulationPackage SpawnDice()
     {
         var simulationPackage = new SimulationPackage();
         
-        
-        simulationPackage.AddToPackage(2f);
-        simulationPackage.AddToPackage( 
-            () => _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange));
+        simulationPackage.AddToPackage(1f);
+        simulationPackage.AddToPackage(RollDiceAction);
         
         return simulationPackage;
     }

@@ -25,7 +25,7 @@ public class HandCard : PlayerEntity, ITargeter
     public Action OnInitialize { get; set;}
     
     [Header("Animations ")]
-    [SerializeField] protected float CardSimulateMoveSpeed = 5f;
+    [SerializeField] protected float SimulateMoveSpeed = 10f;
     
     public void Initialize(PlayerCardHand playerCardHand, CardDescription cardDescription, int containerIndex, ulong ownerClientID, bool isOwner)
     {
@@ -139,7 +139,7 @@ public class HandCard : PlayerEntity, ITargeter
         Vector3 targetPosition = MapManager.Instance.GetEmptyTarget().GetMonoBehavior().transform.position;
 
         float distance = Vector3.Distance(transform.position, targetPosition);
-        float duration = distance / CardSimulateMoveSpeed; // Calculate the duration based on speed
+        float duration = distance / SimulateMoveSpeed; // Calculate the duration based on speed
 
         return DOTween.To(() => transform.position, x => transform.position = x, targetPosition, duration);
     }
