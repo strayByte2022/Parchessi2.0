@@ -11,6 +11,8 @@ public class PawnDescription : ScriptableObject
     public int PawnMaxHealth;
     public int PawnAttackDamage;
     public int PawnMovementSpeed;
+    
+    public string AxieHex;
 
     [SerializeField] private MapPawn _mapPawnPrefab;
 
