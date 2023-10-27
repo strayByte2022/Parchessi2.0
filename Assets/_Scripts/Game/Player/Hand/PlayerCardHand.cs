@@ -40,7 +40,7 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
     {
         var handCard = CreateCardHand(cardContainer, -1);
 
-        SimulationManager.Instance.AddCoroutineSimulationObject(handCard.Discard());
+        SimulationManager.Instance.AddSimulationPackage(handCard.Discard());
     }
 
     private HandCard CreateCardHand(CardContainer cardContainer, int cardContainerIndex)

@@ -34,7 +34,7 @@ public class HandDice : PlayerEntity, ITargeter
 
     private void Start()
     {
-        _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange);
+        SimulationManager.Instance.AddSimulationPackage(SpawnDice());
     }
 
     
@@ -46,6 +46,23 @@ public class HandDice : PlayerEntity, ITargeter
             return mapPawn.TryMove(DiceValue.Value);
         }
         else return false;
+    }
+
+    public void RollDiceAction()
+    {
+        
+    }
+
+    protected virtual SimulationPackage SpawnDice()
+    {
+        var simulationPackage = new SimulationPackage();
+        
+        
+        simulationPackage.AddToPackage(2f);
+        simulationPackage.AddToPackage( 
+            () => _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange));
+        
+        return simulationPackage;
     }
     
     public virtual SimulationPackage RollDice(int endValue)

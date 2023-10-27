@@ -71,8 +71,8 @@ public class ActionManager : SingletonMonoBehaviour<ActionManager>
         var targeter = GetTargeter(actionContainer.TargeterContainer);
         var targetee = GetTargetee(actionContainer.TargeteeContainer);
 
-        SimulationManager.Instance.AddCoroutineSimulationObject(targeter.ExecuteTargeter(targetee));
-        SimulationManager.Instance.AddCoroutineSimulationObject(targetee.ExecuteTargetee(targeter));
+        SimulationManager.Instance.AddSimulationPackage(targeter.ExecuteTargeter(targetee));
+        SimulationManager.Instance.AddSimulationPackage(targetee.ExecuteTargetee(targeter));
         
     }
 

@@ -134,7 +134,7 @@ namespace _Scripts.Managers.Game
         {
             var mapPawn = GetPlayerPawn(pawnContainerIndex);
             _containerIndexToMapPawnDictionary.Remove(pawnContainerIndex);
-            SimulationManager.Instance.AddCoroutineSimulationObject(mapPawn.Death());
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.Death());
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -161,7 +161,7 @@ namespace _Scripts.Managers.Game
         {
             var mapPawn = GetPlayerPawn(pawnContainerIndex);
             
-            SimulationManager.Instance.AddCoroutineSimulationObject(mapPawn.StartMove(startMapCellIndex, stepCount));
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.StartMove(startMapCellIndex, stepCount));
         }
         
         
@@ -189,7 +189,7 @@ namespace _Scripts.Managers.Game
         {
             var mapPawn = GetPlayerPawn(pawnContainerIndex);
             
-            SimulationManager.Instance.AddCoroutineSimulationObject(mapPawn.EndMove(finalMapCellIndex));
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.EndMove(finalMapCellIndex));
             
         }
 
@@ -218,7 +218,7 @@ namespace _Scripts.Managers.Game
             var attackerMapPawn = GetPlayerPawn(attackerPawnContainerIndex);
             var defenderMapPawn = GetPlayerPawn(defenderPawnContainerIndex);
             
-            SimulationManager.Instance.AddCoroutineSimulationObject(attackerMapPawn.Attack(defenderMapPawn));
+            SimulationManager.Instance.AddSimulationPackage(attackerMapPawn.Attack(defenderMapPawn));
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -243,7 +243,7 @@ namespace _Scripts.Managers.Game
         {
             var defenderMapPawn = GetPlayerPawn(defenderPawnContainerIndex);
             
-            SimulationManager.Instance.AddCoroutineSimulationObject(defenderMapPawn.TakeDamage(damage));
+            SimulationManager.Instance.AddSimulationPackage(defenderMapPawn.TakeDamage(damage));
         }
         
         [ServerRpc(RequireOwnership = false)]
@@ -270,7 +270,7 @@ namespace _Scripts.Managers.Game
         {
             var defenderMapPawn = GetPlayerPawn(defenderPawnContainerIndex);
             
-            SimulationManager.Instance.AddCoroutineSimulationObject(defenderMapPawn.Heal(healValue));
+            SimulationManager.Instance.AddSimulationPackage(defenderMapPawn.Heal(healValue));
         }
 
 
@@ -297,7 +297,7 @@ namespace _Scripts.Managers.Game
         {
             var mapPawn = GetPlayerPawn(containerIndex);
             _containerIndexToMapPawnDictionary.Remove(containerIndex);
-            SimulationManager.Instance.AddCoroutineSimulationObject(mapPawn.ReachGoal());
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.ReachGoal());
         }
         
         

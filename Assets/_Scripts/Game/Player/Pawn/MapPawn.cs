@@ -172,7 +172,7 @@ namespace _Scripts.Player.Pawn
             {
                 // Buff from attacker and debuff from defender
                 
-                SimulationManager.Instance.AddCoroutineSimulationObject(defenderMapPawn.TakeDamage(AttackDamage.Value));
+                SimulationManager.Instance.AddSimulationPackage(defenderMapPawn.TakeDamage(AttackDamage.Value));
             });
             
             
@@ -188,7 +188,7 @@ namespace _Scripts.Player.Pawn
             {
                 // Buff from attacker and debuff from defender
                 
-                SimulationManager.Instance.AddCoroutineSimulationObject(TakeDamage(attackerMapPawn.AttackDamage.Value));
+                SimulationManager.Instance.AddSimulationPackage(TakeDamage(attackerMapPawn.AttackDamage.Value));
             });
             
             

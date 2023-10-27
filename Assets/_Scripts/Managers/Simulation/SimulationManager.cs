@@ -14,7 +14,7 @@ namespace _Scripts.Simulation
 
         private bool _isExecuting;
 
-        public void AddCoroutineSimulationObject(SimulationPackage simulationPackage)
+        public void AddSimulationPackage(SimulationPackage simulationPackage)
         {
             if (simulationPackage == null || _simulationQueue.Contains(simulationPackage))
             {

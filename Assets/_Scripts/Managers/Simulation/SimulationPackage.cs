@@ -15,8 +15,16 @@ namespace _Scripts.Simulation
         {
             Priority = priority;
         }
-        
-        
+
+        public void AddToPackage(float waitTime)
+        {
+            IEnumerator CoroutineWrapper()
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+            
+            ExecuteEvents.Add(CoroutineWrapper);
+        }
         
         public void AddToPackage(Action action)
         {

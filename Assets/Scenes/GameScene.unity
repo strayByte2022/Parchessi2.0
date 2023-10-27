@@ -2961,7 +2961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[0]
@@ -2979,6 +2979,14 @@ PrefabInstance:
       propertyPath: _deckCardDescriptions.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: d77656e8632cd1a4d845c5a152b3dec6, type: 2}
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _deckCardDescriptions.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: b846a576a9298f447929b2d1fbdf2ed6, type: 2}
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _deckCardDescriptions.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b846a576a9298f447929b2d1fbdf2ed6, type: 2}
     - target: {fileID: 3291995366329988781, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1152726516

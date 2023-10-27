@@ -28,7 +28,8 @@ public class HandDiceRoll : MonoBehaviour
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _handDice = GetComponentInParent<HandDice>();
+        _handDice = GetComponent<HandDice>();
+        _handDiceDragAndTargeter = GetComponent<HandDiceDragAndTargeter>();
         //_handDice.DiceValue.OnChangeValue += SetEndNumber;
     }
 
