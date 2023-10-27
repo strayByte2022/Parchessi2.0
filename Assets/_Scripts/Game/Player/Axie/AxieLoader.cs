@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.Player.Pawn;
 using AxieMixer.Unity;
 using Spine.Unity;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Scripts.Game.Player.Axie
 {
@@ -12,10 +14,10 @@ namespace _Scripts.Game.Player.Axie
     public class AxieLoader : MonoBehaviour
     {
         private static bool initialized;
-        [SerializeField] private string _axieId;
-        [SerializeField] private string _genesStr;
         Axie2dBuilder Builder => Mixer.Builder;
 
+        private MapPawn _pawn ;
+        
         private void Awake()
         {
             if (!initialized)
@@ -23,10 +25,17 @@ namespace _Scripts.Game.Player.Axie
                 initialized = true;
                 Mixer.Init();
             }
-            ProcessMixer(_axieId, _genesStr, false);
+            
+            _pawn = GetComponent<MapPawn>();
             
         }
-        
+
+        private void Start()
+        {
+            ProcessMixer(_pawn.PawnDescription.PawnID.ToString() , _pawn.PawnDescription.AxieHex, false);
+        }
+
+
         private int HexStringToInt(string hexString)
         {
             // Remove any leading "0x" if present
@@ -73,11 +82,9 @@ namespace _Scripts.Game.Player.Axie
         /// <param name="builderResult"></param>
         void SpawnSkeletonAnimation(Axie2dBuilderResult builderResult)
         {
-            GameObject go = new GameObject("DemoAxie");
-            go.transform.localPosition = new Vector3(0f, -2.4f, 0f);
             SkeletonAnimation runtimeSkeletonAnimation = SkeletonAnimation.NewSkeletonAnimationGameObject(builderResult.skeletonDataAsset);
             runtimeSkeletonAnimation.gameObject.layer = LayerMask.NameToLayer("Player");
-            runtimeSkeletonAnimation.transform.SetParent(go.transform, false);
+            runtimeSkeletonAnimation.transform.SetParent(transform, false);
             runtimeSkeletonAnimation.transform.localScale = Vector3.one;
 
             runtimeSkeletonAnimation.gameObject.AddComponent<AutoBlendAnimController>();
@@ -92,6 +99,8 @@ namespace _Scripts.Game.Player.Axie
             }
             runtimeSkeletonAnimation.skeleton.FindSlot("shadow").Attachment = null;
         }
+        
+        
 
         
     }

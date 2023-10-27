@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
+  m_Name: 451  Pawn
+  m_EditorClassIdentifier: 
+  PawnID: 0
+  PawnSprite: {fileID: 0}
+  PawnMaxHealth: 20
+  PawnAttackDamage: 20
+  PawnMovementSpeed: 0
+  AxieHex: 0x100000000000010002412090c21000000001000410404202000100082041420a000100081840c204000100080840c2020001000818410204000100083040c206
+  _mapPawnPrefab: {fileID: 4188652359283035722, guid: f26bc0cba1f3bea4a812221916e03214, type: 3}
