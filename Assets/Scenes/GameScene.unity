@@ -692,7 +692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 330377671}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Peak Player Card Hand Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,6 +898,12 @@ MonoBehaviour:
   _playerPeakCardHandParent: {fileID: 330377671}
   _offScreenCardHandParent: {fileID: 1003574520}
   _offScreenDiceHandParent: {fileID: 1889332435}
+  _cardLayerMask:
+    serializedVersion: 2
+    m_Bits: 6144
+  _diceLayerMask:
+    serializedVersion: 2
+    m_Bits: 24576
   _moveDuration: 0.25
   _moveEase: 9
 --- !u!1 &511124455

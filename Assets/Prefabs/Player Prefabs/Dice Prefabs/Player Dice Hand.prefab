@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739429806076359467}
   - component: {fileID: 8191466494485065338}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Dice Border (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5450044593469806634}
   - component: {fileID: 4550012586762277373}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Dice Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 768710250212735565}
   - component: {fileID: 7019774641049795749}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Dice Border (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 8186661333551963298}
   - component: {fileID: 204281927748681363}
   - component: {fileID: 3359290197212266143}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3933275936565740846}
   - component: {fileID: 4596791912224144336}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Dice Border (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4586256181370157973}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn Place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 835786593698418124}
   - component: {fileID: 4595897966817729638}
   - component: {fileID: 6628269948586806367}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player Dice Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 5118611529088799812}
   - component: {fileID: 5111389047186638013}
   - component: {fileID: 5933792228134584876}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939378647233692209}
   - component: {fileID: 4087849526835164105}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7977461452427840592}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hand Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

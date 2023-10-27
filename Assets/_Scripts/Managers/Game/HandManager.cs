@@ -13,16 +13,21 @@ namespace _Scripts.Managers.Game
     public class HandManager : SingletonMonoBehaviour<HandManager>
     {
         
-
+        [Header("Transform Parents")]
         [SerializeField] private Transform _playerCardHandParent;
         [SerializeField] private Transform _playerDiceHandParent;
         [SerializeField] private Transform _playerPeakCardHandParent;
         [SerializeField] private Transform _offScreenCardHandParent;
         [SerializeField] private Transform _offScreenDiceHandParent;
         
+        [Header("Layer Mask Mouse Input")]
+        [SerializeField] private LayerMask _cardLayerMask;
+        [SerializeField] private LayerMask _diceLayerMask;
         
-        private HandDraggableObjectMouseInput _draggableObjectMouseInput = new ();
-        private bool _isHandInteractable = false;
+        private HandDraggableObjectMouseInput _diceDragMouseInput;
+        private HandDraggableObjectMouseInput _cardDragMouseInput;
+        private bool _isDiceHandInteractable = false;
+        private bool _isCardHandInteractable = false;
         
         private Dictionary<ulong,PlayerCardHand> _playerCardHands = new ();
         private Dictionary<ulong,PlayerDiceHand> _playerDiceHands = new ();
@@ -39,9 +44,10 @@ namespace _Scripts.Managers.Game
         
         private void Awake()
         {
-            GameManager.Instance.OnGameStart += OnGameStartSetUp;
+            _diceDragMouseInput = new HandDraggableObjectMouseInput(_diceLayerMask);
+            _cardDragMouseInput = new HandDraggableObjectMouseInput(_cardLayerMask);
             
-            GameManager.Instance.OnPlayerTurnStart += SetPlayerHandInteractable;
+            GameManager.Instance.OnGameStart += OnGameStartSetUp;
             
             GameManager.Instance.OnPlayerPhaseChanged += ChangePhaseHand;
         }
@@ -49,13 +55,11 @@ namespace _Scripts.Managers.Game
 
         private void Update()
         {
-            if (_isHandInteractable)
-                _draggableObjectMouseInput.UpdateMouseInput();
-        }
-        
-        private void SetPlayerHandInteractable(PlayerController playerController)
-        {
-            _isHandInteractable = playerController == GameManager.Instance.ClientOwnerPlayerController;
+            if (_isDiceHandInteractable)
+                _diceDragMouseInput.UpdateMouseInput();
+            
+            if (_isCardHandInteractable)
+                _cardDragMouseInput.UpdateMouseInput();
         }
         
         
@@ -90,6 +94,11 @@ namespace _Scripts.Managers.Game
         
         private void ChangePhaseHand(PlayerTurnController.PlayerPhase oldValue, PlayerTurnController.PlayerPhase newValue, PlayerController playerController)
         {
+            _isCardHandInteractable = newValue == PlayerTurnController.PlayerPhase.Roll && playerController.IsOwner;
+            _isDiceHandInteractable = newValue is PlayerTurnController.PlayerPhase.Preparation or PlayerTurnController.PlayerPhase.Subsequence
+                                      && playerController.IsOwner;
+            
+            
             var playerCardHand = _playerCardHands[playerController.OwnerClientId];
             var playerDiceHand = _playerDiceHands[playerController.OwnerClientId];
             

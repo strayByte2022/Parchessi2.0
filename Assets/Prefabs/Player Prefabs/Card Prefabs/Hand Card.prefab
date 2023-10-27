@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366062356333135159}
   - component: {fileID: 8323115163528720160}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cost Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4123720371259747861}
   - component: {fileID: 7873132629500361978}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8132478947530432707}
   - component: {fileID: 2482642052183673868}
   - component: {fileID: 7665335277967092389}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2488088926863225447}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Card Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 5536438384037669869}
   - component: {fileID: 959230621788749435}
   - component: {fileID: 5489465472454858060}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1686014912910209845}
   - component: {fileID: 8259171656845375731}
   - component: {fileID: 5840826289740764703}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Card Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 7061830269528434872}
   - component: {fileID: 5196612721979167684}
   - component: {fileID: 537713935694720391}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 'Cost Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892810085116855060}
   - component: {fileID: 5892810085116855059}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892810085241267153}
   - component: {fileID: 5892810085241267152}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Decorative Border (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892810085306118450}
   - component: {fileID: 8243663268330912866}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Card Front Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892810085465318497}
   - component: {fileID: 5892810085465318496}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Card Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 5892810085876356850}
   - component: {fileID: 5892810085876356848}
   - component: {fileID: 5892810085876356849}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Image Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 5892810085986476175}
   - component: {fileID: 5892810085986476173}
   - component: {fileID: 5892810085986476174}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Effect Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1410,7 @@ GameObject:
   - component: {fileID: 1235029926}
   - component: {fileID: 8396391368306482471}
   - component: {fileID: 6598392258815200603}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Hand Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1566,7 @@ GameObject:
   - component: {fileID: 5892810086544425641}
   - component: {fileID: 5892810086544425639}
   - component: {fileID: 5892810086544425640}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Effect Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1738,7 +1738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892810086544596799}
   - component: {fileID: 5892810086544596798}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Decorative Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1822,7 +1822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8914867716299294463}
   - component: {fileID: 7483394548471913138}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Banner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1907,7 +1907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168930527464675144}
   - component: {fileID: 7269766585936386732}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Card Back Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
