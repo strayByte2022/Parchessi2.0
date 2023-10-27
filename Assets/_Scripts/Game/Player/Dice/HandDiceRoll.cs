@@ -17,17 +17,19 @@ public class HandDiceRoll : MonoBehaviour
     [SerializeField] private float _force = 100f;
     [SerializeField] private float _torque = 100f;
     [SerializeField] private float _rollDuration = 2.0f; // The duration of the roll animation in seconds
-    [SerializeField] private Ease _rollEase = Ease.OutQuad; // Adjust the ease function as needed
+    [SerializeField] private float _maxRollDuration = 6.0f;
 
     private bool _isRolling = false;
     private int _endNumber = 0;
+    private float _rollTimer = 0f;
+    
     public Action<int> OnRollComplete {get; set;}
     
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _handDice = GetComponentInParent<HandDice>();
-        _handDice.DiceValue.OnChangeValue += SetEndNumber;
+        //_handDice.DiceValue.OnChangeValue += SetEndNumber;
     }
 
     private void PlayRollAnimation()
@@ -68,19 +70,20 @@ public class HandDiceRoll : MonoBehaviour
 
         _isRolling = true;
         _endNumber = endNumber;
+        _rollTimer = 0;
         OnRollComplete += callback;
+        
+        PlayRollAnimation();
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (_isRolling)
         {
-            if (_rigidbody2D.velocity.magnitude < 1f)
+            _rollTimer += Time.deltaTime;   
+            if ((_rollTimer >= _rollDuration && _rigidbody2D.velocity.magnitude < 1f) || _rollTimer >= _maxRollDuration)
             {
-                _rigidbody2D.velocity = Vector2.zero;
-                _rigidbody2D.angularVelocity = 0;
                 CompleteRoll();
-                
             }
             
         }
@@ -88,16 +91,17 @@ public class HandDiceRoll : MonoBehaviour
 
     private void CompleteRoll()
     {
-        PlayRollAnimation();
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.angularVelocity = 0;
         
-        _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        _rigidbody2D.bodyType = RigidbodyType2D.Static;
         _handDiceDragAndTargeter.EnableDrag();
         _isRolling = false;
+        _rollTimer = 0;
 
         SetEndNumber(0,_endNumber);
         
         OnRollComplete?.Invoke(_endNumber);
+        OnRollComplete = null;
     }
 }

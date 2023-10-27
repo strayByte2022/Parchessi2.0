@@ -51,23 +51,17 @@ public class HandDice : PlayerEntity, ITargeter
     public virtual SimulationPackage RollDice(int endValue)
     {
         var simulationPackage = new SimulationPackage();
-        simulationPackage.AddToPackage(WaitForRollDice(endValue));
+        simulationPackage.AddToPackage(() => { 
+            _playerDiceHand.RemoveDiceFromRegion(this);
+            _handDiceRoll.RollDice(endValue, (int endValue) =>
+            {
+                _playerDiceHand.AddDiceToRegion(this);
+                DiceValue.Value = endValue;
+            });});
+        
         return simulationPackage;
     }
-
-    protected IEnumerator WaitForRollDice(int endValue)
-    {
-        bool isRolling = true;
-        _playerDiceHand.RemoveDiceFromRegion(this);
-        _handDiceRoll.RollDice(endValue, (int endValue) =>
-        {
-            _playerDiceHand.AddDiceToRegion(this);
-            DiceValue.Value = endValue;
-            isRolling = false;
-        });
-        
-        yield return new WaitUntil(() => isRolling == false);
-    }
+    
     
     public virtual SimulationPackage SetDiceValue(int value)
     {

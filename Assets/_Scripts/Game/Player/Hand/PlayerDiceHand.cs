@@ -44,7 +44,7 @@ namespace _Scripts.Player
         public HandDice CreateDiceHand(DiceContainer diceContainer, int diceContainerIndex)
         {
             var diceDescription = GameResourceManager.Instance.GetDiceDescription(diceContainer.DiceID);
-            var handDice = Instantiate(diceDescription.GetHandDicePrefab());
+            var handDice = Instantiate(diceDescription.GetHandDicePrefab(), transform.position, Quaternion.identity, transform);
             handDice.Initialize(this, diceDescription, diceContainerIndex, PlayerController.OwnerClientId);
             return handDice;
         }
@@ -92,18 +92,15 @@ namespace _Scripts.Player
         {
             var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
             _handDiceRegion.RemoveCard(handDiceDragAndTargeter);
-            handDiceDragAndTargeter.DisableDrag();
-            handDice.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             
+            handDice.transform.SetParent(transform);
         }
         
         public void AddDiceToRegion(HandDice handDice)
         {
             var handDiceDragAndTargeter = handDice.GetComponent<HandDiceDragAndTargeter>();
             _handDiceRegion.TryAddCard(handDiceDragAndTargeter);
-            handDiceDragAndTargeter.EnableDrag();
             
-            handDice.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }
 

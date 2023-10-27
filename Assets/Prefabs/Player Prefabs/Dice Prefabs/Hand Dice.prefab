@@ -271,5 +271,5 @@ MonoBehaviour:
   _animator: {fileID: 5155537300659168323}
   _force: 400
   _torque: 50
-  _rollDuration: 6
-  _rollEase: 6
+  _rollDuration: 2
+  _maxRollDuration: 6
