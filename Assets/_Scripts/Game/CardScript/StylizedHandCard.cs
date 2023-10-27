@@ -9,7 +9,7 @@ public class StylizedHandCard : HandCard
     [SerializeField] private ParticleSystem _destroyParticleSystem;
     [SerializeField] private FadeObject _fadeObject;
 
-    [SerializeField] private float _destroyDelay = 2f;
+    [SerializeField] private float _destroyDelayDuration = 2.5f;
     
     protected override void Awake()
     {
@@ -34,7 +34,7 @@ public class StylizedHandCard : HandCard
     {
         ShowDestroyStyleEffect();
         
-        Invoke(nameof(DelayDestroy), _destroyDelay);
+        Invoke(nameof(DelayDestroy), _destroyDelayDuration);
     }
     
     private void DelayDestroy()

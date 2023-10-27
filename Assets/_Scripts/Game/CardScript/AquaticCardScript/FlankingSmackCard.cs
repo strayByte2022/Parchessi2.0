@@ -23,7 +23,8 @@ namespace _Scripts.CardScript.AquaticCardScript
             {
                 return true;
             }
-            else return false;
+            
+            return GetAllPawnNotFullHealth(targetee);
         }
 
         public bool GetAllPawnNotFullHealth(ITargetee targetee)
@@ -55,7 +56,7 @@ namespace _Scripts.CardScript.AquaticCardScript
                 package.AddToPackage(() =>
                 {
                     // Inherit this class and write Card effect
-                    MapManager.Instance.TakeDamagePawnServerRPC(DamageValue.Value, pawn.ContainerIndex);
+                    MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DamageValue.Value, pawn.ContainerIndex);
                     
                 });
             }

@@ -166,8 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targeteeType: 5
   HandCardFace: {fileID: 6995856026128382089}
-  MoveToMiddleDuration: 0.5
-  MoveToMiddleEase: 9
+  CardMoveSpeed: 1
   Attack:
     _value: 0
   MaxHealth:
@@ -176,7 +175,7 @@ MonoBehaviour:
     _value: 0
   _destroyParticleSystem: {fileID: 0}
   _fadeObject: {fileID: 0}
-  _destroyDelay: 2
+  _destroyDelay: 5
 --- !u!4 &295618317763730207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8842430945399567939, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}

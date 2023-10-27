@@ -21,18 +21,29 @@ namespace _Scripts.CardScript.AquaticCardScript
 
         public override bool CheckTargeteeValid(ITargetee targetee)
         {
+            if (targetee.TargetType == TargetType.Empty)
+            {
+                return true;
+            }
+            
+            return GetAllAllyPawnFullHealth(targetee);
+        }
+
+        private bool GetAllAllyPawnFullHealth(ITargetee targetee)
+        { 
             if (targetee is MapPawn mapPawn)
             {
-                return targetee.OwnerClientID != this.OwnerClientID;
+                return mapPawn.CurrentHealth.Value < mapPawn.MaxHealth.Value && mapPawn.OwnerClientID == this.OwnerClientID;
             }
-            else return false;
+            
+            return false;
         }
 
         public override SimulationPackage ExecuteTargeter<TTargetee>(TTargetee targetee)
         {
             var package = new SimulationPackage();
 
-            if (targetee is not MapPawn playerPawn)
+            if (targetee.TargetType != TargetType.Empty)
             {
                 return package; 
             }
@@ -40,18 +51,25 @@ namespace _Scripts.CardScript.AquaticCardScript
             package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
             package.AddToPackage(MoveToMiddleScreen());
 
+            var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllAllyPawnFullHealth);
+            
+            foreach (var pawn in selectedPawns)
+            {
+                package.AddToPackage(() =>
+                {
+                    // Inherit this class and write Card effect
+                    
+                    
+                });
+            }
+            
             package.AddToPackage(() =>
             {
-                // Inherit this class and write Card effect
-                Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
-
-                MapManager.Instance.TakeDamagePawnServerRPC(SpeedBonusValue.Value, playerPawn.ContainerIndex);
-                
                 PlayerCardHand.PlayCard(this);
 
                 Destroy();
-                
             });
+            
         
         
             return package;

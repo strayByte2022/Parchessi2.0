@@ -191,11 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targeteeType: 5
   HandCardFace: {fileID: 276839860750398095}
-  MoveToMiddleDuration: 0.5
-  MoveToMiddleEase: 9
+  CardMoveSpeed: 1
   _destroyParticleSystem: {fileID: 2222099306435137539}
   _fadeObject: {fileID: 3224651932014240499}
-  _destroyDelay: 2
+  _destroyDelay: 5
   HealValue:
     _value: 0
 --- !u!114 &3224651932014240499 stripped

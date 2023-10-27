@@ -121,8 +121,9 @@ namespace _Scripts.Managers.Game
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
             
-            //var mapPawnContainer = _mapPawnContainers[pawnContainerIndex];
-            if (NetworkManager.ServerClientId != clientId) return;
+            var mapPawnContainer = _mapPawnContainers[pawnContainerIndex];
+            if (mapPawnContainer.ClientOwnerID != clientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
             
             _mapPawnContainers[pawnContainerIndex] = EmptyPawnContainer;
             
@@ -144,8 +145,8 @@ namespace _Scripts.Managers.Game
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
             
             var mapPawnContainer = _mapPawnContainers[pawnContainerIndex];
-            //if (mapPawnContainer.ClientOwnerID != clientId) return;
-            if (NetworkManager.ServerClientId != clientId) return;
+            if (mapPawnContainer.ClientOwnerID != clientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
             
             // Start Move Logic
 
@@ -173,8 +174,8 @@ namespace _Scripts.Managers.Game
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
             
             var mapPawnContainer = _mapPawnContainers[pawnContainerIndex];
-            //if (mapPawnContainer.ClientOwnerID != clientId) return;
-            if (NetworkManager.ServerClientId != clientId) return;
+            if (mapPawnContainer.ClientOwnerID != clientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
             
             // End Move Logic
             
@@ -199,10 +200,10 @@ namespace _Scripts.Managers.Game
         {
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
-            if (NetworkManager.ServerClientId != clientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
             
             var attackerPawnContainer = _mapPawnContainers[attackerPawnContainerIndex];
-            //if (attackerPawnContainer.ClientOwnerID != clientId) return;   
+            if (attackerPawnContainer.ClientOwnerID != clientId) return;   
             
             // Attack Logic
             var defenderPawnContainer = _mapPawnContainers[defenderPawnContainerIndex];
@@ -222,13 +223,13 @@ namespace _Scripts.Managers.Game
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void TakeDamagePawnServerRPC(int damage, int defenderPawnContainerIndex, ServerRpcParams serverRpcParams = default)
+        public void TakeDamagePawnServerRPC(ulong dealerOwnerClientId, int damage, int defenderPawnContainerIndex, ServerRpcParams serverRpcParams = default)
         {
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
-            if (NetworkManager.ServerClientId != clientId) return;
+            //if (NetworkManager.ServerClientId != clientId) return;
             
-            //if (attackerPawnContainer.ClientOwnerID != clientId) return;   
+            if (dealerOwnerClientId != clientId) return;   
             
             // Attack Logic
             var defenderPawnContainer = _mapPawnContainers[defenderPawnContainerIndex];
@@ -247,22 +248,21 @@ namespace _Scripts.Managers.Game
         }
         
         [ServerRpc(RequireOwnership = false)]
-        public void HealPawnServerRPC(int healValue, int defenderPawnContainerIndex, ServerRpcParams serverRpcParams = default)
+        public void HealPawnServerRPC(ulong healerOwnerClientId, int healValue, int healedPawnContainerIndex, ServerRpcParams serverRpcParams = default)
         {
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
-            if (NetworkManager.ServerClientId != clientId) return;
             
-            //if (attackerPawnContainer.ClientOwnerID != clientId) return;   
+            if (healerOwnerClientId != clientId) return;   
             
             // Attack Logic
-            var defenderPawnContainer = _mapPawnContainers[defenderPawnContainerIndex];
+            var defenderPawnContainer = _mapPawnContainers[healedPawnContainerIndex];
 
             var maxHealableAmount = defenderPawnContainer.PawnStatContainer.MaxHealth -
                                     defenderPawnContainer.PawnStatContainer.CurrentHealth;
             var actualHealValue = Mathf.Min(Mathf.Max(healValue, 0) , (maxHealableAmount));
             defenderPawnContainer.PawnStatContainer.CurrentHealth += actualHealValue;
-            HealPawnClientRPC(healValue, defenderPawnContainerIndex);
+            HealPawnClientRPC(healValue, healedPawnContainerIndex);
         }
         
         [ClientRpc]
@@ -280,8 +280,8 @@ namespace _Scripts.Managers.Game
             var clientId = serverRpcParams.Receive.SenderClientId;
             if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
             
-            //if (attackerPawnContainer.ClientOwnerID != clientId) return;   
-            if (NetworkManager.ServerClientId != clientId) return;
+            if (ownerClientId != clientId) return;   
+            //if (NetworkManager.ServerClientId != clientId) return;
             
             // Win Logic
             _mapPawnContainers[containerIndex] = EmptyPawnContainer;
