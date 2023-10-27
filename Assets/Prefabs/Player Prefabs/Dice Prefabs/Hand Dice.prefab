@@ -269,7 +269,7 @@ MonoBehaviour:
   _handDice: {fileID: 8914028338790642072}
   _handDiceDragAndTargeter: {fileID: 5995340789764069458}
   _animator: {fileID: 5155537300659168323}
-  _force: 400
-  _torque: 50
+  _force: 10
+  _torque: 5
   _rollDuration: 1
-  _maxRollDuration: 4
+  _maxRollDuration: 2

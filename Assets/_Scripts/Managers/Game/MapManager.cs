@@ -10,6 +10,7 @@ using _Scripts.Simulation;
 using QFSW.QC;
 using Unity.Netcode;
 using UnityEngine;
+using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace _Scripts.Managers.Game
 {
@@ -45,60 +46,6 @@ namespace _Scripts.Managers.Game
             }
         }
         
-        [ServerRpc(RequireOwnership = false)]
-        private void UpdateStatEffectServerRPC(ulong ownerClientId, ServerRpcParams serverRpcParams = default)
-        {
-            var clientId = serverRpcParams.Receive.SenderClientId;
-            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
-            
-            if (ownerClientId != clientId) return;
-            
-            for (var index = 0; index < _pawnStatEffectContainers.Count; index++)
-            {
-                var pawnStatEffectContainer = _pawnStatEffectContainers[index];
-                if (pawnStatEffectContainer.EffectedOwnerClientID != ownerClientId) continue;
-
-                if (pawnStatEffectContainer.EffectDuration > 0)
-                {
-                    pawnStatEffectContainer.EffectDuration--;
-                    _pawnStatEffectContainers[index] = pawnStatEffectContainer;
-                }
-                else
-                {
-                    _pawnStatEffectContainers.RemoveAt(index);
-                    
-                    TimeOutStatEffectClientRPC(pawnStatEffectContainer);
-                }
-            }
-        }
-        
-        [ClientRpc]
-        private void TimeOutStatEffectClientRPC(PawnStatEffectContainer effectContainer)
-        {
-            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
-            SimulationManager.Instance.AddSimulationPackage(mapPawn.TimeOutStatEffect(effectContainer));
-        }
-        
-
-        [ServerRpc(RequireOwnership = false)]
-        public void AddStatEffectServerRPC(PawnStatEffectContainer effectContainer , ServerRpcParams serverRpcParams = default)
-        {
-            var clientId = serverRpcParams.Receive.SenderClientId;
-            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
-            
-            if (effectContainer.EffectedOwnerClientID != clientId) return;
-            
-            _pawnStatEffectContainers.Add(effectContainer);
-            
-            AddStatEffectClientRPC(effectContainer);
-        }
-        
-        [ClientRpc]
-        private void AddStatEffectClientRPC(PawnStatEffectContainer effectContainer)
-        {
-            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
-            SimulationManager.Instance.AddSimulationPackage( mapPawn.AddStatEffect(effectContainer));
-        }
         
 
         [Command()]
@@ -371,7 +318,102 @@ namespace _Scripts.Managers.Game
             SimulationManager.Instance.AddSimulationPackage(mapPawn.ReachGoal());
         }
         
+        [ServerRpc(RequireOwnership = false)]
+        private void UpdateStatEffectServerRPC(ulong ownerClientId, ServerRpcParams serverRpcParams = default)
+        {
+            var clientId = serverRpcParams.Receive.SenderClientId;
+            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
+            
+            if (ownerClientId != clientId) return;
+            
+            for (var index = _pawnStatEffectContainers.Count - 1; index >= 0; index--)
+            {
+                var pawnStatEffectContainer = _pawnStatEffectContainers[index];
+                if (pawnStatEffectContainer.EffectedOwnerClientID != ownerClientId) continue;
+
+                if (pawnStatEffectContainer.EffectDuration > 1)
+                {
+                    pawnStatEffectContainer.EffectDuration--;
+                    _pawnStatEffectContainers[index] = pawnStatEffectContainer;
+                }
+                else
+                {
+                    _pawnStatEffectContainers.RemoveAt(index);
+                    RemoveStatEffect(pawnStatEffectContainer);
+                    TimeOutStatEffectClientRPC(pawnStatEffectContainer);
+                }
+            }
+        }
         
+        [ClientRpc]
+        private void TimeOutStatEffectClientRPC(PawnStatEffectContainer effectContainer)
+        {
+            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.TimeOutStatEffect(effectContainer));
+        }
         
+
+        [ServerRpc(RequireOwnership = false)]
+        public void AddStatEffectServerRPC(PawnStatEffectContainer effectContainer , ServerRpcParams serverRpcParams = default)
+        {
+            var clientId = serverRpcParams.Receive.SenderClientId;
+            if (!NetworkManager.ConnectedClients.ContainsKey(clientId)) return;
+            
+            if (effectContainer.EffectedOwnerClientID != clientId) return;
+            
+            _pawnStatEffectContainers.Add(effectContainer);
+
+            AddStatEffect(effectContainer);
+            AddStatEffectClientRPC(effectContainer);
+        }
+        
+        [ClientRpc]
+        private void AddStatEffectClientRPC(PawnStatEffectContainer effectContainer)
+        {
+            var mapPawn = GetPlayerPawn(effectContainer.EffectedPawnContainerIndex);
+            SimulationManager.Instance.AddSimulationPackage( mapPawn.AddStatEffect(effectContainer));
+        }
+
+        private void AddStatEffect(PawnStatEffectContainer effectContainer)
+        {
+            var pawnContainer = _mapPawnContainers[effectContainer.EffectedPawnContainerIndex];
+            switch (effectContainer.EffectType)
+            {
+                case PawnStatEffectType.Attack:
+                    pawnContainer.PawnStatContainer.AttackDamage += effectContainer.EffectValue;
+                    break;
+                case PawnStatEffectType.Health:
+                    pawnContainer.PawnStatContainer.MaxHealth += effectContainer.EffectValue;
+                    break;
+                case PawnStatEffectType.Speed:
+                    pawnContainer.PawnStatContainer.MovementSpeed += effectContainer.EffectValue;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _mapPawnContainers[effectContainer.EffectedPawnContainerIndex] = pawnContainer;
+        }
+        
+        private void RemoveStatEffect(PawnStatEffectContainer effectContainer)
+        {
+            var pawnContainer = _mapPawnContainers[effectContainer.EffectedPawnContainerIndex];
+            switch (effectContainer.EffectType)
+            {
+                case PawnStatEffectType.Attack:
+                    pawnContainer.PawnStatContainer.AttackDamage -= effectContainer.EffectValue;
+                    break;
+                case PawnStatEffectType.Health:
+                    pawnContainer.PawnStatContainer.MaxHealth -= effectContainer.EffectValue;
+                    break;
+                case PawnStatEffectType.Speed:
+                    pawnContainer.PawnStatContainer.MovementSpeed -= effectContainer.EffectValue;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _mapPawnContainers[effectContainer.EffectedPawnContainerIndex] = pawnContainer;
+        }
     }
 }

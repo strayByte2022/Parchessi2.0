@@ -64,11 +64,13 @@ public class HandDiceRoll : MonoBehaviour
         var randomX = UnityEngine.Random.Range(-1f, 1f);
         var randomY = UnityEngine.Random.Range(-1f, 1f);
         var randomVector = new Vector2(randomX, randomY);
-        _rigidbody2D.AddForce(randomVector * _force);
-
+        //_rigidbody2D.AddForce(randomVector * _force);
+        _rigidbody2D.velocity = randomVector * _force;
+        
         var randomTorque = UnityEngine.Random.Range(-1f, 1f);
-        _rigidbody2D.AddTorque(randomTorque * _torque);
-
+        //_rigidbody2D.AddTorque(randomTorque * _torque);
+        _rigidbody2D.angularVelocity = randomTorque * _torque;
+        
         _isRolling = true;
         _endNumber = endNumber;
         _rollTimer = 0;
