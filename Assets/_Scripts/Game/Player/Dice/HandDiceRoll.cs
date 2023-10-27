@@ -20,6 +20,9 @@ public class HandDiceRoll : MonoBehaviour
     [SerializeField] private Ease _rollEase = Ease.OutQuad; // Adjust the ease function as needed
 
     private bool _isRolling = false;
+    private int _endNumber = 0;
+    public Action<int> OnRollComplete {get; set;}
+    
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -27,27 +30,27 @@ public class HandDiceRoll : MonoBehaviour
         _handDice.DiceValue.OnChangeValue += SetEndNumber;
     }
 
-    public void PlayRollAnimation()
+    private void PlayRollAnimation()
     {
         _animator.SetInteger(EndNumber, 0);
     }
 
-    public void SetEndNumber(int beforeNumber, int endNumber)
+    private void SetEndNumber(int beforeNumber, int endNumber)
     {
-        _animator.SetInteger(EndNumber, endNumber);
+        if (endNumber != 0)
+            _animator.SetInteger(EndNumber, endNumber);
     }
-    
+
     private IEnumerator PlayRollAnimationCoroutine()
     {
         _animator.SetInteger(EndNumber, 0);
         yield return new WaitForSeconds(0.5f);
         _animator.SetInteger(EndNumber, _handDice.DiceValue.Value);
         yield return new WaitForSeconds(0.5f);
-        
     }
-    
+
     [Command]
-    public void RollDice()
+    public void RollDice(int endNumber, Action<int> callback = null)
     {
         if (_isRolling)
             return;
@@ -57,28 +60,42 @@ public class HandDiceRoll : MonoBehaviour
         var randomX = UnityEngine.Random.Range(-1f, 1f);
         var randomY = UnityEngine.Random.Range(-1f, 1f);
         var randomVector = new Vector2(randomX, randomY);
-        _rigidbody2D.velocity = randomVector * _force;
+        _rigidbody2D.AddForce(randomVector * _force);
 
         var randomTorque = UnityEngine.Random.Range(-1f, 1f);
-        _rigidbody2D.angularVelocity = randomTorque * _torque;
-        
-        float timeScale = 1;
-        var initialAngularVelocity = _rigidbody2D.angularVelocity;
-        var initialVelocity = _rigidbody2D.velocity;
-        
-        DOTween.To(() => timeScale, x => timeScale = x, 0.0f, _rollDuration)
-            .SetEase(_rollEase)
-            .OnUpdate(() =>
-            {
-                _rigidbody2D.angularVelocity = initialAngularVelocity * timeScale;
-                _rigidbody2D.velocity = initialVelocity * timeScale;
-            })
-            .OnComplete(() => {
-                // Animation is complete
-                _handDiceDragAndTargeter.EnableDrag();
-                _isRolling = false;
-            });
+        _rigidbody2D.AddTorque(randomTorque * _torque);
+
         _isRolling = true;
+        _endNumber = endNumber;
+        OnRollComplete += callback;
     }
 
+    public void FixedUpdate()
+    {
+        if (_isRolling)
+        {
+            if (_rigidbody2D.velocity.magnitude < 1f)
+            {
+                _rigidbody2D.velocity = Vector2.zero;
+                _rigidbody2D.angularVelocity = 0;
+                CompleteRoll();
+                
+            }
+            
+        }
+    }
+
+    private void CompleteRoll()
+    {
+        PlayRollAnimation();
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0;
+        
+        _handDiceDragAndTargeter.EnableDrag();
+        _isRolling = false;
+
+        SetEndNumber(0,_endNumber);
+        
+        OnRollComplete?.Invoke(_endNumber);
+    }
 }
