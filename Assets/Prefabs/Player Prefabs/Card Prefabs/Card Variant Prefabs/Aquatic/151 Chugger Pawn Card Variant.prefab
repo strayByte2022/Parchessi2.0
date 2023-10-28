@@ -98,7 +98,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8842430945399567936, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
       propertyPath: m_Name
-      value: Chugger Pawn Card Variant
+      value: 151 Chugger Pawn Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8842430945399567939, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
       propertyPath: m_RootOrder
@@ -147,48 +147,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 600866889934413978, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
---- !u!1 &295618317763730204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8842430945399567936, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
-  m_PrefabInstance: {fileID: 9127845724813372764}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8894930736389582417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295618317763730204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5755fb67634690bb4981c02ecb432a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targeteeType: 5
-  HandCardFace: {fileID: 6995856026128382089}
-  CardMoveSpeed: 1
-  Attack:
-    _value: 0
-  MaxHealth:
-    _value: 0
-  Speed:
-    _value: 0
-  _destroyParticleSystem: {fileID: 0}
-  _fadeObject: {fileID: 0}
-  _destroyDelay: 5
 --- !u!4 &295618317763730207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8842430945399567939, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   m_PrefabInstance: {fileID: 9127845724813372764}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6995856026128382089 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2286380202528986581, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
-  m_PrefabInstance: {fileID: 9127845724813372764}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295618317763730204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c4565980924d99af08e761dea60b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
