@@ -41,6 +41,7 @@ namespace _Scripts.Player.Pawn
                     // Make combat to all pawn in the cell
                     foreach (var mapPawn in MapPath.Path[StandingMapCellIndex].GetAllPawn())
                     {
+                        if (this.OwnerClientID == mapPawn.OwnerClientID) continue;
                         MapManager.MakeCombatServerRPC(ContainerIndex, mapPawn.ContainerIndex);
                     }
                     
