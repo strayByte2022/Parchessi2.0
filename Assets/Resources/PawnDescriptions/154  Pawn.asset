@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 154  Pawn 4
+  m_Name: 154  Pawn
   m_EditorClassIdentifier: 
   PawnID: 0
   PawnSprite: {fileID: 0}

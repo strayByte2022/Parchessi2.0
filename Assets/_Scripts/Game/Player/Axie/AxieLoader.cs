@@ -19,7 +19,8 @@ namespace _Scripts.Game.Player.Axie
 
         [SerializeField] private PawnDescription _pawnDescription;
         [SerializeField] private Vector3 _skeletonScale = new Vector3(0.2f, 0.2f, 0.2f);
-        [SerializeField] private LayerMask _skeletonLayer = new LayerMask();
+        
+        [SerializeField] private string _skeletonLayer = "Pawn";
         [SerializeField] private string _sortingLayerName = "Pawn";
         [SerializeField] private int _sortingOrder = 0;
         
@@ -27,8 +28,13 @@ namespace _Scripts.Game.Player.Axie
         private void Awake()
         {
             _pawn = GetComponent<MapPawn>();
-            if(_pawnDescription == null) _pawnDescription = _pawn.PawnDescription;
             
+            
+        }
+
+        private void Start()
+        {
+            if(_pawnDescription == null) _pawnDescription = _pawn.PawnDescription;
             ProcessMixer(_pawnDescription.PawnID.ToString() , _pawnDescription.AxieHex, false);
 
         }
@@ -60,7 +66,7 @@ namespace _Scripts.Game.Player.Axie
         void SpawnSkeletonAnimation(Axie2dBuilderResult builderResult)
         {
             SkeletonAnimation runtimeSkeletonAnimation = SkeletonAnimation.NewSkeletonAnimationGameObject(builderResult.skeletonDataAsset);
-            runtimeSkeletonAnimation.gameObject.layer = _skeletonLayer;
+            runtimeSkeletonAnimation.gameObject.layer = LayerMask.GetMask(_skeletonLayer);
             runtimeSkeletonAnimation.transform.SetParent(transform, false);
             runtimeSkeletonAnimation.transform.localScale = _skeletonScale;
             

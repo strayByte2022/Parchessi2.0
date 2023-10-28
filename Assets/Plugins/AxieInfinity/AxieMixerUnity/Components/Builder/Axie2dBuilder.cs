@@ -15,7 +15,7 @@ namespace AxieMixer.Unity
         public Dictionary<string, string> adultCombo;
         public Material sharedGraphicMaterial;
     }
-    
+
     public class Axie2dBuilder
     {
         public IAxieMixerMaterials axieMixerMaterials { get; private set; }
