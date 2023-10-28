@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 454  Pawn
+  m_Name: 354 Amber Glow Pawn
   m_EditorClassIdentifier: 
-  PawnID: 0
-  PawnSprite: {fileID: -293800914, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
+  PawnID: 354
+  PawnSprite: {fileID: -1662492860, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   PawnMaxHealth: 20
   PawnAttackDamage: 20
   PawnMovementSpeed: 0
-  AxieHex: 0x10000000000001000241202082100000000100082801420200010008286040020001000820414204000100080840420200010008184102080001000020a04008
+  AxieHex: 0x1000201a0208210000000010000288100020001000008404502000100000840420a0001000010008004000100000800400c000100002801400a
   _mapPawnPrefab: {fileID: 4188652359283035722, guid: f26bc0cba1f3bea4a812221916e03214, type: 3}

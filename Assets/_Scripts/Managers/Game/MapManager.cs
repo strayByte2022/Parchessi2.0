@@ -45,14 +45,6 @@ namespace _Scripts.Managers.Game
                 UpdateStatEffectServerRPC(NetworkManager.LocalClientId);
             }
         }
-        
-        
-
-        [Command()]
-        public void PlayerSpawnPawnToMapServer( )
-        {
-            SpawnPawnToMapServerRPC(new PawnContainer{PawnID = 0, ClientOwnerID = NetworkManager.LocalClientId, StandingMapCell = 0, StandingMapSpot = 0}, NetworkManager.LocalClientId);
-        }
 
         public MapPawn GetPlayerPawn(int pawnContainerIndex)
         {
