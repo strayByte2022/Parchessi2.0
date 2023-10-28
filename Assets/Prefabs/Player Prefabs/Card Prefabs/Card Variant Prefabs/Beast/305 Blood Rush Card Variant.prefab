@@ -53,7 +53,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7377336852592841718, guid: 6b01ff434f1ced14a91ee8202f9c5557, type: 3}
       propertyPath: m_Name
-      value: 303 Single Combat Card Variant
+      value: 305 Blood Rush Card Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4381568188824618755, guid: 6b01ff434f1ced14a91ee8202f9c5557, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b01ff434f1ced14a91ee8202f9c5557, type: 3}
+--- !u!1 &1868311127019610961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7377336852592841718, guid: 6b01ff434f1ced14a91ee8202f9c5557, type: 3}
+  m_PrefabInstance: {fileID: 9190725156825739431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &559598883111999671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868311127019610961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e7d4799f064be40a6f242a6bd44184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  SpeedBonus:
+    _value: 0
+  BuffTurnCount:
+    _value: 0
+  Demerit:
+    _value: 0
