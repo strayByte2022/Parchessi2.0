@@ -34,10 +34,27 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
         LoadPawnDescriptions();
         LoadPawnCardDescriptions();
         
-        
-        Mixer.Init();
     }
 
+    private void Start()
+    {
+        InitMixer();
+    }
+
+    private void InitMixer()
+    {
+        
+        if (Mixer.Builder == null)
+        {
+            Mixer.Init();
+            Debug.Log("Mixer.Init()");
+        }
+        if (Mixer.Builder == null)
+        {
+            Debug.LogError("Mixer.Builder is null");
+        }
+    }
+    
     private void LoadCardDescriptions()
     {
         CardDescription[] cardDescriptions = Resources.LoadAll<CardDescription>(CARD_DESCRIPTIONS_PATH);
