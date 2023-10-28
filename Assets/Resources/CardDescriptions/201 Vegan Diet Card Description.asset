@@ -19,4 +19,4 @@ MonoBehaviour:
   CardCost: 1
   CardEffectIntVariables: 05000000
   CardPaletteDescription: {fileID: 11400000, guid: 9a6c952ff0d7e834685dc462a5e404c6, type: 2}
-  HandCardPrefab: {fileID: 4813882677307679695, guid: c8890e437844a2d439d15e2a93966914, type: 3}
+  HandCardPrefab: {fileID: 5857241598044706736, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
