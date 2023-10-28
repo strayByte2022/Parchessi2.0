@@ -15,8 +15,8 @@ MonoBehaviour:
   CardID: 204
   CardSprite: {fileID: 21300000, guid: bbf7fc372789f47269d0fe4cf2e27505, type: 3}
   CardName: October Treat
-  CardEffectDescription: All ally gain {0} Bonus Health
+  CardEffectDescription: All ally gain {0} Bonus Health for {1}
   CardCost: 1
-  CardEffectIntVariables: 02000000
+  CardEffectIntVariables: 0200000002000000
   CardPaletteDescription: {fileID: 11400000, guid: 9a6c952ff0d7e834685dc462a5e404c6, type: 2}
-  HandCardPrefab: {fileID: 7253323671877596404, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
+  HandCardPrefab: {fileID: -3064977018286068898, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}

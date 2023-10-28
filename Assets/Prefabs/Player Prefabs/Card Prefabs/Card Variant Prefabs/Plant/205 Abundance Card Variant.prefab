@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3451004822712303232, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
       propertyPath: m_Name
-      value: 204 October Treat Card Variant
+      value: 205 Abundance Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3451004822712303235, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3064977018286068898, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
+--- !u!1 &5930410734495186892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3451004822712303232, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}
+  m_PrefabInstance: {fileID: 9054878195350929740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5784196544229177356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930410734495186892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55f595af5efa354a922d0f5d10c20dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  MaxHPUp:
+    _value: 0
