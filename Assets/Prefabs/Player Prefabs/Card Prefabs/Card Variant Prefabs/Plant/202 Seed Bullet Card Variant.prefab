@@ -53,7 +53,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
       propertyPath: m_Name
-      value: 103 Spinal Tap Card Variant Variant
+      value: 202 Seed Bullet Card Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2811036340288280159, guid: 978582581a05513458e6c9d128aaec02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+--- !u!1 &6052765374665733478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+  m_PrefabInstance: {fileID: 4589701607045458253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-364291679101480886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052765374665733478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d048f82a9b506d47be87c30d8660213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  DamageValue:
+    _value: 0
