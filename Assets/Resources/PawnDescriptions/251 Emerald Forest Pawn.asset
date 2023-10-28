@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 254  Pawn
+  m_Name: 251 Emerald Forest Pawn
   m_EditorClassIdentifier: 
-  PawnID: 0
-  PawnSprite: {fileID: 95164260, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
+  PawnID: 251
+  PawnSprite: {fileID: 1821222439, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   PawnMaxHealth: 20
   PawnAttackDamage: 20
   PawnMovementSpeed: 0
-  AxieHex: 0x18000000000001000280a051041000000001000c20a043020001000c086043020001000c1860830c0001000c106081040001000c3061830c0001000c0860430c
+  AxieHex: 0x18000000000001000380e0e1030800000001000c106103020001000c086043020001000c306083040001000c3061430a0001000c2061030c0001000c08604404
   _mapPawnPrefab: {fileID: 4188652359283035722, guid: f26bc0cba1f3bea4a812221916e03214, type: 3}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 353  Pawn
+  m_Name: 351 Topaz Sunshine Pawn
   m_EditorClassIdentifier: 
-  PawnID: 0
-  PawnSprite: {fileID: 1818549486, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
+  PawnID: 351
+  PawnSprite: {fileID: 952769683, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   PawnMaxHealth: 20
   PawnAttackDamage: 20
   PawnMovementSpeed: 0
-  AxieHex: 0x100008100208210000000010000282140020001000008004002000100000800800200010000100080040001000008004002000100002861400a
+  AxieHex: 0x1000241c09082100000000100082041040a0001000008004202000100100880400400010000280080040001000008004002000100002801400a
   _mapPawnPrefab: {fileID: 4188652359283035722, guid: f26bc0cba1f3bea4a812221916e03214, type: 3}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 152  Pawn
+  m_Name: 451 Ruby Scarlet Pawn
   m_EditorClassIdentifier: 
-  PawnID: 0
-  PawnSprite: {fileID: -1946513643, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
+  PawnID: 451
+  PawnSprite: {fileID: -1959091962, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   PawnMaxHealth: 20
   PawnAttackDamage: 20
   PawnMovementSpeed: 0
-  AxieHex: 0x20000000000001000340e090c31000000001001408808404000100002041020800010010208104060001001030218502000100101821800a0001001010818404
+  AxieHex: 0x100000000000010002412090c21000000001000410404202000100082041420a000100081840c204000100080840c2020001000818410204000100083040c206
   _mapPawnPrefab: {fileID: 4188652359283035722, guid: f26bc0cba1f3bea4a812221916e03214, type: 3}
