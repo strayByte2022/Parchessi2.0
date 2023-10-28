@@ -12,7 +12,13 @@ public class MenuUI : MonoBehaviour
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(Play);
     }
-    
+
+    public void Awake()
+    {
+        MainMenu.transform.localScale = new Vector3(0,0,0);
+        MainMenu.LeanScale(Vector2.one, 1f).setEaseInOutBounce();
+    }
+
     public void OnOptionOpen()
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionEnable);
@@ -76,5 +82,10 @@ public class MenuUI : MonoBehaviour
             AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
             AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
         }
+    }
+
+    public void OnAwakeCompleted()
+    {
+        Debug.Log("Shows Game's Tittle");
     }
 }
