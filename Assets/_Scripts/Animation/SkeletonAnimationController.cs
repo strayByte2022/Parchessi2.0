@@ -82,6 +82,7 @@ public class SkeletonAnimationController : MonoBehaviour
     }
 
     public void DoBuffAnim()
+    {
         skeletonAnimation.timeScale = 1f;
         skeletonAnimation.AnimationState.SetAnimation(0, "attack/ranged/tail-roll", false);
     }
