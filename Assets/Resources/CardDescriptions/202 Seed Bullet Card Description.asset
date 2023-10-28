@@ -15,9 +15,8 @@ MonoBehaviour:
   CardID: 202
   CardSprite: {fileID: 21300000, guid: a23eb9c1b67ce477387a4508e3a5f816, type: 3}
   CardName: Seed Bullet
-  CardEffectDescription: Choose a ally, deal damage base on the bonus health to the
-    farthest enemy.
+  CardEffectDescription: Do {0} damage to an enemy
   CardCost: 1
-  CardEffectIntVariables: 
+  CardEffectIntVariables: 02000000
   CardPaletteDescription: {fileID: 11400000, guid: 9a6c952ff0d7e834685dc462a5e404c6, type: 2}
   HandCardPrefab: {fileID: 1779814532393418514, guid: 910557f054f705f47bf845c5cc1d0b04, type: 3}
