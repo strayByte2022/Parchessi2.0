@@ -16,7 +16,7 @@ MonoBehaviour:
   CardSprite: {fileID: 21300000, guid: 121f65ec7bc794bb097021a8d9e32a9a, type: 3}
   CardName: Blood Rush
   CardEffectDescription: All ally increase Speed by {0} for {1} and lose {2} health
-  CardCost: 0
+  CardCost: 2
   CardEffectIntVariables: 060000000200000003000000
-  CardPaletteDescription: {fileID: 0}
+  CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
   HandCardPrefab: {fileID: 5954047857588103461, guid: b592def2871ca7b4aa729f2af7dc23c6, type: 3}
