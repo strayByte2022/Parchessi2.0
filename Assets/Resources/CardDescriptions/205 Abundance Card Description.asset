@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
-  m_Name: 205
+  m_Name: 205 Abundance Card Description
   m_EditorClassIdentifier: 
-  CardID: 0
+  CardID: 205
   CardSprite: {fileID: 0}
-  CardName: 
-  CardEffectDescription: 
-  CardCost: 0
-  CardEffectIntVariables: 
-  CardPaletteDescription: {fileID: 0}
-  HandCardPrefab: {fileID: 0}
+  CardName: Abundance
+  CardEffectDescription: All ally that are full health gain {0} Bonus Health
+  CardCost: 2
+  CardEffectIntVariables: 02000000
+  CardPaletteDescription: {fileID: 11400000, guid: 9a6c952ff0d7e834685dc462a5e404c6, type: 2}
+  HandCardPrefab: {fileID: 1801889333391701432, guid: 57cb3ba41dd62bb42b1ccdb84ec1a8bf, type: 3}

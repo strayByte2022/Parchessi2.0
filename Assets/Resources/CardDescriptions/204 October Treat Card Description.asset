@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
-  m_Name: 204 October Treat Card Description 1
+  m_Name: 204 October Treat Card Description
   m_EditorClassIdentifier: 
   CardID: 204
   CardSprite: {fileID: 21300000, guid: bbf7fc372789f47269d0fe4cf2e27505, type: 3}
