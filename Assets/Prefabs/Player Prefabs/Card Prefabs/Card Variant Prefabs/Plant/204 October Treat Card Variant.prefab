@@ -53,7 +53,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
       propertyPath: m_Name
-      value: 203 Refresh Card Variant
+      value: 204 October Treat Card Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2613650395425413817, guid: 978582581a05513458e6c9d128aaec02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+--- !u!1 &3451004822712303232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+  m_PrefabInstance: {fileID: 4875768762750132907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3064977018286068898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451004822712303232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2796c82186eb6ba4988514748a6c95e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  MaxHPUp:
+    _value: 0
+  BuffTurnCount:
+    _value: 0
