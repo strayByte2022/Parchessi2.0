@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde178d9fbce439dbaa2af53850ea516, type: 3}
-  m_Name: 151 Sapphire Sky  Pawn
+  m_Name: 151 Sapphire Sky Pawn
   m_EditorClassIdentifier: 
   PawnID: 151
   PawnSprite: {fileID: 365456062, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
