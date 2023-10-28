@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 454  Pawn
   m_EditorClassIdentifier: 
   PawnID: 0
-  PawnSprite: {fileID: 0}
+  PawnSprite: {fileID: -293800914, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   PawnMaxHealth: 20
   PawnAttackDamage: 20
   PawnMovementSpeed: 0

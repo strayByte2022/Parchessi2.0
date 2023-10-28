@@ -111,8 +111,10 @@ namespace AxieMixer.Unity
                 Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
                 var atlasAsset = Resources.Load<TextAsset>($"{StuffName}/{quality}/axie-2d-v3-stuff");
                 string[] lines = atlasAsset.text.Split('\n').Where(x => x.Contains(".png")).Select(x => x.Replace(".png", "")).ToArray();
-                foreach (var texName in lines)
+                for (var index = 0; index < lines.Length; index++)
                 {
+                    var texName = lines[index];
+                    texName = texName.Replace("\r", "");
                     var colorTexture = Resources.Load<Texture2D>($"{StuffName}/{quality}/{texName}_color");
                     colorTexture.name = texName;
                     var lineTexture = Resources.Load<Texture2D>($"{StuffName}/{quality}/{texName}_line");
