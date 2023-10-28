@@ -17,6 +17,13 @@ namespace _Scripts.Game.Player.Axie
         Axie2dBuilder Builder => Mixer.Builder;
 
         private MapPawn _pawn ;
+
+
+        [SerializeField] private Vector3 _skeletonScale = new Vector3(0.2f, 0.2f, 0.2f);
+        [SerializeField] private LayerMask _skeletonLayer = new LayerMask();
+        [SerializeField] private string _sortingLayerName = "Pawn";
+        [SerializeField] private int _sortingOrder = 0;
+        
         
         private void Awake()
         {
@@ -33,29 +40,11 @@ namespace _Scripts.Game.Player.Axie
         private void Start()
         {
             ProcessMixer(_pawn.PawnDescription.PawnID.ToString() , _pawn.PawnDescription.AxieHex, false);
+            
+            
         }
 
 
-        private int HexStringToInt(string hexString)
-        {
-            // Remove any leading "0x" if present
-            if (hexString.StartsWith("0x"))
-            {
-                hexString = hexString.Substring(2);
-            }
-
-            int result;
-            if (int.TryParse(hexString, System.Globalization.NumberStyles.HexNumber, null, out result))
-            {
-                return result;
-            }
-            else
-            {
-                Debug.LogError("Failed to convert hex string to int: " + hexString);
-                return 0; // You can choose to handle the error differently if needed.
-            }
-        }
-        
         void ProcessMixer(string axieId, string genesStr, bool isGraphic)
         {
             if (string.IsNullOrEmpty(genesStr))
@@ -83,9 +72,10 @@ namespace _Scripts.Game.Player.Axie
         void SpawnSkeletonAnimation(Axie2dBuilderResult builderResult)
         {
             SkeletonAnimation runtimeSkeletonAnimation = SkeletonAnimation.NewSkeletonAnimationGameObject(builderResult.skeletonDataAsset);
-            runtimeSkeletonAnimation.gameObject.layer = LayerMask.NameToLayer("Player");
+            runtimeSkeletonAnimation.gameObject.layer = _skeletonLayer;
             runtimeSkeletonAnimation.transform.SetParent(transform, false);
-            runtimeSkeletonAnimation.transform.localScale = Vector3.one;
+            runtimeSkeletonAnimation.transform.localScale = _skeletonScale;
+            
 
             runtimeSkeletonAnimation.gameObject.AddComponent<AutoBlendAnimController>();
             runtimeSkeletonAnimation.state.SetAnimation(0, "action/idle/normal", true);
@@ -98,9 +88,14 @@ namespace _Scripts.Game.Player.Axie
                 runtimeSkeletonAnimation.gameObject.AddComponent<MysticIdController>().Init(bodyClass, bodyId);
             }
             runtimeSkeletonAnimation.skeleton.FindSlot("shadow").Attachment = null;
+            
+            MeshRenderer meshRenderer = runtimeSkeletonAnimation.GetComponent<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                meshRenderer.sortingLayerName = _sortingLayerName.ToString();
+                meshRenderer.sortingOrder = _sortingOrder;
+            }
         }
-        
-        
 
         
     }
