@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
   m_Name: 205 Abundance Card Description
   m_EditorClassIdentifier: 
-  CardID: 0
+  CardID: 205
   CardSprite: {fileID: 21300000, guid: 9164ea2e3af6a490f94f2f459a050aaa, type: 3}
   CardName: Abundance
   CardEffectDescription: All ally that are full health gain {1} max health this turn

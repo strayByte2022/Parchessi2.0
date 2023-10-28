@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1875062988344892868, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
       propertyPath: m_Name
-      value: 201 Vegan Diet Card Variant
+      value: 301 Single Combat Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1875062988344892871, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -421497990908034256, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
+--- !u!1 &2740583098236036173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1875062988344892868, guid: e25af8c9a00640d4b94f44e092aa24d0, type: 3}
+  m_PrefabInstance: {fileID: 4327130299391277449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3475235834194229536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740583098236036173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d52839ecd77994da7944d51cd9af86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  DealDamage:
+    _value: 0
+  Demerit:
+    _value: 0
