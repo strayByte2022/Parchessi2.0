@@ -18,7 +18,7 @@ namespace _Scripts.Game.Player.Axie
 
         private MapPawn _pawn ;
 
-
+        [SerializeField] private PawnDescription _pawnDescription;
         [SerializeField] private Vector3 _skeletonScale = new Vector3(0.2f, 0.2f, 0.2f);
         [SerializeField] private LayerMask _skeletonLayer = new LayerMask();
         [SerializeField] private string _sortingLayerName = "Pawn";
@@ -34,16 +34,11 @@ namespace _Scripts.Game.Player.Axie
             }
             
             _pawn = GetComponent<MapPawn>();
+            if(_pawnDescription == null) _pawnDescription = _pawn.PawnDescription;
             
-        }
+            ProcessMixer(_pawnDescription.PawnID.ToString() , _pawnDescription.AxieHex, false);
 
-        private void Start()
-        {
-            ProcessMixer(_pawn.PawnDescription.PawnID.ToString() , _pawn.PawnDescription.AxieHex, false);
-            
-            
         }
-
 
         void ProcessMixer(string axieId, string genesStr, bool isGraphic)
         {
