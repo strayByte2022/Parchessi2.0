@@ -33,7 +33,11 @@ public class PlayerCardHand : PlayerControllerCompositionDependency
         
         _containerIndexToHandCardDictionary.Add(cardContainerIndex, handCard);
         _handCardRegion.TryAddCard(handCard.GetComponent<HandCardDragAndTargeter>());
-        
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.card);
+        }
+
     }
 
     public void FailAddCardToHand(CardContainer cardContainer)

@@ -10,6 +10,10 @@ public class AudioPlayer : MonoBehaviour
     public AudioSource click;
     public AudioSource tab;
     public AudioSource type;
+    public AudioSource dice_start;
+    public AudioSource dice_end;
+
+    public AudioSource card;
 
 
     private void Awake()

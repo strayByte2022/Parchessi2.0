@@ -51,6 +51,7 @@ public class HandDice : PlayerEntity, ITargeter
     public void RollDiceAction()
     {
         _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange);
+        
     }
     
     protected virtual SimulationPackage SpawnDice()
@@ -75,6 +76,7 @@ public class HandDice : PlayerEntity, ITargeter
             });});
         
         return simulationPackage;
+
     }
     
     
@@ -109,7 +111,8 @@ public class HandDice : PlayerEntity, ITargeter
                 Debug.Log("Draw a card");
 
                 _playerDiceHand.ConvertToCard(this);
-                
+                Debug.Log("PLAY SOUND FX");
+
             }
 
             Destroy();
