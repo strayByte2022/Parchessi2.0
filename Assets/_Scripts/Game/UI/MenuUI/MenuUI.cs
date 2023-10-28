@@ -7,34 +7,41 @@ public class MenuUI : MonoBehaviour
 {
     [FormerlySerializedAs("optionMenu")] public GameObject OptionMenu;
     [FormerlySerializedAs("mainMenu")] public GameObject MainMenu;
-    [SerializeField] private AudioSource tabChange;
 
     public void LoadLobby()
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(Play);
-        tabChange.Play();
     }
     
     public void OnOptionOpen()
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionEnable);
         OptionMenu.LeanScale(Vector2.one, 0.5f);
-        tabChange.Play();
-
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 
     public void OnOptionClose()
     {
         OptionMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionDisable);
         MainMenu.LeanScale(Vector2.one, 0.5f);
-        tabChange.Play();
-
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 
     public void Quit()
     {
         Application.Quit();
-        tabChange.Play();
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+        }
     }
 
     public void OptionEnable()
@@ -64,7 +71,10 @@ public class MenuUI : MonoBehaviour
     public void Play()
     {
         AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
-        tabChange.Play();
-
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 }
