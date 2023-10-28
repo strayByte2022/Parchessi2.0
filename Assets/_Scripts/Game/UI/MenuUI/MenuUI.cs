@@ -17,17 +17,31 @@ public class MenuUI : MonoBehaviour
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionEnable);
         OptionMenu.LeanScale(Vector2.one, 0.5f);
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 
     public void OnOptionClose()
     {
         OptionMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionDisable);
         MainMenu.LeanScale(Vector2.one, 0.5f);
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 
     public void Quit()
     {
         Application.Quit();
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+        }
     }
 
     public void OptionEnable()
@@ -57,5 +71,10 @@ public class MenuUI : MonoBehaviour
     public void Play()
     {
         AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 }

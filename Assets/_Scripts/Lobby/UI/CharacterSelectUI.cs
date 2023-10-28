@@ -22,9 +22,21 @@ public class CharacterSelectUI : MonoBehaviour
             GameLobbyManager.Instance.LeaveLobby();
             NetworkManager.Singleton.Shutdown();
             AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.MainMenuScene.ToString());
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+
+            }
         });
         _readyButton.onClick.AddListener(() => {
             CharacterSelectReadyManager.Instance.SetPlayerReady();
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+
+            }
         });
     }
 
