@@ -53,7 +53,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8318057932165588359, guid: f84ac657635ea01459fe556578468bd7, type: 3}
       propertyPath: m_Name
-      value: 302 Single Combat Card Variant
+      value: 303 Last Word Card Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4869231588741690715, guid: f84ac657635ea01459fe556578468bd7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+--- !u!1 &7377336852592841718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8318057932165588359, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+  m_PrefabInstance: {fileID: 1517217579564299889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4381568188824618755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377336852592841718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b2cf595b2e0674d97caf0343f7bfda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  DealDamage:
+    _value: 0
