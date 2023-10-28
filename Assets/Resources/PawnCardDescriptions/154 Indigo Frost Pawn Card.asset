@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e7ebb0a5a54d5c81d810b0d49054bf, type: 3}
+  m_Name: 154 Indigo Frost Pawn Card
+  m_EditorClassIdentifier: 
+  CardID: 154
+  CardSprite: {fileID: 21300000, guid: 88de453d5c4492b4ca76bd834fe425ea, type: 3}
+  CardName: Indigo Frost
+  CardEffectDescription: 
+  CardCost: 0
+  CardEffectIntVariables: 02000000
+  CardPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
+  HandCardPrefab: {fileID: 8894930736389582417, guid: 7c338f509b0182d4a809be8bea4e1c2e, type: 3}
+  PawnDescription: {fileID: 11400000, guid: 00401736662dbbe4fba86fbc6fd057ff, type: 2}

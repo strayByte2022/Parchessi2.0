@@ -1901,7 +1901,7 @@ Transform:
   m_GameObject: {fileID: 8842430943813567565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.33, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.43, y: 0.43, z: 0.43}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8842430943419315933}
@@ -1948,7 +1948,7 @@ SpriteRenderer:
   m_SortingLayerID: -234422237
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 33176c38564282a419ec791da24f0feb, type: 3}
+  m_Sprite: {fileID: -1662492860, guid: dbf19cd6bb3f8f54c9e74b38a90ca610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2507,8 +2507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targeteeType: 5
   HandCardFace: {fileID: 2286380202528986581}
-  MoveToMiddleDuration: 0.5
-  MoveToMiddleEase: 9
+  SimulateMoveSpeed: 10
   Attack:
     _value: 0
   MaxHealth:
@@ -2550,8 +2549,8 @@ MonoBehaviour:
   _cardEffectBoxSprite: {fileID: 8842430945408696482}
   _cardBannerBoxSprite: {fileID: 5524663455553075869}
   _cardImageBoxSprite: {fileID: 8842430943419315935}
-  _frontSortingGroup: {fileID: 0}
-  _backSortingGroup: {fileID: 0}
+  _frontSortingGroup: {fileID: 8701164748035316439}
+  _backSortingGroup: {fileID: 1398686545668551304}
   _attackText: {fileID: 3130520252803809138}
   _healthText: {fileID: 3130520252514528863}
   _speedText: {fileID: 3130520251176995569}
