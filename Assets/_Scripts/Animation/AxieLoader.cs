@@ -35,8 +35,11 @@ namespace _Scripts.Game.Player.Axie
         private void Start()
         {
             if(_pawnDescription == null && _pawn != null) _pawnDescription = _pawn.PawnDescription;
-            ProcessMixer(_pawnDescription.PawnID.ToString() , _pawnDescription.AxieHex, false);
-
+            if(_pawnDescription != null) ProcessMixer(_pawnDescription.PawnID.ToString() , _pawnDescription.AxieHex, false);
+            else
+            {
+                Debug.LogWarning("PawnDescription is null in AxieLoader.cs");
+            }
         }
 
         void ProcessMixer(string axieId, string genesStr, bool isGraphic)
@@ -53,8 +56,25 @@ namespace _Scripts.Game.Player.Axie
             //{
             //    meta.Add(accessorySlot, $"{accessorySlot}1{System.Char.ConvertFromUtf32((int)('a') + accessoryIdx - 1)}");
             //}
+            
+            if (Mixer.Builder == null)
+            {
+                Mixer.Init();
+                Debug.Log("Mixer.Init()");
+            }
+            if (Mixer.Builder == null)
+            {
+                Debug.LogError("Mixer.Builder is still null");
+            }
+            
             var builderResult = Builder.BuildSpineFromGene(axieId, genesStr, meta, scale, isGraphic);
 
+            if (builderResult == null)
+            {
+                Debug.LogError($"[{axieId}] builderResult is null!!!");
+                return;
+            }
+            
             SpawnSkeletonAnimation(builderResult);
             
         }

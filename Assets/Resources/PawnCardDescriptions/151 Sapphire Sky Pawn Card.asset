@@ -19,5 +19,5 @@ MonoBehaviour:
   CardCost: 0
   CardEffectIntVariables: 02000000
   CardPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
-  HandCardPrefab: {fileID: 8894930736389582417, guid: 7c338f509b0182d4a809be8bea4e1c2e, type: 3}
+  HandCardPrefab: {fileID: 600866889934413978, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   PawnDescription: {fileID: 11400000, guid: 0c45300f4dcc9814688c19a5f55e6287, type: 2}
