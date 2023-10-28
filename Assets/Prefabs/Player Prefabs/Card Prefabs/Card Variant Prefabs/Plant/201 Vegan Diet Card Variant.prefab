@@ -53,7 +53,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
       propertyPath: m_Name
-      value: 103 Spinal Tap Card Variant Variant
+      value: 201 Vegan Diet Card Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2811036340288280159, guid: 978582581a05513458e6c9d128aaec02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+--- !u!1 &1875062988344892868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7804275540240096299, guid: 978582581a05513458e6c9d128aaec02, type: 3}
+  m_PrefabInstance: {fileID: 8524140482962407919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-421497990908034256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875062988344892868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4570bd0061b91864ab23f0def271eeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  MaxHPUp:
+    _value: 0
