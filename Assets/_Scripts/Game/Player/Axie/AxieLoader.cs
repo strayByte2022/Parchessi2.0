@@ -13,7 +13,6 @@ namespace _Scripts.Game.Player.Axie
     /// </summary>
     public class AxieLoader : MonoBehaviour
     {
-        private static bool initialized;
         Axie2dBuilder Builder => Mixer.Builder;
 
         private MapPawn _pawn ;
@@ -27,12 +26,6 @@ namespace _Scripts.Game.Player.Axie
         
         private void Awake()
         {
-            if (!initialized)
-            {
-                initialized = true;
-                Mixer.Init();
-            }
-            
             _pawn = GetComponent<MapPawn>();
             if(_pawnDescription == null) _pawnDescription = _pawn.PawnDescription;
             

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Scripts.Player;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
+using AxieMixer.Unity;
 using UnityEngine;
 using UnityUtilities;
 
@@ -32,6 +33,9 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
         LoadDiceDescriptions();
         LoadPawnDescriptions();
         LoadPawnCardDescriptions();
+        
+        
+        Mixer.Init();
     }
 
     private void LoadCardDescriptions()
