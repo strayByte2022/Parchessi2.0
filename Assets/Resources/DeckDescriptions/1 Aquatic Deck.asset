@@ -13,4 +13,14 @@ MonoBehaviour:
   m_Name: 1 Aquatic Deck
   m_EditorClassIdentifier: 
   DeckID: 1
-  CardDescriptions: []
+  CardDescriptions:
+  - {fileID: 11400000, guid: b846a576a9298f447929b2d1fbdf2ed6, type: 2}
+  - {fileID: 11400000, guid: d77656e8632cd1a4d845c5a152b3dec6, type: 2}
+  - {fileID: 11400000, guid: 15260243de0e860489221b2f49eb7a35, type: 2}
+  - {fileID: 11400000, guid: 143deef68dc5ee143a61a619e93bca3c, type: 2}
+  - {fileID: 11400000, guid: 0ea66938ff0afd24db37a9f851f5cbb9, type: 2}
+  PawnCardDescriptions:
+  - {fileID: 11400000, guid: 19b0d8055940c5e4cabb3e700341201a, type: 2}
+  - {fileID: 11400000, guid: 1819c10208deb4542b8cdd958f1ac262, type: 2}
+  - {fileID: 11400000, guid: c00635ad6a255d84c9ab48ac710c69cc, type: 2}
+  - {fileID: 11400000, guid: f8cafd036ac0d3d47afe7698da565db8, type: 2}

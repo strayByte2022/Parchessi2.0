@@ -38,7 +38,7 @@ namespace UnityUtilities
         /// 
         /// If an instance of this already exists, destroy this instance.
         /// </summary>
-        void Awake()
+        protected virtual void Awake()
         {
             // If an instance already exists, destroy this instance.
             if (InstanceExists)

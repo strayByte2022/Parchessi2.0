@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityUtilities;
 
 
-public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
+public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResourceManager>
 {
     public PlayerController PlayerControllerPrefab;
     
@@ -20,19 +20,24 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
     private readonly Dictionary<int, DiceDescription> _diceDescriptionsDictionary = new();
     private readonly Dictionary<int, PawnDescription> _pawnDescriptionsDictionary = new();
     private readonly Dictionary<int, PawnCardDescription> _pawnCardDescriptionsDictionary = new();
+    private readonly Dictionary<int, DeckDescription> _deckDescriptionsDictionary = new(); 
     
     const string CARD_DESCRIPTIONS_PATH = "CardDescriptions";
     const string DICE_DESCRIPTIONS_PATH = "DiceDescriptions";
     const string PAWN_DESCRIPTIONS_PATH = "PawnDescriptions";
     const string PAWN_CARD_DESCRIPTIONS_PATH = "PawnCardDescriptions";
+    const string DECK_DESCRIPTIONS_PATH = "DeckDescriptions";
     
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         LoadCardDescriptions();
         LoadDiceDescriptions();
         LoadPawnDescriptions();
         LoadPawnCardDescriptions();
+        LoadDeckDescriptions();
         
     }
 
@@ -132,6 +137,26 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
         }
 
         Debug.LogWarning("PawnCardDescription not found for PawnCardID: " + pawnCardID);
+        return null;
+    }
+    
+    private void LoadDeckDescriptions()
+    {
+        DeckDescription[] deckDescriptions = Resources.LoadAll<DeckDescription>(DECK_DESCRIPTIONS_PATH);
+        foreach (DeckDescription deckDescription in deckDescriptions)
+        {
+            _deckDescriptionsDictionary[deckDescription.DeckID] = deckDescription;
+        }
+    }
+    
+    public DeckDescription GetDeckDescription(int deckID)
+    {
+        if (_deckDescriptionsDictionary.TryGetValue(deckID, out DeckDescription deckDescription))
+        {
+            return deckDescription;
+        }
+
+        Debug.LogWarning("DeckDescription not found for DeckID: " + deckID);
         return null;
     }
 }

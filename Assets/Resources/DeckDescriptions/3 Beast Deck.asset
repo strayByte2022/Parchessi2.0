@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1d37e2fa2a4a0fbadb7be59cfe14cf, type: 3}
   m_Name: 3 Beast Deck
   m_EditorClassIdentifier: 
-  DeckID: 1
-  CardDescriptions: []
+  DeckID: 3
+  CardDescriptions:
+  - {fileID: 11400000, guid: e642317549bc2814087e815d4f62716c, type: 2}
+  - {fileID: 11400000, guid: 3d1a6e1b1e0fc964fa68514fdfdb58dc, type: 2}
+  - {fileID: 11400000, guid: 8a8cc39decbac3247a14217aeca46237, type: 2}
+  - {fileID: 11400000, guid: e3078c8c2b7b2db43b124c1089cf426a, type: 2}
+  - {fileID: 11400000, guid: 77fc0a8c14632764589ce89844a1ed49, type: 2}
+  PawnCardDescriptions:
+  - {fileID: 11400000, guid: 0567d22e5f937884ebe7976b9909261c, type: 2}
+  - {fileID: 11400000, guid: 7da434a3a4fb649488237017fbd8dfd1, type: 2}
+  - {fileID: 11400000, guid: 83599da81124cd64180d13656f93874c, type: 2}
+  - {fileID: 11400000, guid: 38e7b3f5b4bc8634b808b89e2a10140f, type: 2}
