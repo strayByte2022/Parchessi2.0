@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
-  m_Name: 301 Single Combat Card Description
+  m_Name: 305 Blood Rush Card Description
   m_EditorClassIdentifier: 
-  CardID: 301
-  CardSprite: {fileID: 21300000, guid: 70c7bcafd77fd44e0a1a1a7018420767, type: 3}
-  CardName: Single Combat
-  CardEffectDescription: Do {0} damage to an enemy and an ally lose {1} health
-  CardCost: 1
-  CardEffectIntVariables: 0500000002000000
+  CardID: 305
+  CardSprite: {fileID: 21300000, guid: 121f65ec7bc794bb097021a8d9e32a9a, type: 3}
+  CardName: Blood Rush
+  CardEffectDescription: All ally increase Speed by {0} for {1} and lose {2} health
+  CardCost: 2
+  CardEffectIntVariables: 060000000200000003000000
   CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
-  HandCardPrefab: {fileID: 7873440208552947257, guid: b7fad697d025d034489725ecd555088e, type: 3}
+  HandCardPrefab: {fileID: 5954047857588103461, guid: b592def2871ca7b4aa729f2af7dc23c6, type: 3}

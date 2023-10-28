@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
-  m_Name: 301 Single Combat Card Description
+  m_Name: 302 Mayhem Card Description
   m_EditorClassIdentifier: 
-  CardID: 301
-  CardSprite: {fileID: 21300000, guid: 70c7bcafd77fd44e0a1a1a7018420767, type: 3}
+  CardID: 302
+  CardSprite: {fileID: 21300000, guid: 35ebd96ad097f45c7ba890b18bf81de3, type: 3}
   CardName: Single Combat
-  CardEffectDescription: Do {0} damage to an enemy and an ally lose {1} health
-  CardCost: 1
-  CardEffectIntVariables: 0500000002000000
+  CardEffectDescription: Do {0} damage to ALL enemy and ALL ally lose {1} health
+  CardCost: 2
+  CardEffectIntVariables: 0a00000005000000
   CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
-  HandCardPrefab: {fileID: 7873440208552947257, guid: b7fad697d025d034489725ecd555088e, type: 3}
+  HandCardPrefab: {fileID: 4045138975990919155, guid: f84ac657635ea01459fe556578468bd7, type: 3}
