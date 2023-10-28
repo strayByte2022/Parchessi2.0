@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1d37e2fa2a4a0fbadb7be59cfe14cf, type: 3}
   m_Name: 4 Fire Deck
   m_EditorClassIdentifier: 
-  DeckID: 1
-  CardDescriptions: []
+  DeckID: 4
+  CardDescriptions:
+  - {fileID: 11400000, guid: e54d75898a7f4604f99ea6a7d3b00968, type: 2}
+  - {fileID: 11400000, guid: bef0bc140d783764f9eff1a4ef42af4b, type: 2}
+  - {fileID: 11400000, guid: aae12bd80d93277479136de1f5a91edd, type: 2}
+  - {fileID: 11400000, guid: 273c5c016cfac4d4aa773df9aa146fae, type: 2}
+  - {fileID: 11400000, guid: 0603da0a202811943adc86c3bd45ec74, type: 2}
+  PawnCardDescriptions:
+  - {fileID: 11400000, guid: 880ecd6e3ee9af94b9f1b29ea11b0244, type: 2}
+  - {fileID: 11400000, guid: fc41faf0d5ab3bb43a89d44c775dbd04, type: 2}
+  - {fileID: 11400000, guid: e3f43590255b71c438c5ea88ff6b0313, type: 2}
+  - {fileID: 11400000, guid: f9207e407fee5734796cc1d2a2131b57, type: 2}
