@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2397544944
+  GlobalObjectIdHash: 3980006073
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -1597,7 +1597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1623767285
+  GlobalObjectIdHash: 2606665226
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -2332,6 +2332,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154224985}
   m_CullTransparentMesh: 1
+--- !u!1 &1172402609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172402610}
+  - component: {fileID: 1172402612}
+  - component: {fileID: 1172402611}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1172402610
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172402609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1699772572}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1172402611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172402609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d4b4eb78969a9a140b5c5081929ef5c2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1172402612
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172402609}
+  m_CullTransparentMesh: 1
 --- !u!1 &1185773919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2614,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 848027016}
+  - {fileID: 1172402610}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2888,7 +2965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3664,7 +3741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.size
-      value: 23
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.data[0]
@@ -3690,70 +3767,6 @@ PrefabInstance:
       propertyPath: _deckCardDescriptions.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: b846a576a9298f447929b2d1fbdf2ed6, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 19b0d8055940c5e4cabb3e700341201a, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1819c10208deb4542b8cdd958f1ac262, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: c00635ad6a255d84c9ab48ac710c69cc, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: f8cafd036ac0d3d47afe7698da565db8, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5c2c2e35770f01d4aa2ccb124b307b82, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: 3e60b75d02cc28141ba82f20296d7438, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: 79b6c7fba84660344ad5b3097b7fa87a, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[14]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ab3bd80e8de0ff4489710a197479a45, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[15]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0567d22e5f937884ebe7976b9909261c, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[16]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7da434a3a4fb649488237017fbd8dfd1, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[17]
-      value: 
-      objectReference: {fileID: 11400000, guid: 83599da81124cd64180d13656f93874c, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[18]
-      value: 
-      objectReference: {fileID: 11400000, guid: 38e7b3f5b4bc8634b808b89e2a10140f, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[19]
-      value: 
-      objectReference: {fileID: 11400000, guid: 880ecd6e3ee9af94b9f1b29ea11b0244, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[20]
-      value: 
-      objectReference: {fileID: 11400000, guid: fc41faf0d5ab3bb43a89d44c775dbd04, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[21]
-      value: 
-      objectReference: {fileID: 11400000, guid: e3f43590255b71c438c5ea88ff6b0313, type: 2}
-    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
-      propertyPath: _deckCardDescriptions.Array.data[22]
-      value: 
-      objectReference: {fileID: 11400000, guid: f9207e407fee5734796cc1d2a2131b57, type: 2}
     - target: {fileID: 3291995366329988781, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1152726516
