@@ -36,12 +36,17 @@ public class HandDiceRoll : MonoBehaviour
     private void PlayRollAnimation()
     {
         _animator.SetInteger(EndNumber, 0);
+        
     }
 
     private void SetEndNumber(int beforeNumber, int endNumber)
     {
         if (endNumber != 0)
             _animator.SetInteger(EndNumber, endNumber);
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.dice_end);
+        }
     }
 
     private IEnumerator PlayRollAnimationCoroutine()
@@ -57,6 +62,8 @@ public class HandDiceRoll : MonoBehaviour
     {
         if (_isRolling)
             return;
+
+        
 
         _handDiceDragAndTargeter.DisableDrag();
         _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
