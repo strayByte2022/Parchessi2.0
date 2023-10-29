@@ -20,10 +20,10 @@ namespace _Scripts.Player.Pawn
 
         public int StandingMapCellIndex = 0;
 
-        public ObservableData<int> AttackDamage;
-        public ObservableData<int> MaxHealth;
-        public ObservableData<int> CurrentHealth;
-        public ObservableData<int> MovementSpeed;
+        public ObservableData<int> AttackDamage = new ();
+        public ObservableData<int> MaxHealth = new();
+        public ObservableData<int> CurrentHealth = new();
+        public ObservableData<int> MovementSpeed = new();
 
         public virtual void Initialize(MapPath playerMapPawn, PawnDescription pawnDescription , int containerIndex, ulong ownerClientId)
         {
@@ -36,10 +36,10 @@ namespace _Scripts.Player.Pawn
 
         protected virtual void LoadPawnDescription()
         {
-            AttackDamage = new ObservableData<int>(PawnDescription.PawnAttackDamage);
-            MaxHealth = new ObservableData<int>(PawnDescription.PawnMaxHealth);
-            CurrentHealth = new ObservableData<int>(PawnDescription.PawnMaxHealth);
-            MovementSpeed = new ObservableData<int>(PawnDescription.PawnMovementSpeed);
+            AttackDamage.Value = (PawnDescription.PawnAttackDamage);
+            MaxHealth.Value = PawnDescription.PawnMaxHealth;
+            CurrentHealth.Value = PawnDescription.PawnMaxHealth;
+            MovementSpeed.Value = PawnDescription.PawnMovementSpeed;
         }
 
         

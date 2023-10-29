@@ -214,7 +214,7 @@ public class PlayerResourceController : PlayerControllerRequireDependency
             }
         }
 
-        PlayerTurnController.EndRollPhaseServerRPC();
+        if(IsOwner) PlayerTurnController.EndRollPhaseServerRPC();
     }
     
     [ServerRpc]
