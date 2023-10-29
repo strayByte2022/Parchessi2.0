@@ -58,7 +58,10 @@ public class VeganDietCard : StylizedHandCard
             MapManager.Instance.AddStatEffectServerRPC(pawnStatEffectContainer);
 
             PlayerCardHand.PlayCard(this);
-
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.leaf);
+            }
             Destroy();
 
         });

@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterSelectScene.unity
     guid: 73673f2f815aeee44afd2788579d843b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Testing Scenes/Thuan-development.unity
     guid: 628cdb5fa8f24e5459e04f99e1fb80cd
   m_configObjects: {}

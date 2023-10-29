@@ -88,6 +88,10 @@ namespace _Scripts.CardScript.AquaticCardScript
             {
                 PlayerCardHand.PlayCard(this);
 
+                if (AudioPlayer.instance != null)
+                {
+                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.rock);
+                }
                 Destroy();
             });
 
