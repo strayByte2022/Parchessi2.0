@@ -15,9 +15,9 @@ MonoBehaviour:
   CardID: 405
   CardSprite: {fileID: 21300000, guid: 94602601b7e9649ce92524857c7358cf, type: 3}
   CardName: Ignite
-  CardEffectDescription: Do {0} damage to an enemy and decrease an ally Speed by
-    {1} for {2}
+  CardEffectDescription: Do {0} damage to an enemy and decrease that enemy Speed
+    by {1} for {2}
   CardCost: 1
-  CardEffectIntVariables: 050000000100000001000000
+  CardEffectIntVariables: 010000000100000001000000
   CardPaletteDescription: {fileID: 11400000, guid: 84afa1c6f2995c3459c6299de0659eb2, type: 2}
-  HandCardPrefab: {fileID: 582508795501949671, guid: 5c23b4ff0f3c79a4db64ebe5e434835d, type: 3}
+  HandCardPrefab: {fileID: 4649233468753096840, guid: 5c23b4ff0f3c79a4db64ebe5e434835d, type: 3}

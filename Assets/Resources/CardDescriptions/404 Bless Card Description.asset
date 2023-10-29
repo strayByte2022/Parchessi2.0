@@ -15,8 +15,8 @@ MonoBehaviour:
   CardID: 404
   CardSprite: {fileID: 21300000, guid: 7d4cd734a7f2e4a598d472b4e59113b3, type: 3}
   CardName: Bless
-  CardEffectDescription: Draw 2 Cards
-  CardCost: 2
-  CardEffectIntVariables: 
+  CardEffectDescription: ALL axies increase Speed by {0} for {1}
+  CardCost: 1
+  CardEffectIntVariables: 0100000001000000
   CardPaletteDescription: {fileID: 11400000, guid: 84afa1c6f2995c3459c6299de0659eb2, type: 2}
-  HandCardPrefab: {fileID: 5696645234520626646, guid: 87a8adedbc6334f49a54e5bc109f3d1f, type: 3}
+  HandCardPrefab: {fileID: 6616629926339987473, guid: 87a8adedbc6334f49a54e5bc109f3d1f, type: 3}

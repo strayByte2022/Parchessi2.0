@@ -8,9 +8,8 @@ namespace _Scripts.Scriptable_Objects
         public int ChampionID;
         public string ChampionName;
         public Sprite ChampionSprite;
+        
         public ChampionPaletteDescription ChampionPaletteDescription;
-        public CardDescription CardDescription;
-        public DiceDescription DiceDescription;
-        public PawnCardDescription PawnCardDescription;
+        public DeckDescription DeckDescription;
     }
 }

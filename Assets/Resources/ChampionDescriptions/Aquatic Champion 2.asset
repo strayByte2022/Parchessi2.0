@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40ab66124614ccba12ad5db44d99e03, type: 3}
+  m_Name: Aquatic Champion 2
+  m_EditorClassIdentifier: 
+  ChampionID: 0
+  ChampionName: 
+  ChampionSprite: {fileID: 0}
+  ChampionPaletteDescription: {fileID: 0}
+  CardDescription: {fileID: 0}
+  DiceDescription: {fileID: 0}
+  PawnCardDescription: {fileID: 0}

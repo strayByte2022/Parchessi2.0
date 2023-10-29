@@ -19,6 +19,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aae12bd80d93277479136de1f5a91edd, type: 2}
   - {fileID: 11400000, guid: 273c5c016cfac4d4aa773df9aa146fae, type: 2}
   - {fileID: 11400000, guid: 0603da0a202811943adc86c3bd45ec74, type: 2}
+  - {fileID: 11400000, guid: e54d75898a7f4604f99ea6a7d3b00968, type: 2}
+  - {fileID: 11400000, guid: bef0bc140d783764f9eff1a4ef42af4b, type: 2}
+  - {fileID: 11400000, guid: aae12bd80d93277479136de1f5a91edd, type: 2}
+  - {fileID: 11400000, guid: 273c5c016cfac4d4aa773df9aa146fae, type: 2}
+  - {fileID: 11400000, guid: 0603da0a202811943adc86c3bd45ec74, type: 2}
   PawnCardDescriptions:
   - {fileID: 11400000, guid: 880ecd6e3ee9af94b9f1b29ea11b0244, type: 2}
   - {fileID: 11400000, guid: fc41faf0d5ab3bb43a89d44c775dbd04, type: 2}
