@@ -12,7 +12,7 @@ public class SkeletonAnimationController : MonoBehaviour
     
     public void Initialize()
     {
-        _skeletonAnimation = GetComponent<SkeletonAnimation>();
+        _skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
     }
 
     public void Flip(bool flipX)

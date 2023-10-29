@@ -44,7 +44,6 @@ namespace _Scripts.Game.Player.Axie
                 Debug.LogWarning("PawnDescription is null in AxieLoader.cs");
             }
             
-            _skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
             _skeletonAnimationController.Initialize();
         }
 
