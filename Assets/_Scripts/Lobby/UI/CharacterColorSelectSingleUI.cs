@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class CharacterColorSelectSingleUI : MonoBehaviour 
 {
     
-    [FormerlySerializedAs("colorId")] [SerializeField] private int _deckId;
+    [SerializeField] private int _championIndex;
     [FormerlySerializedAs("image")] [SerializeField] private Image _image;
     [FormerlySerializedAs("selectedGameObject")] [SerializeField] private GameObject _selectedGameObject;
 
@@ -17,7 +17,8 @@ public class CharacterColorSelectSingleUI : MonoBehaviour
     
     private void Awake() {
         GetComponent<Button>().onClick.AddListener(() => {
-            GameMultiplayerManager.Instance.GetPlayerChampion(_deckId);
+            var playerChampion = GameMultiplayerManager.Instance.GetPlayerChampion(_championIndex);
+            GameMultiplayerManager.Instance.ChangePlayerChampion(playerChampion.ChampionID);
         });
     }
 
@@ -30,7 +31,7 @@ public class CharacterColorSelectSingleUI : MonoBehaviour
 
     private void LoadChampionDescription()
     {
-        _championDescription = GameMultiplayerManager.Instance.GetPlayerChampion(_deckId);
+        _championDescription = GameMultiplayerManager.Instance.GetPlayerChampion(_championIndex);
         if (_championDescription == null) return;
         _image.sprite = _championDescription.ChampionSprite;
     }
@@ -40,7 +41,7 @@ public class CharacterColorSelectSingleUI : MonoBehaviour
     }
 
     private void UpdateIsSelected() {
-        if (GameMultiplayerManager.Instance.GetPlayerContainer().ChampionID == _deckId) {
+        if (GameMultiplayerManager.Instance.GetPlayerContainer().ChampionID == _championIndex) {
             _selectedGameObject.SetActive(true);
         } else {
             _selectedGameObject.SetActive(false);

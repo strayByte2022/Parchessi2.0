@@ -256,6 +256,8 @@ MonoBehaviour:
   _readyGameObject: {fileID: 7300035849951050204}
   _kickButton: {fileID: 6794125717074667503}
   _playerNameText: {fileID: 849702266325677484}
+  _championDescription: {fileID: 0}
+  _championSpriteRenderer: {fileID: 2233527399346151825}
 --- !u!1 &5687125214398156780
 GameObject:
   m_ObjectHideFlags: 0

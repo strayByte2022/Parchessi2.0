@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f40ab66124614ccba12ad5db44d99e03, type: 3}
-  m_Name: Aquatic Champion 3
+  m_Name: 0 Aquatic Champion
   m_EditorClassIdentifier: 
   ChampionID: 0
   ChampionName: 
-  ChampionSprite: {fileID: 0}
-  ChampionPaletteDescription: {fileID: 0}
-  CardDescription: {fileID: 0}
-  DiceDescription: {fileID: 0}
-  PawnCardDescription: {fileID: 0}
+  ChampionSprite: {fileID: 21300000, guid: 33176c38564282a419ec791da24f0feb, type: 3}
+  ChampionPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
+  DeckDescription: {fileID: 11400000, guid: f7a6bf3cbb1e24f4db1ca0b82256000b, type: 2}
