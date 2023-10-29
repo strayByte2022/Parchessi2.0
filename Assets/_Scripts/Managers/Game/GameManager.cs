@@ -222,7 +222,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc(RequireOwnership = false),Command]
     public void EndGameServerRPC(ulong ownerClientId)
     {
         _gameState = GameState.GameEnd;
