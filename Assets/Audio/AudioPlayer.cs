@@ -15,6 +15,12 @@ public class AudioPlayer : MonoBehaviour
 
     public AudioSource card;
 
+    public AudioSource rock;
+    public AudioSource leaf;
+    public AudioSource flame;
+    public AudioSource bubble;
+
+
 
     private void Awake()
     {

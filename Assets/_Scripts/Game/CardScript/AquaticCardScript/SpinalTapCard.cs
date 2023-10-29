@@ -47,7 +47,7 @@ public class SpinalTapCard : StylizedHandCard
 
             if (AudioPlayer.instance != null)
             {
-                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.bubble);
             }
 
             MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DealDamage.Value, playerPawn.ContainerIndex);

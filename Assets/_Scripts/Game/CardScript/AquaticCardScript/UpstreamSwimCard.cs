@@ -80,7 +80,7 @@ namespace _Scripts.CardScript.AquaticCardScript
 
                 if (AudioPlayer.instance != null)
                 {
-                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.bubble);
                 }
 
                 Destroy();
