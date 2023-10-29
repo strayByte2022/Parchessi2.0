@@ -46,17 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayMultiplayer: 1
-  _playerColorList:
-  - {r: 1, g: 1, b: 1, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 1, g: 0.4526977, b: 0, a: 0}
-  - {r: 1, g: 0.8549239, b: 0, a: 0}
-  - {r: 0.8803495, g: 1, b: 0, a: 0}
-  - {r: 0.47906196, g: 1, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0.6612811, a: 0}
-  - {r: 0, g: 0.7743149, b: 1, a: 0}
-  - {r: 0, g: 0.102321625, b: 1, a: 0}
-  - {r: 0.47564507, g: 0, b: 1, a: 0}
+  _playerChampionList:
+  - {fileID: 11400000, guid: 5d8b9b91d6f07c943acafec4c527e957, type: 2}
+  - {fileID: 11400000, guid: 0f16dba1d8219f244aa0f6bb937af775, type: 2}
+  - {fileID: 11400000, guid: 41d02b9f20c05e742905daf17ac2d158, type: 2}
+  - {fileID: 11400000, guid: 7a0c4054f3aaac149a0a3346ba8ca247, type: 2}
 --- !u!114 &3061968830840735368
 MonoBehaviour:
   m_ObjectHideFlags: 0

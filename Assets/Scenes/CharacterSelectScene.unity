@@ -191,11 +191,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1541070169}
   - {fileID: 460883917}
   - {fileID: 474702879}
   - {fileID: 1175743155}
   - {fileID: 1341266625}
+  - {fileID: 1541070169}
   m_Father: {fileID: 2001643240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1333,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1425,7 +1425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _deckId
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: colorId
@@ -1475,7 +1475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1567,7 +1567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _deckId
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: colorId
@@ -1576,6 +1576,10 @@ PrefabInstance:
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _colorId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
+      propertyPath: _championIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7369845557877142716, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_IsActive
@@ -2858,7 +2862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2950,7 +2954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _deckId
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: colorId
@@ -2959,6 +2963,10 @@ PrefabInstance:
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _colorId
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
+      propertyPath: _championIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7369845557877142716, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_IsActive
@@ -3186,7 +3194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3278,7 +3286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _deckId
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: colorId
@@ -3287,6 +3295,10 @@ PrefabInstance:
     - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: _colorId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197320104815270184, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
+      propertyPath: _championIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7369845557877142716, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_IsActive
@@ -3778,7 +3790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3781629975421152031, guid: 65f775e4b6ace0b4eb8be4df3ffeca15, type: 3}
       propertyPath: m_AnchorMax.x

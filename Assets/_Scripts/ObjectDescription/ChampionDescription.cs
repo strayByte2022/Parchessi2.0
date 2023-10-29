@@ -9,7 +9,7 @@ namespace _Scripts.Scriptable_Objects
         public string ChampionName;
         public Sprite ChampionSprite;
         
-        public ChampionPaletteDescription ChampionPaletteDescription;
+        public CardPaletteDescription ChampionPaletteDescription;
         public DeckDescription DeckDescription;
     }
 }
