@@ -149,8 +149,29 @@ public class PlayerResourceController : NetworkBehaviour
         
     }
     
+    [ServerRpc(RequireOwnership = false)]
+    public void ShuffleDeckServerRPC()
+    {
+        // Filter out empty cards from the discard pile
+        List<CardContainer> shuffleCardList = new List<CardContainer>();
+        for (var index = 0; index < DeckCards.Count; index++)
+        {
+            shuffleCardList.Add( DeckCards[index] );
+        }
+        
+        
+        var shuffleList = Shun_Utility.SetOperations.ShuffleList(shuffleCardList);
+        DeckCards.Clear();
+        
+        for (int index = 0; index < shuffleList.Count; index++)
+        {
+            DeckCards.Add(shuffleList[index]);
+        }
+        
+    }
+    
     // Shuffle the discard pile into the deck
-    public void ShuffleDiscardIntoDeck()
+    private void ShuffleDiscardIntoDeck()
     {
         // Filter out empty cards from the discard pile
         List<CardContainer> nonEmptyDiscard = new List<CardContainer>();

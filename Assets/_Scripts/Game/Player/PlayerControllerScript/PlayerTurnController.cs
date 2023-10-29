@@ -46,6 +46,7 @@ public class PlayerTurnController : PlayerControllerRequireDependency
     {
         _isFirstRollPhase = true;
         StartPreparationPhaseServerRPC();
+        
     }
 
     [ServerRpc]
