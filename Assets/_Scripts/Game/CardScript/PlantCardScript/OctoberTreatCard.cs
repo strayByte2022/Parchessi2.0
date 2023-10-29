@@ -77,7 +77,10 @@ namespace _Scripts.CardScript.AquaticCardScript
             package.AddToPackage(() =>
             {
                 PlayerCardHand.PlayCard(this);
-
+                if (AudioPlayer.instance != null)
+                {
+                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.leaf);
+                }
                 Destroy();
             });
 

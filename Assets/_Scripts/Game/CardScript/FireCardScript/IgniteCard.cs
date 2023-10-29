@@ -61,7 +61,10 @@ public class IgniteCard : StylizedHandCard
             MapManager.Instance.AddStatEffectServerRPC(pawnStatEffectContainer);
 
             PlayerCardHand.PlayCard(this);
-
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.flame);
+            }
             Destroy();
 
         });
