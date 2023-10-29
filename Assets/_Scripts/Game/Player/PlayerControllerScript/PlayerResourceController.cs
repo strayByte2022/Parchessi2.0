@@ -10,7 +10,7 @@ using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PlayerResourceController : NetworkBehaviour
+public class PlayerResourceController : PlayerControllerRequireDependency
 {
     const int DICE_HAND_SIZE = 3;
     const int CARD_HAND_SIZE = 5;
@@ -28,8 +28,10 @@ public class PlayerResourceController : NetworkBehaviour
     private PlayerDiceHand _playerDiceHand;
     private PlayerCardHand _playerCardHand;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+        
         DeckCards = new();        
         HandCards = new(Enumerable.Repeat(EmptyCardContainer, CARD_HAND_SIZE).ToArray());        
         DiscardCards = new();     
@@ -203,6 +205,16 @@ public class PlayerResourceController : NetworkBehaviour
     public void RemoveDiceServerRPC(int index)
     {
         PlayingDices[index] = EmptyDiceContainer;
+
+        foreach (var playingDice in PlayingDices)
+        {
+            if (!playingDice.Equals(EmptyDiceContainer))
+            {
+                return;
+            }
+        }
+
+        PlayerTurnController.EndRollPhaseServerRPC();
     }
     
     [ServerRpc]

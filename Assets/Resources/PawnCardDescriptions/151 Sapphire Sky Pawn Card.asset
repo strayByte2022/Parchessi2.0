@@ -15,9 +15,9 @@ MonoBehaviour:
   CardID: 151
   CardSprite: {fileID: 21300000, guid: 88de453d5c4492b4ca76bd834fe425ea, type: 3}
   CardName: Sapphire Sky
-  CardEffectDescription: 
+  CardEffectDescription: 'Passive Ability : Coming Soon !'
   CardCost: 0
-  CardEffectIntVariables: 02000000
+  CardEffectIntVariables: 
   CardPaletteDescription: {fileID: 11400000, guid: 6fb9576922e070e488fcc0a1be627eb1, type: 2}
   HandCardPrefab: {fileID: 600866889934413978, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   PawnDescription: {fileID: 11400000, guid: 0c45300f4dcc9814688c19a5f55e6287, type: 2}

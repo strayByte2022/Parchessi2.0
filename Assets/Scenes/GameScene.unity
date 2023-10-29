@@ -5512,16 +5512,16 @@ MonoBehaviour:
   _dragSpeed: 500
   _smoothTime: 0.075
   _verticalBoundPosition:
-    from: -10
-    to: 10
-  _horizontalBoundPosition:
-    from: -10
-    to: 10
-  IsDraggingMouse: 0
-  _zoomSpeed: 20
-  _zoomBound:
-    from: 5
+    from: -20
     to: 20
+  _horizontalBoundPosition:
+    from: -20
+    to: 20
+  IsDraggingMouse: 0
+  _zoomSpeed: 10
+  _zoomBound:
+    from: 2
+    to: 15
   _scaleWithCameraZoomObjects:
   - {fileID: 1185773919}
   _focusTweenDuration: 0.5

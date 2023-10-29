@@ -15,9 +15,9 @@ MonoBehaviour:
   CardID: 351
   CardSprite: {fileID: 21300000, guid: 88de453d5c4492b4ca76bd834fe425ea, type: 3}
   CardName: Topaz Sunshine
-  CardEffectDescription: 
+  CardEffectDescription: 'Passive Ability : Coming Soon !'
   CardCost: 0
-  CardEffectIntVariables: 02000000
+  CardEffectIntVariables: 
   CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
   HandCardPrefab: {fileID: 600866889934413978, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
   PawnDescription: {fileID: 11400000, guid: e523c58af0dfef246a5da235b04dbd90, type: 2}

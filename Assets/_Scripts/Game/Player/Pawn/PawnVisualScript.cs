@@ -12,23 +12,24 @@ public class PawnVisualScript : MonoBehaviour
     private int _originAttackValue;
     private int _originHealthValue;
     private int _originSpeedValue;
-    private StylizedMapPawn pawn;
+    private StylizedMapPawn _pawn;
     void Start()
     {
-        pawn = GetComponent<StylizedMapPawn>();
-        _originAttackValue = pawn.AttackDamage.Value;
-        _originHealthValue = pawn.MaxHealth.Value;
-        _originSpeedValue = pawn.MovementSpeed.Value;
-        _attackText.SetText(_originAttackValue.ToString());
-        _healthText.SetText(_originHealthValue.ToString());
-        _speedText.SetText(_originSpeedValue.ToString());
+        _pawn = GetComponent<StylizedMapPawn>();
+        _originAttackValue = _pawn.AttackDamage.Value;
+        _originHealthValue = _pawn.MaxHealth.Value;
+        _originSpeedValue = _pawn.MovementSpeed.Value;
+        _attackText.text = _originAttackValue.ToString();
+        _healthText.text = _originHealthValue.ToString();
+        _speedText.text = _originSpeedValue.ToString();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        _attackText.SetText(pawn.AttackDamage.ToString());
-        _healthText.SetText(pawn.CurrentHealth.ToString());
-        _speedText.SetText(pawn.MovementSpeed.ToString());
+        _attackText.SetText(_pawn.AttackDamage.ToString());
+        _healthText.SetText(_pawn.CurrentHealth.ToString());
+        _speedText.SetText(_pawn.MovementSpeed.ToString());
     }
 }
