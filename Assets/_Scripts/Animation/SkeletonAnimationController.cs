@@ -26,7 +26,7 @@ public class SkeletonAnimationController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.J))
             {
-                DoJumpAnim();
+                DoMoveAnim();
             }
 
             if (Input.GetKeyDown(KeyCode.A))
@@ -43,7 +43,11 @@ public class SkeletonAnimationController : MonoBehaviour
             {
                 DoBuffAnim();
             }
-            
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                DoDebuffAnim();
+            }
+
             if (Input.GetKeyDown(KeyCode.I))
             {
                 DoIdleAnim();
@@ -62,28 +66,49 @@ public class SkeletonAnimationController : MonoBehaviour
         skeletonAnimation.AnimationState.SetAnimation(0, "action/idle/normal", true);
     }
 
-    public void DoJumpAnim()
+    public void DoMoveAnim()
     {
         skeletonAnimation.timeScale = 1f;
-        skeletonAnimation.AnimationState.SetAnimation(0, "action/move-forward", false);
+        skeletonAnimation.AnimationState.SetAnimation(0, "action/move-forward", true);
     }
 
     public void DoAttackMeleeAnim()
     {
         skeletonAnimation.timeScale = 1f;
         skeletonAnimation.AnimationState.SetAnimation(0, "attack/melee/tail-roll", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
     }
 
 
     public void DoAttackRangedAnim()
     {
         skeletonAnimation.timeScale = 1f;
-        skeletonAnimation.AnimationState.SetAnimation(0, "attack/ranged/tail-roll", false);
+        skeletonAnimation.AnimationState.SetAnimation(0, "attack/ranged/cast-tail", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
     }
 
     public void DoBuffAnim()
     {
         skeletonAnimation.timeScale = 1f;
-        skeletonAnimation.AnimationState.SetAnimation(0, "attack/ranged/tail-roll", false);
+        skeletonAnimation.AnimationState.SetAnimation(0, "battle/get-buff", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
+    }
+    public void DoDebuffAnim()
+    {
+        skeletonAnimation.timeScale = 1f;
+        skeletonAnimation.AnimationState.SetAnimation(0, "battle/get-debuff", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
+    }
+    public void DoHurtAnim()
+    {
+        skeletonAnimation.timeScale = 1f;
+        skeletonAnimation.AnimationState.SetAnimation(0, "defense/hit-by-normal", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
+    }
+    public void DoVictoryAnim()
+    {
+        skeletonAnimation.timeScale = 1f;
+        skeletonAnimation.AnimationState.SetAnimation(0, "activity/victory-pose-back-flip", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "action/idle/normal", true, 0.75f);
     }
 }
