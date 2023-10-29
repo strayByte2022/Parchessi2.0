@@ -45,12 +45,17 @@ public class SpinalTapCard : StylizedHandCard
             // Inherit this class and write Card effect
             Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
 
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            }
+
             MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DealDamage.Value, playerPawn.ContainerIndex);
                 
             PlayerCardHand.PlayCard(this);
 
             Destroy();
-                
+            
         });
         
         

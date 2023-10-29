@@ -46,6 +46,11 @@ public class AquaponicsCard : StylizedHandCard
                 // Inherit this class and write Card effect
                 Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
 
+                if (AudioPlayer.instance != null)
+                {
+                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                }
+
                 MapManager.Instance.HealPawnServerRPC(OwnerClientID, HealValue.Value, playerPawn.ContainerIndex);
                 
                 PlayerCardHand.PlayCard(this);
