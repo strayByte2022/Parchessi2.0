@@ -21,12 +21,14 @@ public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResource
     private readonly Dictionary<int, PawnDescription> _pawnDescriptionsDictionary = new();
     private readonly Dictionary<int, PawnCardDescription> _pawnCardDescriptionsDictionary = new();
     private readonly Dictionary<int, DeckDescription> _deckDescriptionsDictionary = new(); 
+    private readonly Dictionary<int, ChampionDescription> _championDescriptionsDictionary = new();
     
     const string CARD_DESCRIPTIONS_PATH = "CardDescriptions";
     const string DICE_DESCRIPTIONS_PATH = "DiceDescriptions";
     const string PAWN_DESCRIPTIONS_PATH = "PawnDescriptions";
     const string PAWN_CARD_DESCRIPTIONS_PATH = "PawnCardDescriptions";
     const string DECK_DESCRIPTIONS_PATH = "DeckDescriptions";
+    const string CHAMPION_DESCRIPTIONS_PATH = "ChampionDescriptions";
     
     
     protected override void Awake()
@@ -38,6 +40,7 @@ public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResource
         LoadPawnDescriptions();
         LoadPawnCardDescriptions();
         LoadDeckDescriptions();
+        LoadChampionDescriptions();
         
     }
 
@@ -157,6 +160,26 @@ public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResource
         }
 
         Debug.LogWarning("DeckDescription not found for ChampionID: " + deckID);
+        return null;
+    }
+    
+    private void LoadChampionDescriptions()
+    {
+        ChampionDescription[] championDescriptions = Resources.LoadAll<ChampionDescription>(CHAMPION_DESCRIPTIONS_PATH);
+        foreach (ChampionDescription championDescription in championDescriptions)
+        {
+            _championDescriptionsDictionary[championDescription.ChampionID] = championDescription;
+        }
+    }
+    
+    public ChampionDescription GetChampionDescription(int championID)
+    {
+        if (_championDescriptionsDictionary.TryGetValue(championID, out ChampionDescription championDescription))
+        {
+            return championDescription;
+        }
+
+        Debug.LogWarning("ChampionDescription not found for ChampionID: " + championID);
         return null;
     }
 }
