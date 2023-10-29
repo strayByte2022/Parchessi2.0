@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6143088622980807477}
   - component: {fileID: 4188652359283035722}
   - component: {fileID: 7700728479895034339}
+  - component: {fileID: 5672419735325515295}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -96,7 +97,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6c95d7802348f8aa24fae79503580f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pawnDescription: {fileID: 0}
   _skeletonScale: {x: 0.2, y: 0.2, z: 0.2}
-  _skeletonLayer:
-    serializedVersion: 2
-    m_Bits: 131072
+  _skeletonLayer: 
+  _sortingLayerName: Pawn
+  _sortingOrder: 0
+--- !u!114 &5672419735325515295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143088622980807479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406c4604f5974d24c8bfe26843847e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -22,37 +22,7 @@ public class SkeletonAnimationController : MonoBehaviour
     void Update()
     {
         //for debug only
-        if (skeletonAnimation != null)
-        {
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                DoMoveAnim();
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                DoAttackMeleeAnim();
-            }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                DoAttackRangedAnim();
-            }
-            
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                DoBuffAnim();
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                DoDebuffAnim();
-            }
-
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                DoIdleAnim();
-            }
-        }
+        
     }
 
     public void Flip(bool flipX)
