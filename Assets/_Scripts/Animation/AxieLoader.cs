@@ -11,6 +11,8 @@ namespace _Scripts.Game.Player.Axie
     /// <summary>
     /// The class was extracted from AxieMixerPlayground.cs
     /// </summary>
+    
+    [RequireComponent(typeof(MapPawn))]
     public class AxieLoader : MonoBehaviour
     {
         Axie2dBuilder Builder => Mixer.Builder;
@@ -24,12 +26,13 @@ namespace _Scripts.Game.Player.Axie
         [SerializeField] private string _sortingLayerName = "Pawn";
         [SerializeField] private int _sortingOrder = 0;
         
-        
+        SkeletonAnimation _skeletonAnimation;
+        SkeletonAnimationController _skeletonAnimationController;
+
         private void Awake()
         {
             _pawn = GetComponent<MapPawn>();
-            
-            
+            _skeletonAnimationController = GetComponent<SkeletonAnimationController>();
         }
 
         private void Start()
@@ -40,6 +43,9 @@ namespace _Scripts.Game.Player.Axie
             {
                 Debug.LogWarning("PawnDescription is null in AxieLoader.cs");
             }
+            
+            _skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
+            _skeletonAnimationController.Initialize();
         }
 
         void ProcessMixer(string axieId, string genesStr, bool isGraphic)

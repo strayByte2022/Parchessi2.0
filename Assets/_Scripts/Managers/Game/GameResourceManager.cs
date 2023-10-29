@@ -42,12 +42,10 @@ public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResource
         LoadDeckDescriptions();
         LoadChampionDescriptions();
         
-    }
-
-    private void Start()
-    {
+        
         InitMixer();
     }
+
 
     private void InitMixer()
     {
