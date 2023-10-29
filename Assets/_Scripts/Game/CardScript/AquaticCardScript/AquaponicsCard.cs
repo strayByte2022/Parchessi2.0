@@ -48,7 +48,7 @@ public class AquaponicsCard : StylizedHandCard
 
                 if (AudioPlayer.instance != null)
                 {
-                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                    AudioPlayer.instance.PlaySound(AudioPlayer.instance.bubble);
                 }
 
                 MapManager.Instance.HealPawnServerRPC(OwnerClientID, HealValue.Value, playerPawn.ContainerIndex);
