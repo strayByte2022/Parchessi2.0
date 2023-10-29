@@ -8,7 +8,7 @@ namespace _Scripts.NetworkContainter
     {
         public FixedString64Bytes PlayerID;
         public ulong ClientID;
-        public int ColorID;
+        public int ChampionID;
         public FixedString64Bytes PlayerName;
         
         
@@ -16,7 +16,7 @@ namespace _Scripts.NetworkContainter
         {
             serializer.SerializeValue(ref PlayerID);
             serializer.SerializeValue(ref ClientID);
-            serializer.SerializeValue(ref ColorID);
+            serializer.SerializeValue(ref ChampionID);
             serializer.SerializeValue(ref PlayerName);
             
         }

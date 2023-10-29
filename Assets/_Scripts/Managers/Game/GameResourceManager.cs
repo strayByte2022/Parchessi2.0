@@ -156,7 +156,7 @@ public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResource
             return deckDescription;
         }
 
-        Debug.LogWarning("DeckDescription not found for DeckID: " + deckID);
+        Debug.LogWarning("DeckDescription not found for ChampionID: " + deckID);
         return null;
     }
 }

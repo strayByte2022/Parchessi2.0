@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Managers.Network;
 using _Scripts.NetworkContainter;
+using _Scripts.Scriptable_Objects;
 using Unity.Netcode;
 using Unity.Services.Authentication;
 using UnityEngine;
@@ -23,7 +24,7 @@ public class GameMultiplayerManager : PersistentSingletonNetworkBehavior<GameMul
     public event EventHandler OnFailedToJoinGame;
     public event EventHandler OnPlayerContainerNetworkListChanged;
     
-    [SerializeField] private List<Color> _playerColorList;
+    [SerializeField] private List<ChampionDescription> _playerChampionList;
 
 
     private NetworkList<PlayerContainer> _playerContainerNetworkList;
@@ -81,7 +82,7 @@ public class GameMultiplayerManager : PersistentSingletonNetworkBehavior<GameMul
     private void NetworkManager_OnClientConnectedCallback(ulong clientId) {
         _playerContainerNetworkList.Add(new PlayerContainer {
             ClientID = clientId,
-            ColorID = GetFirstUnusedColorId(),
+            ChampionID = GetFirstUnusedChampionId(),
         });
         SetPlayerNameServerRpc(GetPlayerName());
         SetPlayerIdServerRpc(AuthenticationService.Instance.PlayerId);
@@ -185,18 +186,20 @@ public class GameMultiplayerManager : PersistentSingletonNetworkBehavior<GameMul
         return _playerContainerNetworkList[playerIndex];
     }
 
-    public Color GetPlayerColor(int colorId) {
-        return _playerColorList[colorId];
+    public ChampionDescription GetPlayerChampion(int championId) {
+        return _playerChampionList[championId];
     }
 
-    public void ChangePlayerColor(int colorId) {
-        ChangePlayerColorServerRpc(colorId);
+    public void ChangePlayerChampion(int championId) {
+        ChangePlayerChampionServerRpc(championId);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void ChangePlayerColorServerRpc(int colorId, ServerRpcParams serverRpcParams = default) {
-        if (!IsColorAvailable(colorId)) {
-            // Color not available
+    private void ChangePlayerChampionServerRpc(int championId, ServerRpcParams serverRpcParams = default) {
+        if (!IsChampionAvailable(championId)) {
+            // Champion not available
+            
+            
             return;
         }
 
@@ -204,14 +207,14 @@ public class GameMultiplayerManager : PersistentSingletonNetworkBehavior<GameMul
 
         PlayerContainer playerContainer = _playerContainerNetworkList[playerContainerIndex];
 
-        playerContainer.ColorID = colorId;
+        playerContainer.ChampionID = championId;
 
         _playerContainerNetworkList[playerContainerIndex] = playerContainer;
     }
 
-    private bool IsColorAvailable(int colorId) {
+    private bool IsChampionAvailable(int championId) {
         foreach (PlayerContainer playerContainer in _playerContainerNetworkList) {
-            if (playerContainer.ColorID == colorId) {
+            if (playerContainer.ChampionID == championId) {
                 // Already in use
                 return false;
             }
@@ -219,9 +222,9 @@ public class GameMultiplayerManager : PersistentSingletonNetworkBehavior<GameMul
         return true;
     }
 
-    private int GetFirstUnusedColorId() {
-        for (int i = 0; i<_playerColorList.Count; i++) {
-            if (IsColorAvailable(i)) {
+    private int GetFirstUnusedChampionId() {
+        for (int i = 0; i<_playerChampionList.Count; i++) {
+            if (IsChampionAvailable(i)) {
                 return i;
             }
         }
