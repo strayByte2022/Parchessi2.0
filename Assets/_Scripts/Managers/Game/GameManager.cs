@@ -46,6 +46,9 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
     public Action<PlayerController> OnPlayerTurnEnd { get; set; }
 
+    
+    
+    [SerializeField] private bool _isUsedChampionDescription = false;
     [SerializeField] private List<DiceDescription> _incomeDiceDescriptions = new();
     [SerializeField] private List<CardDescription> _deckCardDescriptions = new();
     [SerializeField] private int _victoryPointRequirement = 4;
@@ -54,6 +57,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     
     public void Start()
     {
+        
     }
 
     public override void OnNetworkSpawn()
@@ -86,7 +90,23 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
     }
 
-    
+    private void LoadDeckDescription()
+    {
+        if (_isUsedChampionDescription)
+        {
+            var playerContainer = GameMultiplayerManager.Instance.GetAllPlayerContainer();
+            
+            foreach (var player in playerContainer)
+            {
+                var championDescription = GameResourceManager.Instance.GetChampionDescription(player.ChampionID);
+                
+            }
+            
+            
+        }
+        
+    }
+
 
     [ServerRpc(RequireOwnership = false)]
     private void CreatePlayerControllerServerRPC(ulong clientId)
