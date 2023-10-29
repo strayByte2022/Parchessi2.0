@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2906185792798915800, guid: 61143119b416bf34080b70a695778627, type: 3}
       propertyPath: m_Name
-      value: 403 Offering Card Variant
+      value: 404 Bless Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2906185792798915803, guid: 61143119b416bf34080b70a695778627, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4431310491970838845, guid: 61143119b416bf34080b70a695778627, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 61143119b416bf34080b70a695778627, type: 3}
+--- !u!1 &306835494394208162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2906185792798915800, guid: 61143119b416bf34080b70a695778627, type: 3}
+  m_PrefabInstance: {fileID: 3176939708010324858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6616629926339987473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306835494394208162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c62ab9b513ab8242b97af8d2608712c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  SpeedBonus:
+    _value: 0
+  BuffDuration:
+    _value: 0
