@@ -1,5 +1,6 @@
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.NetworkContainter;
 using _Scripts.Player.Card;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
@@ -7,14 +8,17 @@ using _Scripts.Simulation;
 
 namespace _Scripts.CardScript.AquaticCardScript
 {
-    public class SeedBulletCard : StylizedHandCard
+    public class GraceCard : StylizedHandCard
     {
-        public ObservableData<int> DamageValue;
+        public ObservableData<int> SpeedBuff;
+        public ObservableData<int> BuffDuration;
+
 
         protected override void InitializeCardDescription(CardDescription cardDescription)
         {
             base.InitializeCardDescription(cardDescription);
-            DamageValue = new ObservableData<int>(cardDescription.CardEffectIntVariables[0]);
+            SpeedBuff = new ObservableData<int>(cardDescription.CardEffectIntVariables[0]);
+            BuffDuration = new ObservableData<int>(cardDescription.CardEffectIntVariables[1]);
         }
 
         public override bool CheckTargeteeValid(ITargetee targetee)
@@ -24,14 +28,14 @@ namespace _Scripts.CardScript.AquaticCardScript
                 return true;
             }
 
-            return false;
+            return GetAllAlly(targetee);
         }
 
-        public bool GetAllPawn(ITargetee targetee)
+        public bool GetAllAlly(ITargetee targetee)
         {
             if (targetee is MapPawn mapPawn)
             {
-                return true;
+                return mapPawn.OwnerClientID == this.OwnerClientID;
             }
 
             return false;
@@ -49,15 +53,23 @@ namespace _Scripts.CardScript.AquaticCardScript
             package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
             package.AddToPackage(MoveToMiddleScreen());
 
-            var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllPawn);
+            var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllAlly);
 
             foreach (var pawn in selectedPawns)
             {
                 package.AddToPackage(() =>
                 {
                     // Inherit this class and write Card effect
-                    MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DamageValue.Value, pawn.ContainerIndex);
-
+                    var pawnStatEffectContainer = new PawnStatEffectContainer()
+                    {
+                        EffectDuration = BuffDuration.Value,
+                        EffectType = PawnStatEffectType.Speed,
+                        EffectValue = SpeedBuff.Value,
+                        EffectedOwnerClientID = pawn.OwnerClientID,
+                        EffectedPawnContainerIndex = pawn.ContainerIndex,
+                        TriggerOwnerClientID = OwnerClientID
+                    };
+                    MapManager.Instance.AddStatEffectServerRPC(pawnStatEffectContainer);
                 });
             }
 

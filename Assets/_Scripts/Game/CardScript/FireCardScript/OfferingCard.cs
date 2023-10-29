@@ -1,20 +1,23 @@
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
-using _Scripts.Player.Card;
+using _Scripts.NetworkContainter;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
 using _Scripts.Simulation;
+using UnityEngine;
 
 namespace _Scripts.CardScript.AquaticCardScript
 {
-    public class SeedBulletCard : StylizedHandCard
+    public class OfferingCard : StylizedHandCard
     {
-        public ObservableData<int> DamageValue;
+        public ObservableData<int> DealDamage;
+        public ObservableData<int> Heal;
 
         protected override void InitializeCardDescription(CardDescription cardDescription)
         {
             base.InitializeCardDescription(cardDescription);
-            DamageValue = new ObservableData<int>(cardDescription.CardEffectIntVariables[0]);
+            DealDamage = new ObservableData<int>(cardDescription.CardEffectIntVariables[0]);
+            Heal = new ObservableData<int>(cardDescription.CardEffectIntVariables[1]);
         }
 
         public override bool CheckTargeteeValid(ITargetee targetee)
@@ -27,11 +30,20 @@ namespace _Scripts.CardScript.AquaticCardScript
             return false;
         }
 
-        public bool GetAllPawn(ITargetee targetee)
+        private bool GetAllAllyPawn(ITargetee targetee)
         {
             if (targetee is MapPawn mapPawn)
             {
-                return true;
+                return mapPawn.OwnerClientID == this.OwnerClientID;
+            }
+
+            return false;
+        }
+        private bool GetAllEnemyPawn(ITargetee targetee)
+        {
+            if (targetee is MapPawn mapPawn)
+            {
+                return mapPawn.OwnerClientID != this.OwnerClientID;
             }
 
             return false;
@@ -49,25 +61,35 @@ namespace _Scripts.CardScript.AquaticCardScript
             package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
             package.AddToPackage(MoveToMiddleScreen());
 
-            var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllPawn);
+            var selectedPawns = ActionManager.Instance.GetMapPawns(GetAllAllyPawn);
 
             foreach (var pawn in selectedPawns)
             {
                 package.AddToPackage(() =>
                 {
                     // Inherit this class and write Card effect
-                    MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DamageValue.Value, pawn.ContainerIndex);
 
+                    MapManager.Instance.HealPawnServerRPC(OwnerClientID, Heal.Value, pawn.ContainerIndex);
                 });
+                break;
             }
+            var selectedEPawns = ActionManager.Instance.GetMapPawns(GetAllEnemyPawn);
+            foreach (var pawn in selectedEPawns)
+            {
+                package.AddToPackage(() =>
+                {
+                    // Inherit this class and write Card effect
 
+                    MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DealDamage.Value, pawn.ContainerIndex);
+                });
+                break;
+            }
             package.AddToPackage(() =>
             {
                 PlayerCardHand.PlayCard(this);
 
                 Destroy();
             });
-
 
 
             return package;
