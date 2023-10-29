@@ -10,19 +10,33 @@ public class WinUI : MonoBehaviour
     public GameObject winText;
     public GameObject bg;
 
+
+    private void Start()
+    {
+        GameManager.Instance.OnGameEnd += TriggerWin;
+    }
+
+
     private void Awake()
     {
         confetti1.transform.localScale = Vector3.zero;
         confetti2.transform.localScale = Vector3.zero;
         confetti3.transform.localScale = Vector3.zero;
         winText.transform.localScale = Vector3.zero;
-        bg.LeanAlphaVertex(0f, 0.01f);
+        bg.LeanAlpha(0f, 0.01f);
+    }
+
+
+    private void TriggerWin() 
+    {
+        Debug.Log("triggerWin");
+        BG();
+        WinConfetti();
     }
 
     public void BG()
     {
-        Debug.Log("hi");
-        bg.LeanAlphaVertex(255f, 1f).setEaseInQuint();
+        LeanTween.alpha(bg, 255, 1f).setEaseInCirc();
     }
 
     public void WinConfetti()
