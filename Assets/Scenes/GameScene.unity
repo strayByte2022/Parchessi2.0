@@ -2733,7 +2733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 15}
+  m_AnchoredPosition: {x: -49.99997, y: 15}
   m_SizeDelta: {x: 1620, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949140811
@@ -5868,6 +5868,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 511124456}
     m_Modifications:
+    - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
+      propertyPath: _isUsedChampionDescription
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3291995366329988780, guid: f213e618ddf18064380e88583ab7a709, type: 3}
       propertyPath: _deckCardDescriptions.Array.size
       value: 23

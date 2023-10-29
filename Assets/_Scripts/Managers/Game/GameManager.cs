@@ -26,7 +26,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
     [SerializeField] public List<PlayerController> PlayerControllers { get; private set; } = new();
     [SerializeField, ShowImmutable] private GameState _gameState = GameState.NetworkSetup;
-    
+
     private readonly NetworkVariable<int> _playerIdTurn = new NetworkVariable<int>(0);
 
 
@@ -46,18 +46,16 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
 
     public Action<PlayerController> OnPlayerTurnEnd { get; set; }
 
-    
-    
+
     [SerializeField] private bool _isUsedChampionDescription = false;
     [SerializeField] private List<DiceDescription> _incomeDiceDescriptions = new();
     [SerializeField] private List<CardDescription> _deckCardDescriptions = new();
     [SerializeField] private int _victoryPointRequirement = 4;
 
     private Dictionary<PlayerController, bool> _serverPlayerControllerReady = new();
-    
+
     public void Start()
     {
-        
     }
 
     public override void OnNetworkSpawn()
@@ -77,7 +75,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
     {
         CreatePlayerControllerServerRPC(NetworkManager.LocalClientId);
     }
-    
+
 
     private void SceneManager_OnLoadEventCompleted(string sceneName,
         UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted,
@@ -87,24 +85,6 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         {
             CreatePlayerControllerServerRPC(clientId);
         }
-
-    }
-
-    private void LoadDeckDescription()
-    {
-        if (_isUsedChampionDescription)
-        {
-            var playerContainer = GameMultiplayerManager.Instance.GetAllPlayerContainer();
-            
-            foreach (var player in playerContainer)
-            {
-                var championDescription = GameResourceManager.Instance.GetChampionDescription(player.ChampionID);
-                
-            }
-            
-            
-        }
-        
     }
 
 
@@ -125,19 +105,19 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         playerController.Initialize();
         StartPlayerController(playerController);
 
-        if (GameMultiplayerManager.Instance != null && PlayerControllers.Count == GameMultiplayerManager.Instance.GetAllPlayerContainer().Length)
+        if (GameMultiplayerManager.Instance != null && PlayerControllers.Count ==
+            GameMultiplayerManager.Instance.GetAllPlayerContainer().Length)
         {
             SetReadyPlayerControllerServerRPC(NetworkManager.LocalClientId);
         }
     }
 
-    
 
     [ServerRpc(RequireOwnership = false)]
     private void SetReadyPlayerControllerServerRPC(ulong clientId)
     {
         _serverPlayerControllerReady[GetPlayerController(clientId)] = true;
-        
+
         if (_serverPlayerControllerReady.Count == NetworkManager.Singleton.ConnectedClients.Count)
         {
             StartGameServerRPC();
@@ -171,9 +151,10 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         _gameState = GameState.GamePlay;
         StartGameClientRPC();
 
-        LoadPlayerSetup();
+        if (_isUsedChampionDescription) LoadPlayerSetupFromDeckDescription();
+        else LoadPlayerSetupFromGameManager();
         StartPlayerTurnClientRPC(PlayerControllers[_playerIdTurn.Value].OwnerClientId);
-        
+
         PlayerControllers[_playerIdTurn.Value].PlayerTurnController.StartTurnServerRPC();
     }
 
@@ -183,7 +164,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         OnGameStart?.Invoke();
     }
 
-    private void LoadPlayerSetup()
+    private void LoadPlayerSetupFromGameManager()
     {
         foreach (var playerController in PlayerControllers)
         {
@@ -203,6 +184,43 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         }
     }
 
+    private void LoadPlayerSetupFromDeckDescription()
+    {
+        var playerContainer = GameMultiplayerManager.Instance.GetAllPlayerContainer();
+
+        foreach (var playerController in PlayerControllers)
+        {
+            foreach (var diceDescription in _incomeDiceDescriptions) // Load Dice
+            {
+                playerController.PlayerResourceController.AddIncomeServerRPC(diceDescription.GetDiceContainer());
+
+                Debug.Log($"Dice {diceDescription.DiceID} : ");
+            }
+            
+            foreach (var player in playerContainer)
+            {
+                if (playerController.OwnerClientId != player.ClientID)
+                {
+                    continue;
+                }
+                
+                var championDescription = GameResourceManager.Instance.GetChampionDescription(player.ChampionID);
+
+                foreach (var cardDescription in championDescription.DeckDescription.CardDescriptions)
+                {
+                    playerController.PlayerResourceController.AddCardToDeckServerRPC(cardDescription.GetCardContainer());
+                }
+
+                foreach (var pawnCardDescription in championDescription.DeckDescription.PawnCardDescriptions)
+                {
+                    playerController.PlayerResourceController.AddCardToDeckServerRPC(pawnCardDescription.GetCardContainer());
+                }
+                
+                playerController.PlayerResourceController.ShuffleDeckServerRPC();
+            }
+        }
+        
+    }
 
     [ServerRpc]
     public void StartNextPlayerTurnServerRPC()
@@ -242,7 +260,7 @@ public class GameManager : SingletonNetworkBehavior<GameManager>
         }
     }
 
-    [ServerRpc(RequireOwnership = false),Command]
+    [ServerRpc(RequireOwnership = false), Command]
     public void EndGameServerRPC(ulong ownerClientId)
     {
         _gameState = GameState.GameEnd;
