@@ -26,16 +26,23 @@ public class LobbyCreateUI : MonoBehaviour
 
     private void Start() {
         Hide();
+        gameObject.transform.localScale = new Vector3(0, 0, 0);
+
     }
 
     public void Show() {
         gameObject.SetActive(true);
-
         _createPublicButton.Select();
+        gameObject.LeanScale(Vector2.one, .5f).setEaseInBack();
+
     }
 
     private void Hide() {
-        gameObject.SetActive(false);
+        gameObject.LeanScale(Vector2.zero, .3f).setEaseInOutBack().setOnComplete(Deactivate);
     }
 
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -24,7 +24,7 @@ namespace _Scripts.CardScript.AquaticCardScript
                 return true;
             }
 
-            return GetAllPawn(targetee);
+            return false;
         }
 
         public bool GetAllPawn(ITargetee targetee)
