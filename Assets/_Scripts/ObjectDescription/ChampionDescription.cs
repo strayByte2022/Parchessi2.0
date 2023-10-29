@@ -12,5 +12,6 @@ namespace _Scripts.Scriptable_Objects
         public CardDescription CardDescription;
         public DiceDescription DiceDescription;
         public PawnCardDescription PawnCardDescription;
+        
     }
 }
