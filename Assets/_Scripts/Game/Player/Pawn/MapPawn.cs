@@ -194,7 +194,7 @@ namespace _Scripts.Player.Pawn
                 
                 if (CurrentHealth.Value <= 0)
                 {
-                    // Death
+                    // Die
                     
                     MapPath.Path[StandingMapCellIndex].RemovePawn(this);
                     
@@ -207,13 +207,13 @@ namespace _Scripts.Player.Pawn
         }
         
         
-        public virtual SimulationPackage Death()
+        public virtual SimulationPackage Die()
         {
             var simulationPacket = new SimulationPackage();
             
             simulationPacket.AddToPackage(() =>
             {
-                // Death Animation
+                // Die Animation
                 Destroy(gameObject);
             });
             

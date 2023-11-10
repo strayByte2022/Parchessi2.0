@@ -109,7 +109,7 @@ namespace _Scripts.Player.Pawn
                 _skeletonAnimationController.DoHurtAnim();
                 if (CurrentHealth.Value <= 0)
                 {
-                    // Death
+                    // Die
 
                     MapPath.Path[StandingMapCellIndex].RemovePawn(this);
 

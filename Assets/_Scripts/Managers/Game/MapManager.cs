@@ -141,7 +141,7 @@ namespace _Scripts.Managers.Game
         {
             var mapPawn = GetPlayerPawn(pawnContainerIndex);
             _containerIndexToMapPawnDictionary.Remove(pawnContainerIndex);
-            SimulationManager.Instance.AddSimulationPackage(mapPawn.Death());
+            SimulationManager.Instance.AddSimulationPackage(mapPawn.Die());
         }
 
         [ServerRpc(RequireOwnership = false)]
