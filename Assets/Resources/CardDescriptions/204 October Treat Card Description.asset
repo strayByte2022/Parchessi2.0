@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
+  m_Name: 204 October Treat Card Description
+  m_EditorClassIdentifier: 
+  CardID: 204
+  CardSprite: {fileID: 21300000, guid: bbf7fc372789f47269d0fe4cf2e27505, type: 3}
+  CardName: October Treat
+  CardEffectDescription: All ally gain {0} Bonus Health for {1}
+  CardCost: 1
+  CardEffectIntVariables: 0200000002000000
+  CardPaletteDescription: {fileID: 11400000, guid: 9a6c952ff0d7e834685dc462a5e404c6, type: 2}
+  HandCardPrefab: {fileID: -3064977018286068898, guid: b34983f4c045a534b8a34c44bf74ef19, type: 3}

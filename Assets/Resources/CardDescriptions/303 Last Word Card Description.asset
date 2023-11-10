@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
+  m_Name: 303 Last Word Card Description
+  m_EditorClassIdentifier: 
+  CardID: 303
+  CardSprite: {fileID: 21300000, guid: 8cf7486e1318c41a18f79bca769defca, type: 3}
+  CardName: Last Word
+  CardEffectDescription: Do {0} damage to ALL enemy that are not full health
+  CardCost: 1
+  CardEffectIntVariables: 05000000
+  CardPaletteDescription: {fileID: 11400000, guid: cb0d70e5f96d1e041980a5b52f5185dd, type: 2}
+  HandCardPrefab: {fileID: -4381568188824618755, guid: 6b01ff434f1ced14a91ee8202f9c5557, type: 3}

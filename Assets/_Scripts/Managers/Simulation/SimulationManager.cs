@@ -14,7 +14,7 @@ namespace _Scripts.Simulation
 
         private bool _isExecuting;
 
-        public void AddCoroutineSimulationObject(SimulationPackage simulationPackage)
+        public void AddSimulationPackage(SimulationPackage simulationPackage)
         {
             if (simulationPackage == null || _simulationQueue.Contains(simulationPackage))
             {
@@ -81,7 +81,7 @@ namespace _Scripts.Simulation
                 runningCoroutines.Add(newCoroutine);
             }
 
-            // Wait for all running coroutines to complete
+            // WaitPhase for all running coroutines to complete
             yield return WaitAllCoroutines(runningCoroutines);
         }
 

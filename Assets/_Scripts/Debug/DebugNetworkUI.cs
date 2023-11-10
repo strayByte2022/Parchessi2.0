@@ -21,6 +21,7 @@ public class DebugNetworkUI : MonoBehaviour
         _host.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
+            
             Debug.Log("Start Host");
             DestroyThis();
         });
@@ -28,6 +29,7 @@ public class DebugNetworkUI : MonoBehaviour
         _client.onClick.AddListener( () =>
         {
             NetworkManager.Singleton.StartClient();
+            
             Debug.Log("Start Client");
             DestroyThis();
         });

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e7ebb0a5a54d5c81d810b0d49054bf, type: 3}
+  m_Name: 454 Garnet Flame Pawn Card
+  m_EditorClassIdentifier: 
+  CardID: 454
+  CardSprite: {fileID: 21300000, guid: 88de453d5c4492b4ca76bd834fe425ea, type: 3}
+  CardName: Garnet Flame
+  CardEffectDescription: 'Passive Ability : Coming Soon !'
+  CardCost: 0
+  CardEffectIntVariables: 
+  CardPaletteDescription: {fileID: 11400000, guid: 84afa1c6f2995c3459c6299de0659eb2, type: 2}
+  HandCardPrefab: {fileID: 600866889934413978, guid: bde27c6d60c9a4540aff30911b516a1d, type: 3}
+  PawnDescription: {fileID: 11400000, guid: baf10f6a2471cbe4bb57019acd292e87, type: 2}

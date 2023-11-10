@@ -8,7 +8,7 @@ public class PhaseManipulateButtonContent : MonoBehaviour
     PlayerController _playerController;
     
     [SerializeField] private Button _waitButton;
-    [SerializeField] private EndTurnButtonController _endTurnButtonController;
+    [SerializeField] private EndSubsequenceButtonController _endSubsequenceButtonController;
     [SerializeField] private EndRollButtonController _endRollButtonController;
     [SerializeField] private StartRollButtonController _startRollButtonController;
     
@@ -16,8 +16,7 @@ public class PhaseManipulateButtonContent : MonoBehaviour
 
     private void Awake()
     {
-        
-        GameManager.Instance.OnClientPlayerJoinGameSetUp += GameSetUp;
+        GameManager.Instance.OnClientPlayerControllerSetUp += GameSetUp;
         DisableAllExceptWait();
     }
 
@@ -29,7 +28,7 @@ public class PhaseManipulateButtonContent : MonoBehaviour
     
     private void DisableAllExceptWait()
     {
-        _endTurnButtonController.gameObject.SetActive(false);
+        _endSubsequenceButtonController.gameObject.SetActive(false);
         _endRollButtonController.gameObject.SetActive(false);
         _startRollButtonController.gameObject.SetActive(false);
         _waitButton.gameObject.SetActive(true);
@@ -41,17 +40,17 @@ public class PhaseManipulateButtonContent : MonoBehaviour
     {
         switch (newValue)
         {
-            case PlayerTurnController.PlayerPhase.Wait:
+            case PlayerTurnController.PlayerPhase.WaitPhase:
                 SwapButton(_waitButton.gameObject);
                 break;
-            case PlayerTurnController.PlayerPhase.Preparation:
+            case PlayerTurnController.PlayerPhase.PreparationPhase:
                 SwapButton(_startRollButtonController.gameObject);
                 break;
-            case PlayerTurnController.PlayerPhase.Roll:
+            case PlayerTurnController.PlayerPhase.RollPhase:
                 SwapButton(_endRollButtonController.gameObject);
                 break;
-            case PlayerTurnController.PlayerPhase.Subsequence:
-                SwapButton(_endTurnButtonController.gameObject);
+            case PlayerTurnController.PlayerPhase.SubsequencePhase:
+                SwapButton(_endSubsequenceButtonController.gameObject);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newValue), newValue, null);

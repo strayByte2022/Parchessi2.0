@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8876226823398608456
+--- !u!1 &3291995366329988782
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1459954394566017977}
-  - component: {fileID: 7695238754754329727}
-  - component: {fileID: 385805303}
+  - component: {fileID: 3291995367286487569}
+  - component: {fileID: 3291995366329988780}
+  - component: {fileID: 3291995366329988781}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1459954394566017977
+--- !u!4 &3291995367286487569
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876226823398608456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 3291995366329988782}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5666778, y: 5.507979, z: 0.06945101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7695238754754329727
+--- !u!114 &3291995366329988780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876226823398608456}
+  m_GameObject: {fileID: 3291995366329988782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7635d4b4457031b4aadb0e7f40fcccc6, type: 3}
@@ -63,13 +63,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b846a576a9298f447929b2d1fbdf2ed6, type: 2}
   - {fileID: 11400000, guid: f9207e407fee5734796cc1d2a2131b57, type: 2}
   _victoryPointRequirement: 4
---- !u!114 &385805303
+--- !u!114 &3291995366329988781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876226823398608456}
+  m_GameObject: {fileID: 3291995366329988782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}

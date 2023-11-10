@@ -13,17 +13,19 @@ public class PlayerTurnController : PlayerControllerRequireDependency
 {
     public enum PlayerPhase : byte
     {
-        Wait,
-        Preparation,
-        Roll,
-        Subsequence
+        WaitPhase,
+        PreparationPhase,
+        RollPhase,
+        SubsequencePhase
     }
 
     private PlayerController _playerController;
 
-    public readonly NetworkVariable<PlayerPhase> CurrentPlayerPhase = new (PlayerPhase.Wait);
+    public readonly NetworkVariable<PlayerPhase> CurrentPlayerPhase = new (PlayerPhase.WaitPhase);
     public readonly NetworkVariable<int> CurrentPlayerTurn = new (0);
     public readonly NetworkVariable<int> VictoryPoint = new (0);
+
+    private bool _isFirstRollPhase = true;
     
     private PlayerDiceHand _playerDiceHand;
     private void Start()
@@ -39,60 +41,93 @@ public class PlayerTurnController : PlayerControllerRequireDependency
         return CurrentPlayerPhase.Value;
     }
     
-    [ClientRpc]
-    private void StartPreparationPhaseClientRPC()
+    [ServerRpc(RequireOwnership = false)]
+    public void StartTurnServerRPC()
     {
-        Debug.Log($"Client {OwnerClientId} Start Preparation");
+        _isFirstRollPhase = true;
+        StartPreparationPhaseServerRPC();
+        
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     public void StartPreparationPhaseServerRPC()
     {
-        CurrentPlayerPhase.Value = PlayerPhase.Preparation;
+        CurrentPlayerPhase.Value = PlayerPhase.PreparationPhase;
         StartPreparationPhaseClientRPC();
     }
 
-
-    [ClientRpc]
-    private void StartRollPhaseClientRPC()
-    {
-        Debug.Log($"Client {OwnerClientId} Start Roll");
-        
-    }
     
-    [ServerRpc, Command]
+    [ClientRpc]
+    private void StartPreparationPhaseClientRPC()
+    {
+        Debug.Log($"Client {OwnerClientId} Start PreparationPhase");
+    }
+
+    
+    [ServerRpc]
     public void StartRollPhaseServerRPC()
     {
-        CurrentPlayerPhase.Value = PlayerPhase.Roll;
+        CurrentPlayerPhase.Value = PlayerPhase.RollPhase;
+        
+        if (_isFirstRollPhase) PlayerResourceController.GainIncomeServerRPC();
+        PlayerResourceController.GainBonusDiceServerRPC();
+        
         StartRollPhaseClientRPC();
     }
    
     [ClientRpc]
-    private void StartSubsequencePhaseClientRPC()
+    private void StartRollPhaseClientRPC()
     {
-        Debug.Log($"Client {OwnerClientId} Start Subsequence");   
+        Debug.Log($"Client {OwnerClientId} Start RollPhase");
+        
     }
 
     [ServerRpc]
     public void EndRollPhaseServerRPC()
     {
-        if (PlayerController.PlayerResourceController.CheckEndRollPhaseTurn())
+        if (PlayerController.PlayerResourceController.CheckEmptyPlayingDices())
         {
             StartSubsequencePhaseServerRPC();
         }
         else
         {
-            StartPreparationPhaseServerRPC();
+            FailEndRollPhaseClientRPC();
         }
     }
 
+    [ClientRpc]
+    public void FailEndRollPhaseClientRPC()
+    {
+        // Not used all dices yet
+        Debug.Log("Not used all dices yet");
+    }
 
     [ServerRpc]
     private void StartSubsequencePhaseServerRPC()
     {
-        CurrentPlayerPhase.Value = PlayerPhase.Subsequence;
+        CurrentPlayerPhase.Value = PlayerPhase.SubsequencePhase;
         StartSubsequencePhaseClientRPC();
     }
+    
+    [ClientRpc]
+    private void StartSubsequencePhaseClientRPC()
+    {
+        Debug.Log($"Client {OwnerClientId} Start Subsequence Phase");
+    }
+    
+    [ServerRpc]
+    public void EndSubsequencePhaseServerRPC()
+    {
+        if (PlayerController.PlayerResourceController.CheckEmptyBonusDices())
+        { 
+            EndTurnServerRPC();
+        }
+        else
+        { 
+            StartPreparationPhaseServerRPC();
+        }
+    }
+    
     
     [ClientRpc]
     private void EndTurnClientRPC()
@@ -101,9 +136,9 @@ public class PlayerTurnController : PlayerControllerRequireDependency
     }
     
     [ServerRpc(RequireOwnership = false), Command]
-    public void EndTurnServerRPC()
+    private void EndTurnServerRPC()
     {
-        CurrentPlayerPhase.Value = PlayerPhase.Wait;
+        CurrentPlayerPhase.Value = PlayerPhase.WaitPhase;
         EndTurnClientRPC();
         
         GameManager.Instance.StartNextPlayerTurnServerRPC();

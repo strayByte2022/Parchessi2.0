@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1517217579564299889
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588356, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318057932165588359, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+      propertyPath: m_Name
+      value: 303 Last Word Card Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -4869231588741690715, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+--- !u!1 &7377336852592841718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8318057932165588359, guid: f84ac657635ea01459fe556578468bd7, type: 3}
+  m_PrefabInstance: {fileID: 1517217579564299889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4381568188824618755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377336852592841718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b2cf595b2e0674d97caf0343f7bfda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targeteeType: 0
+  HandCardFace: {fileID: 0}
+  SimulateMoveSpeed: 10
+  _destroyParticleSystem: {fileID: 0}
+  _fadeObject: {fileID: 0}
+  _destroyDelayDuration: 2.5
+  DealDamage:
+    _value: 0

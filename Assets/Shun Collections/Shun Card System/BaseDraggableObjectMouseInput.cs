@@ -54,13 +54,13 @@ namespace Shun_Card_System
 
         #region CAST
 
-        protected void UpdateMousePosition()
+        protected virtual void UpdateMousePosition()
         {
             Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             MouseWorldPosition = new Vector3(worldMousePosition.x, worldMousePosition.y, 0);
         }
 
-        protected void CastMouse()
+        protected virtual void CastMouse()
         {
             MouseCastHits = Physics2D.RaycastAll(MouseWorldPosition, Vector2.zero);
         }
@@ -137,7 +137,7 @@ namespace Shun_Card_System
         #endregion
     
     
-        protected TResult FindFirstInMouseCast<TResult>()
+        protected virtual TResult FindFirstInMouseCast<TResult>()
         {
             foreach (var hit in MouseCastHits)
             {

@@ -1,6 +1,7 @@
 ﻿
 using _Scripts.DataWrapper;
 using _Scripts.Managers.Game;
+using _Scripts.Player.Card;
 using _Scripts.Player.Dice;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
@@ -36,6 +37,7 @@ public class SpinalTapCard : StylizedHandCard
             return package; 
         }
 
+        package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
         package.AddToPackage(MoveToMiddleScreen());
 
         package.AddToPackage(() =>
@@ -43,13 +45,17 @@ public class SpinalTapCard : StylizedHandCard
             // Inherit this class and write Card effect
             Debug.Log(name + " Card drag to Pawn " + playerPawn.name);
 
-            MapManager.Instance.TakeDamagePawnServerRPC(DealDamage.Value, playerPawn.ContainerIndex);
-            playerPawn.TakeDamage(DealDamage.Value);
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.bubble);
+            }
+
+            MapManager.Instance.TakeDamagePawnServerRPC(OwnerClientID, DealDamage.Value, playerPawn.ContainerIndex);
                 
             PlayerCardHand.PlayCard(this);
 
             Destroy();
-                
+            
         });
         
         

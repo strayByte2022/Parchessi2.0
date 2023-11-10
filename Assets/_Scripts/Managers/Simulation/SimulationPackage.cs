@@ -15,8 +15,16 @@ namespace _Scripts.Simulation
         {
             Priority = priority;
         }
-        
-        
+
+        public void AddToPackage(float waitTime)
+        {
+            IEnumerator CoroutineWrapper()
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+            
+            ExecuteEvents.Add(CoroutineWrapper);
+        }
         
         public void AddToPackage(Action action)
         {
@@ -26,6 +34,12 @@ namespace _Scripts.Simulation
         public void AddToPackage(Func<IEnumerator> coroutine)
         {
             ExecuteEvents.Add(coroutine);
+        }
+        
+        public void AddToPackage(IEnumerator coroutine)
+        {
+            IEnumerator CoroutineWrapper() => coroutine;
+            ExecuteEvents.Add(CoroutineWrapper);
         }
 
         public void AddToPackage(Tween tween)
@@ -49,6 +63,8 @@ namespace _Scripts.Simulation
 
         private Func<IEnumerator> ConvertToIEnumerator(Tween tween)
         {
+            if (tween == null || !tween.IsActive()) return null;
+            
             tween.Pause();
             return new Func<IEnumerator>(() =>
             {
@@ -66,5 +82,7 @@ namespace _Scripts.Simulation
                 return CoroutineWrapper();
             });
         }
+        
+        
     }
 }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1d37e2fa2a4a0fbadb7be59cfe14cf, type: 3}
+  m_Name: 2 Plant Deck
+  m_EditorClassIdentifier: 
+  DeckID: 2
+  CardDescriptions:
+  - {fileID: 11400000, guid: 9f67221859864844c8cb71d80d98e38b, type: 2}
+  - {fileID: 11400000, guid: 33555fdef49fac2488fb91fc19704068, type: 2}
+  - {fileID: 11400000, guid: 70e5e2e5f3061254c9a07035968d03c7, type: 2}
+  - {fileID: 11400000, guid: 4838e6790bbcca148b56d060de27a127, type: 2}
+  - {fileID: 11400000, guid: 03253f5ab79de23448ac411dad986d35, type: 2}
+  - {fileID: 11400000, guid: 9f67221859864844c8cb71d80d98e38b, type: 2}
+  - {fileID: 11400000, guid: 33555fdef49fac2488fb91fc19704068, type: 2}
+  - {fileID: 11400000, guid: 70e5e2e5f3061254c9a07035968d03c7, type: 2}
+  - {fileID: 11400000, guid: 4838e6790bbcca148b56d060de27a127, type: 2}
+  - {fileID: 11400000, guid: 03253f5ab79de23448ac411dad986d35, type: 2}
+  PawnCardDescriptions:
+  - {fileID: 11400000, guid: 5c2c2e35770f01d4aa2ccb124b307b82, type: 2}
+  - {fileID: 11400000, guid: 3e60b75d02cc28141ba82f20296d7438, type: 2}
+  - {fileID: 11400000, guid: 79b6c7fba84660344ad5b3097b7fa87a, type: 2}
+  - {fileID: 11400000, guid: 9ab3bd80e8de0ff4489710a197479a45, type: 2}

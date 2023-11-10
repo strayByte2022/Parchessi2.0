@@ -11,21 +11,21 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BG
   - Water
   - UI
   - 
   - 
   - 
   - 
+  - Dice Border
+  - Dice
+  - Dice Hand
+  - Card Hand
+  - Card
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Pawn
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 468372827
+    locked: 0
   - name: Map
     uniqueID: 1925505555
     locked: 0
@@ -58,4 +61,7 @@ TagManager:
     locked: 0
   - name: Dice
     uniqueID: 1964281609
+    locked: 0
+  - name: Effect
+    uniqueID: 2499023405
     locked: 0

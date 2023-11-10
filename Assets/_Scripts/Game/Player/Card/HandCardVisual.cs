@@ -2,6 +2,7 @@
 using _Scripts.Scriptable_Objects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(HandCard))]
@@ -10,17 +11,19 @@ public class HandCardVisual : MonoBehaviour
     protected HandCard HandCard;
     protected CardDescription CardDescription;
 
-    [SerializeField] private TMP_Text _cardName;
+    [SerializeField] protected TMP_Text _cardName;
     
     [Tooltip("Description template with placeholders for variables, e.g., 'Do {0} damage'")]
-    [SerializeField] private TMP_Text _cardEffectDescription;
-    [SerializeField] private SpriteRenderer _cardImage;
-    [SerializeField] private TMP_Text _cardCost;
+    [SerializeField] protected TMP_Text _cardEffectDescription;
+    [SerializeField] protected SpriteRenderer _cardImage;
+    [SerializeField] protected TMP_Text _cardCost;
 
-    [SerializeField] private SpriteRenderer _cardBorderSprite;
-    [SerializeField] private SpriteRenderer _cardEffectBoxSprite;
-    [SerializeField] private SpriteRenderer _cardBannerBoxSprite;
-    [SerializeField] private SpriteRenderer _cardImageBoxSprite;
+    [SerializeField] protected SpriteRenderer _cardBorderSprite;
+    [SerializeField] protected SpriteRenderer _cardEffectBoxSprite;
+    [SerializeField] protected SpriteRenderer _cardBannerBoxSprite;
+    [SerializeField] protected SpriteRenderer _cardImageBoxSprite;
+    
+    [SerializeField] protected SortingGroup _frontSortingGroup, _backSortingGroup;
 
     protected virtual void Awake()
     {
@@ -55,7 +58,7 @@ public class HandCardVisual : MonoBehaviour
     
     protected virtual void LoadCardColor()
     {
-        if(CardDescription == null || CardDescription.CardPaletteDescription != null) return;
+        if(CardDescription == null || CardDescription.CardPaletteDescription == null) return;
         CardPaletteDescription cardPaletteDescription = CardDescription.CardPaletteDescription;
         
         _cardBorderSprite.color = cardPaletteDescription.CardBorderColor;
@@ -64,4 +67,5 @@ public class HandCardVisual : MonoBehaviour
         _cardImageBoxSprite.color = cardPaletteDescription.CardImageBoxColor;
         
     }
+    
 }

@@ -10,19 +10,44 @@ public class MenuUI : MonoBehaviour
 
     public void LoadLobby()
     {
-        AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
+        MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(Play);
     }
-    
+
+    public void Awake()
+    {
+        MainMenu.transform.localScale = new Vector3(0,0,0);
+        MainMenu.LeanScale(Vector2.one, 1f).setEaseInOutBounce();
+    }
+
     public void OnOptionOpen()
     {
         MainMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionEnable);
         OptionMenu.LeanScale(Vector2.one, 0.5f);
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
     }
 
     public void OnOptionClose()
     {
         OptionMenu.LeanScale(Vector2.zero, .3f).setEaseInBack().setOnComplete(OptionDisable);
         MainMenu.LeanScale(Vector2.one, 0.5f);
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+        }
     }
 
     public void OptionEnable()
@@ -47,5 +72,20 @@ public class MenuUI : MonoBehaviour
     {
         OptionMenu.SetActive(true);
         MainMenu.SetActive(false);
+    }
+
+    public void Play()
+    {
+        AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.LobbyScene.ToString());
+        if (AudioPlayer.instance != null)
+        {
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+        }
+    }
+
+    public void OnAwakeCompleted()
+    {
+        Debug.Log("Shows Game's Tittle");
     }
 }

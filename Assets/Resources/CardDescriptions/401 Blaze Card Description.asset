@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7982a113185a468bae32be7e08763311, type: 3}
+  m_Name: 401 Blaze Card Description
+  m_EditorClassIdentifier: 
+  CardID: 401
+  CardSprite: {fileID: 21300000, guid: 4d531580cdc7a49c28f95165a6f45ecb, type: 3}
+  CardName: Blaze
+  CardEffectDescription: All enemy decrease Speed by {0} for {1}
+  CardCost: 1
+  CardEffectIntVariables: 0400000001000000
+  CardPaletteDescription: {fileID: 11400000, guid: 84afa1c6f2995c3459c6299de0659eb2, type: 2}
+  HandCardPrefab: {fileID: -3419023827056707303, guid: 969022e29a177e848a87d332ae483b83, type: 3}

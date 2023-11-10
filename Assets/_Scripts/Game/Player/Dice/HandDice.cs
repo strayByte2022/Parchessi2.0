@@ -19,12 +19,14 @@ public class HandDice : PlayerEntity, ITargeter
     public ObservableData<int> DiceValue;
 
     private PlayerDiceHand _playerDiceHand;
+    private HandDiceRoll _handDiceRoll;
     [SerializeField, ShowImmutable] DiceDescription _diceDescription;
     private ITargeter _targeterImplementation;
 
     public void Initialize(PlayerDiceHand playerDiceHand, DiceDescription diceDescription, int containerIndex, ulong ownerClientID )
     {
         _playerDiceHand = playerDiceHand;
+        _handDiceRoll = GetComponent<HandDiceRoll>();
         _diceDescription = diceDescription;
         base.Initialize(containerIndex, ownerClientID);
         
@@ -32,7 +34,7 @@ public class HandDice : PlayerEntity, ITargeter
 
     private void Start()
     {
-        _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange);
+        SimulationManager.Instance.AddSimulationPackage(SpawnDice());
     }
 
     
@@ -41,10 +43,42 @@ public class HandDice : PlayerEntity, ITargeter
         if (targetee is PlayerDeck) return true;
         if (targetee is MapPawn mapPawn)
         {
-            return mapPawn.TryMove(DiceValue.Value);
+            return mapPawn.OwnerClientID == OwnerClientID && mapPawn.TryMove(DiceValue.Value);
         }
         else return false;
     }
+
+    public void RollDiceAction()
+    {
+        _playerDiceHand.RollDice(this, _diceDescription.DiceLowerRange, _diceDescription.DiceUpperRange);
+        
+    }
+    
+    protected virtual SimulationPackage SpawnDice()
+    {
+        var simulationPackage = new SimulationPackage();
+        
+        simulationPackage.AddToPackage(1f);
+        simulationPackage.AddToPackage(RollDiceAction);
+        
+        return simulationPackage;
+    }
+    
+    public virtual SimulationPackage RollDice(int endValue)
+    {
+        var simulationPackage = new SimulationPackage();
+        simulationPackage.AddToPackage(() => { 
+            _playerDiceHand.RemoveDiceFromRegion(this);
+            _handDiceRoll.RollDice(endValue, (int endValue) =>
+            {
+                _playerDiceHand.AddDiceToRegion(this);
+                DiceValue.Value = endValue;
+            });});
+        
+        return simulationPackage;
+
+    }
+    
     
     public virtual SimulationPackage SetDiceValue(int value)
     {
@@ -63,12 +97,13 @@ public class HandDice : PlayerEntity, ITargeter
         var package = new SimulationPackage();
         package.AddToPackage(() =>
         {
-            if (targetee is MapPawn playerPawn)
+            if (targetee is MapPawn mapPawn)
             {
-                _playerDiceHand.PlayDiceToPawn(this, playerPawn);
+                _playerDiceHand.PlayDice(this);
                 
+                MapManager.Instance.StartMovePawnServerRPC(mapPawn.ContainerIndex, DiceValue.Value);
                 // Inherit this class and write Dice effect
-                Debug.Log(name + " Dice drag to Pawn " + playerPawn.name);
+                Debug.Log(name + " Dice drag to Pawn " + mapPawn.name);
 
             }
             else if (targetee is PlayerDeck)
@@ -76,7 +111,8 @@ public class HandDice : PlayerEntity, ITargeter
                 Debug.Log("Draw a card");
 
                 _playerDiceHand.ConvertToCard(this);
-                
+                Debug.Log("PLAY SOUND FX");
+
             }
 
             Destroy();

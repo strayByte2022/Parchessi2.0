@@ -18,9 +18,9 @@ public class PlayerActionController : PlayerControllerRequireDependency
     [ServerRpc]
     public void RollDiceServerRPC(int containerIndex, int lowerBound, int upperBound)
     {
-        var dice = PlayerResourceController.CurrentTurnDices[containerIndex];
+        var dice = PlayerResourceController.PlayingDices[containerIndex];
         dice.Value = Random.Range(lowerBound, upperBound);
-        PlayerResourceController.CurrentTurnDices[containerIndex] = dice;
+        PlayerResourceController.PlayingDices[containerIndex] = dice;
         RollDiceClientRPC(containerIndex, dice.Value);
     }
 
@@ -28,7 +28,7 @@ public class PlayerActionController : PlayerControllerRequireDependency
     private void RollDiceClientRPC(int containerIndex, int value)
     {
         HandDice handDice = ActionManager.Instance.GetHandDice(containerIndex, OwnerClientId);
-        SimulationManager.Instance.AddCoroutineSimulationObject( handDice.SetDiceValue(value));
+        SimulationManager.Instance.AddSimulationPackage( handDice.RollDice(value));
     }
 
     

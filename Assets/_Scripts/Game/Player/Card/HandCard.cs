@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using _Scripts.Managers.Game;
+using _Scripts.Player.Card;
 using _Scripts.Player.Dice;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
@@ -14,20 +15,25 @@ using UnityEngine.UI;
 
 public class HandCard : PlayerEntity, ITargeter
 {
+    public bool IsOwner { get; protected set; }
+    
+    [Header("Hand Card")]
     protected PlayerCardHand PlayerCardHand;
     public CardDescription CardDescription { get; protected set; }
-
+    
+    [SerializeField] protected HandCardFace HandCardFace;
     public Action OnInitialize { get; set;}
     
     [Header("Animations ")]
-    [SerializeField] protected float MoveToMiddleDuration = 0.5f;
-    [SerializeField] protected Ease MoveToMiddleEase = Ease.OutCubic;
+    [SerializeField] protected float SimulateMoveSpeed = 10f;
     
-    public void Initialize(PlayerCardHand playerCardHand, CardDescription cardDescription, int containerIndex, ulong ownerClientID)
+    public void Initialize(PlayerCardHand playerCardHand, CardDescription cardDescription, int containerIndex, ulong ownerClientID, bool isOwner)
     {
+        IsOwner = isOwner;
         PlayerCardHand = playerCardHand;
         Initialize(containerIndex, ownerClientID);
         InitializeCardDescription(cardDescription);
+        InitializeCardFace();
         
     }
 
@@ -36,6 +42,16 @@ public class HandCard : PlayerEntity, ITargeter
         CardDescription = cardDescription;
     }
 
+    protected virtual void InitializeCardFace()
+    {
+        HandCardFace = GetComponent<HandCardFace>();
+        HandCardFace.SetCardFace(CardFaceType.Back, true);
+        if (IsOwner)
+        {
+            HandCardFace.SetCardFace(CardFaceType.Front, false);   
+        }
+    }
+    
     private void Start()
     {
         OnInitialize?.Invoke();
@@ -49,10 +65,15 @@ public class HandCard : PlayerEntity, ITargeter
         else return false;
     }
     
+    
+    
     public virtual SimulationPackage ExecuteTargeter<TTargetee>(TTargetee targetee) where TTargetee : ITargetee
     {
         
         var package = new SimulationPackage();
+
+        package.AddToPackage(HandCardFace.SetCardFace(CardFaceType.Front));
+            
         
         if (targetee is MapPawn playerPawn)
         {
@@ -104,11 +125,24 @@ public class HandCard : PlayerEntity, ITargeter
         Destroy(gameObject);
     }
 
+    /*
     protected virtual Tween MoveToMiddleScreen()
     {
         return transform
             .DOMove(MapManager.Instance.GetEmptyTarget().GetMonoBehavior().transform.position, MoveToMiddleDuration)
             .SetEase(MoveToMiddleEase);
     }
+    */
+    
+    protected virtual Tween MoveToMiddleScreen()
+    {
+        Vector3 targetPosition = MapManager.Instance.GetEmptyTarget().GetMonoBehavior().transform.position;
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        float duration = distance / SimulateMoveSpeed; // Calculate the duration based on speed
+
+        return DOTween.To(() => transform.position, x => transform.position = x, targetPosition, duration);
+    }
+
     
 }

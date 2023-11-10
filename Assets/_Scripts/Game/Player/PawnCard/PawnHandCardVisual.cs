@@ -33,10 +33,14 @@ namespace _Scripts.Player.PawnCard
             
         }
         
+        
+        
         protected override void LoadCard()
         {
             if(CardDescription == null) return;
             base.LoadCard();
+            
+            _cardImage.sprite = _pawnHandCard.PawnDescription.PawnSprite;
             
             _originAttackValue = _pawnHandCard.PawnDescription.PawnAttackDamage;
             _originHealthValue = _pawnHandCard.PawnDescription.PawnMaxHealth;

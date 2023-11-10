@@ -24,15 +24,33 @@ public class LobbyUI : MonoBehaviour
         _mainMenuButton.onClick.AddListener(() => {
             GameLobbyManager.Instance.LeaveLobby();
             AssetSceneManager.LoadScene(AssetSceneManager.AssetScene.MainMenuScene.ToString());
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+            }
         });
         _createLobbyButton.onClick.AddListener(() => {
             _lobbyCreateUI.Show();
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.tab);
+
+            }
         });
         _quickJoinButton.onClick.AddListener(() => {
             GameLobbyManager.Instance.QuickJoin();
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            }
         });
         _joinCodeButton.onClick.AddListener(() => {
             GameLobbyManager.Instance.JoinWithCode(_joinCodeInputField.text);
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.click);
+            }
         });
 
         _lobbyTemplate.gameObject.SetActive(false);
@@ -42,6 +60,10 @@ public class LobbyUI : MonoBehaviour
         _playerNameInputField.text = GameMultiplayerManager.Instance.GetPlayerName();
         _playerNameInputField.onValueChanged.AddListener((string newText) => {
             GameMultiplayerManager.Instance.SetPlayerName(newText);
+            if (AudioPlayer.instance != null)
+            {
+                AudioPlayer.instance.PlaySound(AudioPlayer.instance.type);
+            }
         });
 
         GameLobbyManager.Instance.OnLobbyListChanged += KitchenGameLobby_OnLobbyListChanged;

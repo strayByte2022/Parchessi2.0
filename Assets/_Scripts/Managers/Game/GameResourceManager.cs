@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using _Scripts.Player;
 using _Scripts.Player.Pawn;
 using _Scripts.Scriptable_Objects;
+using AxieMixer.Unity;
 using UnityEngine;
 using UnityUtilities;
 
 
-public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
+public class GameResourceManager : PersistentSingletonMonoBehaviour<GameResourceManager>
 {
     public PlayerController PlayerControllerPrefab;
     
@@ -19,21 +20,47 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
     private readonly Dictionary<int, DiceDescription> _diceDescriptionsDictionary = new();
     private readonly Dictionary<int, PawnDescription> _pawnDescriptionsDictionary = new();
     private readonly Dictionary<int, PawnCardDescription> _pawnCardDescriptionsDictionary = new();
+    private readonly Dictionary<int, DeckDescription> _deckDescriptionsDictionary = new(); 
+    private readonly Dictionary<int, ChampionDescription> _championDescriptionsDictionary = new();
     
     const string CARD_DESCRIPTIONS_PATH = "CardDescriptions";
     const string DICE_DESCRIPTIONS_PATH = "DiceDescriptions";
     const string PAWN_DESCRIPTIONS_PATH = "PawnDescriptions";
     const string PAWN_CARD_DESCRIPTIONS_PATH = "PawnCardDescriptions";
+    const string DECK_DESCRIPTIONS_PATH = "DeckDescriptions";
+    const string CHAMPION_DESCRIPTIONS_PATH = "ChampionDescriptions";
     
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         LoadCardDescriptions();
         LoadDiceDescriptions();
         LoadPawnDescriptions();
         LoadPawnCardDescriptions();
+        LoadDeckDescriptions();
+        LoadChampionDescriptions();
+        
+        
+        InitMixer();
     }
 
+
+    private void InitMixer()
+    {
+        
+        if (Mixer.Builder == null)
+        {
+            Mixer.Init();
+            Debug.Log("Mixer.Init()");
+        }
+        if (Mixer.Builder == null)
+        {
+            Debug.LogError("Mixer.Builder is null");
+        }
+    }
+    
     private void LoadCardDescriptions()
     {
         CardDescription[] cardDescriptions = Resources.LoadAll<CardDescription>(CARD_DESCRIPTIONS_PATH);
@@ -111,6 +138,46 @@ public class GameResourceManager : SingletonMonoBehaviour<GameResourceManager>
         }
 
         Debug.LogWarning("PawnCardDescription not found for PawnCardID: " + pawnCardID);
+        return null;
+    }
+    
+    private void LoadDeckDescriptions()
+    {
+        DeckDescription[] deckDescriptions = Resources.LoadAll<DeckDescription>(DECK_DESCRIPTIONS_PATH);
+        foreach (DeckDescription deckDescription in deckDescriptions)
+        {
+            _deckDescriptionsDictionary[deckDescription.DeckID] = deckDescription;
+        }
+    }
+    
+    public DeckDescription GetDeckDescription(int deckID)
+    {
+        if (_deckDescriptionsDictionary.TryGetValue(deckID, out DeckDescription deckDescription))
+        {
+            return deckDescription;
+        }
+
+        Debug.LogWarning("DeckDescription not found for ChampionID: " + deckID);
+        return null;
+    }
+    
+    private void LoadChampionDescriptions()
+    {
+        ChampionDescription[] championDescriptions = Resources.LoadAll<ChampionDescription>(CHAMPION_DESCRIPTIONS_PATH);
+        foreach (ChampionDescription championDescription in championDescriptions)
+        {
+            _championDescriptionsDictionary[championDescription.ChampionID] = championDescription;
+        }
+    }
+    
+    public ChampionDescription GetChampionDescription(int championID)
+    {
+        if (_championDescriptionsDictionary.TryGetValue(championID, out ChampionDescription championDescription))
+        {
+            return championDescription;
+        }
+
+        Debug.LogWarning("ChampionDescription not found for ChampionID: " + championID);
         return null;
     }
 }
